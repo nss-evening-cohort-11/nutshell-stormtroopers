@@ -1,0 +1,110 @@
+{
+  "reservation1": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table1",
+    "numOfGuests": 3,
+    "partyName": "Flenderson"
+  },
+  "reservation2": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table1",
+    "numOfGuests": 4,
+    "partyName": "Contras"
+  },
+  "reservation3": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table1",
+    "numOfGuests": 4,
+    "partyName": "Humbuckers"
+  },
+  "reservation4": {
+    "timeSlotId": "timeSlot4",
+    "tableId": "table1",
+    "numOfGuests": 1,
+    "partyName": "Hofstra"
+  },
+  "reservation5": {
+    "timeSlotId": "timeSlot5",
+    "tableId": "table1",
+    "numOfGuests": 3,
+    "partyName": "Cornell"
+  },
+  "reservation6": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table2",
+    "numOfGuests": 6,
+    "partyName": "Darthmouth"
+  },
+  "reservation7": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table2",
+    "numOfGuests": 8,
+    "partyName": "Cisquo"
+  },
+  "reservation8": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table2",
+    "numOfGuests": 6,
+    "partyName": "Smith"
+  },
+  "reservation9": {
+    "timeSlotId": "timeSlot4",
+    "tableId": "table2",
+    "numOfGuests": 8,
+    "partyName": "Webb"
+  },
+  "reservation10": {
+    "timeSlotId": "timeSlot5",
+    "tableId": "table2",
+    "numOfGuests": 7,
+    "partyName": "Nevers"
+  },
+  "reservation11": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table3",
+    "numOfGuests": 2,
+    "partyName": "Truley"
+  },
+  "reservation12": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table3",
+    "numOfGuests": 2,
+    "partyName": "Ernest"
+  },
+  "reservation13": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table3",
+    "numOfGuests": 1,
+    "partyName": "Trainer"
+  },
+  "reservation14": {
+    "timeSlotId": "timeSlot4",
+    "tableId": "table3",
+    "numOfGuests": 2,
+    "partyName": "Bothan"
+  },
+  "reservation15": {
+    "timeSlotId": "timeSlot5",
+    "tableId": "table3",
+    "numOfGuests": 2,
+    "partyName": "Twi'lek"
+  },
+  "reservation16": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table12",
+    "numOfGuests": 10,
+    "partyName": "Gungans"
+  },
+  "reservation17": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table12",
+    "numOfGuests": 8,
+    "partyName": "Rodian"
+  },
+  "reservation18": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table12",
+    "numOfGuests": 7,
+    "partyName": "Bothan"
+  }
+}

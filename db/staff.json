@@ -1,0 +1,74 @@
+{
+  "staff1": {
+    "name": "Ortolan",
+    "jobType": "server",
+    "imageUrl": "https://i.imgur.com/k1pbG0s.jpg",
+    "uid": "oRtolAnUid"
+  },
+  "staff2": {
+    "name": "Yuzzum",
+    "jobType": "bartender",
+    "imageUrl": "https://i.imgur.com/HqImh2V.jpg",
+    "uid": "YuZZmUid"
+  },
+  "staff3": {
+    "name": "Oleg",
+    "jobType": "dishwasher",
+    "imageUrl": "https://i.imgur.com/YzSoKGu.png",
+    "uid": "oLEg19Uid"
+  },
+  "staff4": {
+    "name": "IG-88",
+    "jobType": "line cook",
+    "imageUrl": "https://i.imgur.com/aYHCdEg.jpg",
+    "uid": "Ig88uid"
+  },
+  "staff5": {
+    "name": "Jango",
+    "jobType": "host",
+    "imageUrl": "https://i.imgur.com/Tz6DO28.jpg",
+    "uid": "JaNgOuid"
+  },
+  "staff6": {
+    "name": "Jar-Jar",
+    "jobType": "server assistant",
+    "imageUrl": "https://i.imgur.com/WOPcXxQ.jpg",
+    "uid": "JaRJaruid"
+  },
+  "staff7": {
+    "name": "Klevin",
+    "jobType": "bar back",
+    "imageUrl": "https://i.imgur.com/9WXlllZ.jpg",
+    "uid": "KlEvINuid"
+  },
+  "staff8": {
+    "name": "Oscar",
+    "jobType": "chef",
+    "imageUrl": "https://i.imgur.com/bTAlitd.jpg",
+    "uid": "OZcarRuiD"
+  },
+  "staff9": {
+    "name": "Rupert",
+    "jobType": "server",
+    "imageUrl": "https://i.imgur.com/RvsIohc.png",
+    "uid": "RuPErtSUid"
+    },
+  "staff10": {
+    "name": "Obi-Wan",
+    "jobType": "server",
+    "imageUrl": "https://i.imgur.com/VdIJCBf.png",
+    "uid": "oBIWanUid"
+  },
+  "staff11": {
+    "name": "Otis",
+    "jobType": "line cook",
+    "imageUrl": "https://i.imgur.com/PgYNi5w.png",
+    "uid": "oTIZuid"
+    },
+  "staff12": {
+    "name": "Mildred",
+    "jobType": "bartender",
+    "imageUrl": "https://i.imgur.com/VFWBeRR.jpg",
+    "uid": "milDRedU1m"
+  }
+}

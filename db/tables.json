@@ -1,0 +1,62 @@
+{
+	"table1": {
+		"tableNumber": "Table 1",
+		"numOfSeats": 4,
+		"uid": "tAbLe1uiD"
+	},
+	"table2": {
+		"tableNumber": "Table 2",
+		"numOfSeats": 8,
+		"uid": "tAbLe2uiD"
+	},
+	"table3": {
+		"tableNumber": "Table 3",
+		"numOfSeats": 2,
+		"uid": "tAbLe3uiD"
+	},
+	"table4": {
+		"tableNumber": "Table 4",
+		"numOfSeats": 4,
+		"uid": "tAbLe4uiD"
+	},
+	"table5": {
+		"tableNumber": "Table 5",
+		"numOfSeats": 2,
+		"uid": "tAbLe5uiD"
+	},
+	"table6": {
+		"tableNumber": "Table 6",
+		"numOfSeats": 2,
+		"uid": "tAbLe6uiD"
+	},
+	"table7": {
+		"tableNumber": "Table 7",
+		"numOfSeats": 2,
+		"uid": "tAbLe7uiD"
+	},
+	"table8": {
+		"tableNumber": "Table 8",
+		"numOfSeats": 4,
+		"uid": "tAbLe8uiD"
+	},
+	"table9": {
+		"tableNumber": "Table 9",
+		"numOfSeats": 4,
+		"uid": "tAbLe9uiD"
+	},
+	"table10": {
+		"tableNumber": "Table 10",
+		"numOfSeats": 8,
+		"uid": "tAbLe10uiD"
+	},
+	"table11": {
+		"tableNumber": "Table 11",
+		"numOfSeats": 6,
+		"uid": "tAbLe11uiD"
+	},
+	"table12": {
+		"tableNumber": "Table 12",
+		"numOfSeats": 10,
+		"uid": "tAbLe12uiD"
+	}
+}

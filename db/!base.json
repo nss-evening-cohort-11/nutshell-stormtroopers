@@ -3,5 +3,7 @@
     "seating" : "seating",
     "reservations" : "reservations",
     "menuItems" : "menuItems",
-    "ingredients" : "ingredients"
+    "ingredients" : "ingredients",
+    "timeSlots": "time",
+    "tables": "table"
 }
