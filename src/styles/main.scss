@@ -1,6 +1,45 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+// fonts:
+// font-family: 'Allura', cursive;
+// font-family: 'Open Sans', sans-serif; 
+
 body {
-    background-color: whitesmoke;
+    background-color: white;
+}
+
+.home-page{
+    .home-page-logo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        h1{
+            text-align: center;
+            font-family: 'Allura', cursive; 
+            margin-top: 10px;
+            font-size: 75px;
+        }
+    }
+    .auth-login-button-container {
+        text-align: center;
+        .login-button {
+            font-family: 'Open Sans', sans-serif;
+            margin-top: 25px;
+            background-color: white;
+            padding: 15px;
+            font-size: 20px;
+        }
+        .login-button:hover {
+            opacity: 0.5;
+        }
+    }
+    .fancy-resturant-photo-container {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        img {
+            min-width: 75%;
+        }
+    }
 }
