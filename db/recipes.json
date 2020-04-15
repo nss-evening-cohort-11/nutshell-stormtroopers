@@ -1,0 +1,366 @@
+{
+	"recipe1": {
+		"menuItemId": "menuItem1",
+		"ingredientId": "ingredient1"
+	},
+	"recipe2": {
+		"menuItemId": "menuItem1",
+		"ingredientId": "ingredient2"
+	},
+	"recipe3": {
+		"menuItemId": "menuItem1",
+		"ingredientId": "ingredient4"
+	},
+	"recipe4": {
+		"menuItemId": "menuItem1",
+		"ingredientId": "ingredient5"
+	},
+	"recipe5": {
+		"menuItemId": "menuItem1",
+		"ingredientId": "ingredient6"
+	},
+	"recipe6": {
+		"menuItemId": "menuItem1",
+		"ingredientId": "ingredient7"
+	},
+	"recipe7": {
+		"menuItemId": "menuItem1",
+		"ingredientId": "ingredient10"
+	},
+	"recipe8": {
+		"menuItemId": "menuItem2",
+		"ingredientId": "ingredient11"
+	},
+	"recipe9": {
+		"menuItemId": "menuItem2",
+		"ingredientId": "ingredient12"
+	},
+	"recipe10": {
+		"menuItemId": "menuItem2",
+		"ingredientId": "ingredient13"
+	},
+	"recipe11": {
+		"menuItemId": "menuItem2",
+		"ingredientId": "ingredient14"
+	},
+	"recip12": {
+		"menuItemId": "menuItem3",
+		"ingredientId": "ingredient15"
+	},
+	"recipe13": {
+		"menuItemId": "menuItem3",
+		"ingredientId": "ingredient16"
+	},
+	"recipe14": {
+		"menuItemId": "menuItem3",
+		"ingredientId": "ingredient17"
+	},
+	"recipe15": {
+		"menuItemId": "menuItem3",
+		"ingredientId": "ingredient19"
+	},
+	"recipe16": {
+		"menuItemId": "menuItem4",
+		"ingredientId": "ingredient18"
+	},
+	"recipe17": {
+		"menuItemId": "menuItem4",
+		"ingredientId": "ingredient3"
+	},
+	"recipe18": {
+		"menuItemId": "menuItem4",
+		"ingredientId": "ingredient20"
+	},
+	"recipe19": {
+		"menuItemId": "menuItem5",
+		"ingredientId": "ingredient21"
+	},
+	"recipe20": {
+		"menuItemId": "menuItem5",
+		"ingredientId": "ingredient22"
+	},
+	"recipe21": {
+		"menuItemId": "menuItem5",
+		"ingredientId": "ingredient23"
+	},
+	"recipe22": {
+		"menuItemId": "menuItem5",
+		"ingredientId": "ingredient24"
+	},
+	"recipe23": {
+		"menuItemId": "menuItem5",
+		"ingredientId": "ingredient10"
+	},
+	"recipe24": {
+		"menuItemId": "menuItem6",
+		"ingredientId": "ingredient25"
+	},
+	"recipe25": {
+		"menuItemId": "menuItem6",
+		"ingredientId": "ingredient26"
+	},
+	"recipe26": {
+		"menuItemId": "menuItem6",
+		"ingredientId": "ingredient27"
+	},
+	"recipe27": {
+		"menuItemId": "menuItem7",
+		"ingredientId": "ingredient28"
+	},
+	"recipe28": {
+		"menuItemId": "menuItem7",
+		"ingredientId": "ingredient29"
+	},
+	"recipe29": {
+		"menuItemId": "menuItem7",
+		"ingredientId": "ingredient30"
+	},
+	"recipe30": {
+		"menuItemId": "menuItem7",
+		"ingredientId": "ingredient31"
+	},
+	"recipe31": {
+		"menuItemId": "menuItem9",
+		"ingredientId": "ingredient32"
+	},
+	"recipe32": {
+		"menuItemId": "menuItem8",
+		"ingredientId": "ingredient33"
+	},
+	"recipe33": {
+		"menuItemId": "menuItem8",
+		"ingredientId": "ingredient3"
+	},
+	"recipe34": {
+		"menuItemId": "menuItem8",
+		"ingredientId": "ingredient34"
+	},
+	"recipe35": {
+		"menuItemId": "menuItem8",
+		"ingredientId": "ingredient35"
+	},
+	"recipe36": {
+		"menuItemId": "menuItem9",
+		"ingredientId": "ingredient36"
+	},
+	"recipe37": {
+		"menuItemId": "menuItem9",
+		"ingredientId": "ingredient37"
+	},
+	"recipe38": {
+		"menuItemId": "menuItem9",
+		"ingredientId": "ingredient38"
+	},
+	"recipe39": {
+		"menuItemId": "menuItem10",
+		"ingredientId": "ingredient39"
+	},
+	"recipe40": {
+		"menuItemId": "menuItem11",
+		"ingredientId": "ingredient40"
+	},
+	"recipe41": {
+		"menuItemId": "menuItem12",
+		"ingredientId": "ingredient41"
+	},
+	"recipe42": {
+		"menuItemId": "menuItem12",
+		"ingredientId": "ingredient42"
+	},
+	"recipe43": {
+		"menuItemId": "menuItem13",
+		"ingredientId": "ingredient43"
+	},
+	"recipe44": {
+		"menuItemId": "menuItem13",
+		"ingredientId": "ingredient44"
+	},
+	"recipe45": {
+		"menuItemId": "menuItem13",
+		"ingredientId": "ingredient45"
+	},
+	"recipe46": {
+		"menuItemId": "menuItem13",
+		"ingredientId": "ingredient46"
+	},
+	"recipe47": {
+		"menuItemId": "menuItem13",
+		"ingredientId": "ingredient7"
+	},
+	"recipe48": {
+		"menuItemId": "menuItem13",
+		"ingredientId": "ingredient8"
+	},
+	"recipe49": {
+		"menuItemId": "menuItem14",
+		"ingredientId": "ingredient47"
+	},
+	"recipe50": {
+		"menuItemId": "menuItem14",
+		"ingredientId": "ingredient48"
+	},
+	"recipe51": {
+		"menuItemId": "menuItem14",
+		"ingredientId": "ingredient16"
+	},
+	"recipe52": {
+		"menuItemId": "menuItem14",
+		"ingredientId": "ingredient49"
+	},
+	"recipe53": {
+		"menuItemId": "menuItem14",
+		"ingredientId": "ingredient50"
+	},
+	"recipe54": {
+		"menuItemId": "menuItem14",
+		"ingredientId": "ingredient33"
+	},
+	"recipe55": {
+		"menuItemId": "menuItem15",
+		"ingredientId": "ingredient22"
+	},
+	"recipe56": {
+		"menuItemId": "menuItem15",
+		"ingredientId": "ingredient51"
+	},
+	"recipe57": {
+		"menuItemId": "menuItem15",
+		"ingredientId": "ingredient63"
+	},
+	"recipe58": {
+		"menuItemId": "menuItem15",
+		"ingredientId": "ingredient52"
+	},
+	"recipe59": {
+		"menuItemId": "menuItem16",
+		"ingredientId": "ingredient3"
+	},
+	"recipe60": {
+		"menuItemId": "menuItem16",
+		"ingredientId": "ingredient53"
+	},
+	"recipe61": {
+		"menuItemId": "menuItem16",
+		"ingredientId": "ingredient54"
+	},
+	"recipe62": {
+		"menuItemId": "menuItem16",
+		"ingredientId": "ingredient23"
+	},
+	"recipe63": {
+		"menuItemId": "menuItem17",
+		"ingredientId": "ingredient48"
+	},
+	"recipe64": {
+		"menuItemId": "menuItem17",
+		"ingredientId": "ingredient7"
+	},
+	"recipe65": {
+		"menuItemId": "menuItem17",
+		"ingredientId": "ingredient42"
+	},
+	"recipe66": {
+		"menuItemId": "menuItem17",
+		"ingredientId": "ingredient55"
+	},
+	"recipe67": {
+		"menuItemId": "menuItem17",
+		"ingredientId": "ingredient56"
+	},
+	"recipe68": {
+		"menuItemId": "menuItem14",
+		"ingredientId": "ingredient49"
+	},
+	"recipe69": {
+		"menuItemId": "menuItem18",
+		"ingredientId": "ingredient57"
+	},
+	"recipe70": {
+		"menuItemId": "menuItem19",
+		"ingredientId": "ingredient58"
+	},
+	"recipe71": {
+		"menuItemId": "menuItem19",
+		"ingredientId": "ingredient53"
+	},
+	"recipe72": {
+		"menuItemId": "menuItem19",
+		"ingredientId": "ingredient59"
+	},
+	"recipe73": {
+		"menuItemId": "menuItem19",
+		"ingredientId": "ingredient60"
+	},
+	"recipe74": {
+		"menuItemId": "menuItem20",
+		"ingredientId": "ingredient61"
+	},
+	"recipe75": {
+		"menuItemId": "menuItem20",
+		"ingredientId": "ingredient48"
+	},
+	"recipe76": {
+		"menuItemId": "menuItem20",
+		"ingredientId": "ingredient62"
+	},
+	"recipe77": {
+		"menuItemId": "menuItem21",
+		"ingredientId": "ingredient24"
+	},
+	"recipe78": {
+		"menuItemId": "menuItem21",
+		"ingredientId": "ingredient33"
+	},
+	"recipe79": {
+		"menuItemId": "menuItem21",
+		"ingredientId": "ingredient53"
+	},
+	"recipe80": {
+		"menuItemId": "menuItem21",
+		"ingredientId": "ingredient63"
+	},
+	"recipe81": {
+		"menuItemId": "menuItem22",
+		"ingredientId": "ingredient3"
+	},
+	"recipe82": {
+		"menuItemId": "menuItem22",
+		"ingredientId": "ingredient58"
+	},
+	"recipe83": {
+		"menuItemId": "menuItem22",
+		"ingredientId": "ingredient50"
+	},
+	"recipe84": {
+		"menuItemId": "menuItem22",
+		"ingredientId": "ingredient5"
+	},
+	"recipe85": {
+		"menuItemId": "menuItem22",
+		"ingredientId": "ingredient64"
+	},
+	"recipe86": {
+		"menuItemId": "menuItem23",
+		"ingredientId": "ingredient65"
+	},
+	"recipe87": {
+		"menuItemId": "menuItem17",
+		"ingredientId": "ingredient65"
+	},
+	"recipe88": {
+		"menuItemId": "menuItem23",
+		"ingredientId": "ingredient7"
+	},
+	"recipe89": {
+		"menuItemId": "menuItem23",
+		"ingredientId": "ingredient42"
+	},
+	"recipe91": {
+		"menuItemId": "menuItem23",
+		"ingredientId": "ingredient29"
+	},
+	"recipe92": {
+		"menuItemId": "menuItem23",
+		"ingredientId": "ingredient48"
+	}
+	}

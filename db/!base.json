@@ -1,9 +1,9 @@
 {
     "staff" : "staff",
-    "seating" : "seating",
     "reservations" : "reservations",
     "menuItems" : "menuItems",
+    "recipes" : "recipes",
     "ingredients" : "ingredients",
     "timeSlots": "time",
-    "tables": "table"
+    "tables": "tables"
 }
