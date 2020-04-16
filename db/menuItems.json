@@ -1,0 +1,209 @@
+{
+	"menuItem1": {
+		"name": "Vegetable Potstickers",
+		"category": "appetizer",
+		"description": "spring vegetables, house ponzu sauce, green onion",
+		"price": "$12",
+		"genre": "asian",
+		"imageUrl": "http://www.themostlyvegan.com/wp-content/uploads/2017/02/TurmericSpicedVeggiePotstickers3.jpg",
+		"uid": "meNuItem1uiD"
+	},
+	"menuItem2": {
+		"name": "Cherry Blossom-tini",
+		"category": "beverage",
+		"description": "cranberry, triple sec, lime, sake",
+		"price": "$9",
+		"genre": "asian",
+		"imageUrl": "https://fthmb.tqn.com/Isn_0p3zuLeIGL61VAIM6Y2vvuU=/960x0/filters:no_upscale()/CherryBlossomTini-sb10066073u-001-56a171263df78cf7726aad7e.jpg",
+		"uid": "meNuItem2uiD"
+	},
+	"menuItem3": {
+		"name": "Shibuya Shake",
+		"category": "beverage",
+		"description": "St. Germain, lemon, soda, shiso leaves",
+		"price": "$13",
+		"genre": "asian",
+		"imageUrl": "http://www.endlesssimmer.com/wp-content/uploads/2011/08/Shibuya-Shake-Virginia-Miller-2.jpg",
+		"uid": "meNuItem3uiD"
+	},
+	"menuItem4": {
+		"name": "Peking Duck Salad",
+		"category": "salad",
+		"description": "peking duck roll, organic mixed greens, peanut vinaigrette",
+		"price": "$15",
+		"genre": "asian",
+		"imageUrl": "https://www.vanskitchen.com/wp-content/uploads/2016/02/Crunchy-Asian-Egg-Roll-Salad-1024x683.jpg",
+		"uid": "meNuItem4uiD"
+	},
+	"menuItem5": {
+		"name": "Cantonese Chow Mein",
+		"category": "main",
+		"description": "choice of: beef, chicken, or vegetables",
+		"price": "$28",
+		"genre": "asian",
+		"imageUrl": "https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto:eco/https%3A%2F%2Fstorage.googleapis.com%2Fgen-atmedia%2F3%2F2019%2F01%2F9866e9a738238dcfb92974e40d43ab18e1d7c836.jpeg",
+		"uid": "meNuItem5uiD"
+	},
+	"menuItem6": {
+		"name": "Wolf Berry Jelly",
+		"category": "dessert",
+		"description": "wolf berry gelatin layered with coconut",
+		"price": "$7",
+		"genre": "gen",
+		"imageUrl": "https://1.bp.blogspot.com/_qlduyzkSj8o/SI35aJwjhmI/AAAAAAAABKE/EpgO3KmpvKE/s400/DSCF1586-1.jpg",
+		"uid": "meNuItem6uiD"
+	},
+	"menuItem7": {
+		"name": "Pain au Brie",
+		"category": "appetizer",
+		"description": "warm brie, honey, caramelized fig, garlic, toast",
+		"price": "$12",
+		"genre": "french",
+		"imageUrl": "https://www.iheartnaptime.net/wp-content/uploads/2015/07/appetizers-homemade-fig-jam-725x977.jpg",
+		"uid": "meNuItem7uiD"
+	},
+	"menuItem8": {
+		"name": "Beet Salad",
+		"category": "salad",
+		"description": "organic mixed greens, red heirloom beet, sherry vinaigrette, crumbled goat cheese",
+		"price": "$16",
+		"genre": "french",
+		"imageUrl": "https://thestayathomechef.com/wp-content/uploads/2013/04/Beet-Salad-3-e1520389016838.jpg",
+		"uid": "meNuItem8uiD"
+	},
+	"menuItem9": {
+		"name": "Rosemary Lamb Shank",
+		"category": "main",
+		"description": "grass-fed braised lamb shank, mashed garlic cauliflower",
+		"price": "$30",
+		"genre": "french",
+		"imageUrl": "https://coffeyskitchen.files.wordpress.com/2012/09/lamb-shank-with-rosemary-gremolata-and-mash1.jpg",
+		"uid": "meNuItem9uiD"
+	},
+	"menuItem10": {
+		"name": "Chardonnay",
+		"category": "beverage",
+		"description": "2015, Dom. Jean Touzot, Mâcon-Villages, Bourgogne",
+		"price": "$8",
+		"genre": "french",
+		"imageUrl": "https://cdn1.wine-searcher.net/images/labels/83/16/domaine-jean-touzot-macon-villages-vieilles-vignes-burgundy-france-10378316.jpg",
+		"uid": "meNuItem10uiD"
+	},
+	"menuItem11": {
+		"name": "Pinot Noir",
+		"category": "beverage",
+		"description": "2014, Jean-Claud Boisset, Les Ursulines, Bourgogne",
+		"price": "$8",
+		"genre": "french",
+		"imageUrl": "https://trekronorvin-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/les-ursulines-etikett.jpg",
+		"uid": "meNuItem11uiD"
+	},
+	"menuItem12": {
+		"name": "Tulipe Sorbét",
+		"category": "dessert",
+		"description": "organic raspberry sorbét, delicate cookie bowl",
+		"price": "$6",
+		"genre": "french",
+		"imageUrl": "https://livelycandy.files.wordpress.com/2011/07/tulipes-raspberry-sorbet-0408-fb-73003697.jpg",
+		"uid": "meNuItem12uiD"
+	},
+	"menuItem13": {
+		"name": "Brat and Bacon Flatbread",
+		"category": "appetizer",
+		"description": "bratwurst, smoked bacon, honey mustard, white cheddar, crispy flatbread",
+		"price": "$10",
+		"genre": "german",
+		"imageUrl": "https://cdn2.tmbi.com/TOH/Images/Photos/37/300x300/exps180594_SD153208D08_20_6b.jpg",
+		"uid": "meNuItem13uiD"
+	},
+	"menuItem14": {
+		"name": "Königsberg meatballs",
+		"category": "main",
+		"description": "organic beef meatballs, lemon caper sauce, side of naked potatoes and pickled beets",
+		"price": "$29",
+		"genre": "german",
+		"imageUrl": "https://www.ilovecruising.com/wp-content/uploads/2018/08/Uniworld_German-meatballs.jpg",
+		"uid": "meNuItem14uiD"
+	},
+	"menuItem15": {
+		"name": "Beef Stroganoff",
+		"category": "main",
+		"description": "cage-free egg noodles, organic beef, cremini mushrooms, fresh cream",
+		"price": "$24",
+		"genre": "german",
+		"imageUrl": "shorturl.at/rTY39",
+		"uid": "https://www.platingsandpairings.com/wp-content/uploads/2018/09/instant-pot-beef-stroganoff-6.jpg"
+	},
+	"menuItem16": {
+		"name": "German Salat",
+		"category": "salad",
+		"description": "organic mixed greens, diced tomatoes, creamy lemon dressing, add chicken: $2",
+		"price": "$11",
+		"genre": "german",
+		"imageUrl": "https://www.thespruceeats.com/thmb/wBEA32Y-CAQHr__lM53rVsEC9ow=/2500x1672/filters:fill(auto,1)/perfectgreensalad2500-5993ab28c412440011db26df.jpg",
+		"uid": "meNuItem16uiD"
+	},
+	"menuItem17": {
+		"name": "Black Forest Bundt Cake",
+		"category": "dessert",
+		"description": "milk chocolate ganache, fresh whipped cream, cherry",
+		"price": "$8",
+		"genre": "german",
+		"imageUrl": "https://www.courtneyssweets.com/wp-content/uploads/2019/04/black-forest-cake-8-640x896.jpg",
+		"uid": "meNuItem17uiD"
+	},
+	"menuItem18": {
+		"name": "Hacker-Pschorr Oktoberfest Märzen",
+		"category": "beverage",
+		"description": "smooth hints of toasted caramel, ABV 6%, ",
+		"price": "$5",
+		"genre": "german",
+		"imageUrl": "https://i.ytimg.com/vi/t5ueAJQCVnM/maxresdefault.jpg",
+		"uid": "meNuItem18uiD"
+	},
+	"menuItem19": {
+		"name": "Eggplant Zakuska",
+		"category": "appetizer",
+		"description": "grilled eggplant and tomato, garlic aioli, dill",
+		"price": "$11",
+		"genre": "russian",
+		"imageUrl": "http://4.bp.blogspot.com/-o0TyVSVy0O0/TiEQOq7ORYI/AAAAAAAACSs/oU2D_64Jp4w/s1600/DSC_0265.JPG",
+		"uid": "meNuItem19uiD"
+	},
+	"menuItem20": {
+		"name": "Classic White Russian",
+		"category": "beverage",
+		"description": "Stolichnaya, Kahlúa, fresh cream",
+		"price": "$13",
+		"genre": "russian",
+		"imageUrl": "https://cdn.liquor.com/wp-content/uploads/2017/12/20073201/white-russian-720x720-article.jpg",
+		"uid": "meNuItem20uiD"
+	},
+	"menuItem21": {
+		"name": "Moscow Borscht",
+		"category": "main",
+		"description": "vegetable stew with beet and tomato feature, sour cream topping",
+		"price": "$17",
+		"genre": "russian",
+		"imageUrl": "http://www.europeanfoodbayarea.com/wp-content/uploads/2012/01/Ukrainian_Borscht.jpg",
+		"uid": "meNuItem21uiD"
+	},
+	"menuItem22": {
+		"name": "Olivier Salad",
+		"category": "salad",
+		"description": "mixed organic greens, chopped fruits and vegetables with garlic aoli",
+		"price": "$15",
+		"genre": "russian",
+		"imageUrl": "http://www.recipeyard.com/wp-content/uploads/2015/08/Russian_Salad.jpg",
+		"uid": "meNuItem22uiD"
+	},
+	"menuItem23": {
+		"name": "Medovik Honey Cake",
+		"category": "dessert",
+		"description": "thin layers of honey cake and sweet cream",
+		"price": "$9",
+		"genre": "russian",
+		"imageUrl": "https://img.theculturetrip.com/1440x/wp-content/uploads/2017/04/honey_cake_medovik.jpg",
+		"uid": "meNuItem23uiD"
+	}
+	}
