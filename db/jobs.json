@@ -1,0 +1,34 @@
+{
+    "job1" : {
+        "jobType" : "Server",
+        "hourlyWage" : 14.34
+    },
+    "job2" : {
+        "jobType" : "Line Cook",
+        "hourlyWage" : 18.25
+    },
+    "job3" : {
+        "jobType" : "Bartender",
+        "hourlyWage" : 20.00
+    },
+    "job4" : {
+        "jobType" : "Dishwasher",
+        "hourlyWage" : 12.00
+    },
+    "job5" : {
+        "jobType" : "Host",
+        "hourlyWage" : 10.00
+    },
+    "job6" : {
+        "jobType" : "Server Assistant",
+        "hourlyWage" : 10.00
+    },
+    "job7" : {
+        "jobType" : "Bar Back",
+        "hourlyWage" : 12.00
+    },
+    "job8" : {
+        "jobType" : "Chef",
+        "hourlyWage" : 25.00
+    }
+}
