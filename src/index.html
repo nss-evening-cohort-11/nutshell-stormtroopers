@@ -8,20 +8,73 @@
     <title>Le Baguette</title>
 </head>
 <body>
-    <div class="home-page">
-        <div class="home-page-logo">
-            <img src="https://i.imgur.com/ZPriOE9.png" alt="La Baguette Logo" class="storm-trooper-img" />
-            <img src="https://i.imgur.com/1OR7ics.png" alt="La Baguette Logo" class="stars-img" />
-            <h1 class="resturant-name">La Baguette</h1>
+    <!--NAVBAR--->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand"><img id="brand-logo" src="./images/leBaguetteLogo.png" alt="Le Baguette Brand Logo"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <button id="staff-button" class="btn btn-white nav-link">Staff</button>
+                </li>
+                <li class="nav-item active">
+                    <button id="reservations-button" class="btn btn-white nav-link">Reservations</button>
+                </li>
+                <li class="nav-item active">
+                    <button id="menu-button" class="btn btn-white nav-link">Menu</button>
+                </li>
+                <li class="nav-item active">
+                    <button id="ingredients-button" class="btn btn-white nav-link">Ingredients</button>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <button id="navbar-logout-button" class="nav-link btn btn-warning">Logout</button>
+                </li>
+            </ul>
         </div>
-        <div class="auth-login-button-container">
-            <button class="login-button">Login</button>
+      </nav>
+
+    <div class="full-page">
+        <div class="home-page">
+            <div class="home-page-logo">
+                <img src="https://i.imgur.com/ZPriOE9.png" alt="La Baguette Logo" class="storm-trooper-img" />
+                <img src="https://i.imgur.com/1OR7ics.png" alt="La Baguette Logo" class="stars-img" />
+                <h1 class="resturant-name">La Baguette</h1>
+            </div>
+            <div class="auth-login-button-container">
+                <button class="login-button">Login</button>
+            </div>
+            <div class="fancy-resturant-photo-container">
+                <img src="https://i.imgur.com/LE4Prus.jpg" alt="La Baguette Dining Room" class="fancy-image" />
+            </div>
         </div>
-        <div class="fancy-resturant-photo-container">
-            <img src="https://i.imgur.com/LE4Prus.jpg" alt="La Baguette Dining Room" class="fancy-image" />
-        </div>
+        
+        <div id="staff-section"></div>
+        <div id="reservations-section"></div>
+        <div id="menu-section"></div>
+        <div id="ingredients-section"></div>
     </div>
 
-    
+    <footer id="footer">
+        <div class="p-2">
+            <div class="row">
+                <p class="mx-auto copyright">&copy 2020 La Baguette</p>
+            </div>
+            <div class="row">
+                <p class="mx-auto location">Naboo, City of Theed</p>
+            </div>
+            <div class="row">
+                <p class="mx-auto phone">Reserve your table: +265 686638077</p>
+            </div>
+            <div class="row social justify-content-center">
+                <a class="btn rounded-circle text-dark m-1" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn rounded-circle text-dark m-1" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="btn rounded-circle text-dark m-1" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
