@@ -13,7 +13,6 @@ const getMenuItems = () => new Promise((resolve, reject) => {
         menuArray.push(theseMenuItems[menuItemId]);
       });
       resolve(menuArray);
-      console.error(menuArray);
     })
     .catch((err) => reject(err));
 });
