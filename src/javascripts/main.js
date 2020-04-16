@@ -1,8 +1,9 @@
 import '../styles/main.scss';
 import 'bootstrap';
+import menuComponent from './components/menu/menu';
 
 const init = () => {
-  console.error('Hello World!');
+  menuComponent.menuBuilder();
 };
 
 init();
