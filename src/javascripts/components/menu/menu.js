@@ -1,5 +1,6 @@
 // import axios from 'axios';
 // import apiKeys from '../../helpers/apiKeys.json';
+import './menu.scss';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
 
@@ -29,6 +30,7 @@ const menuBuilder = () => {
 const buildMenuSection = () => {
   const domString = '<h2>Menu</h2>';
   utils.printToDom('menu-section', domString);
+  $('#home-page').addClass('hide');
   $('#staff-section').addClass('hide');
   $('#reservations-section').addClass('hide');
   $('#menu-section').removeClass('hide');
