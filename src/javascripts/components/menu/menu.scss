@@ -1,6 +1,33 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+h2 {
+  font-size: 40pt;
+}
+
 .menu-item-card {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  font-family: "Open Sans";
+  h5 {
+    font-family: "Allura";
+    text-align: center;
+    font-size: 24pt;
+  }
+}
+
+.menu-item-img {
+  width: 250px;
+}
+
+.img-holder {
+  height: 300px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.desc-holder {
+  height: 50px;
+  margin-top: 10px;
 }

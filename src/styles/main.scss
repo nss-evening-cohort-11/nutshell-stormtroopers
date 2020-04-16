@@ -37,14 +37,14 @@ body {
         }
         .auth-login-button-container {
             text-align: center;
-            .login-button {
+            #login-button {
                 font-family: 'Open Sans', sans-serif;
                 margin-top: 25px;
                 background-color: white;
                 padding: 15px;
                 font-size: 20px;
             }
-            .login-button:hover {
+            #login-button:hover {
                 opacity: 0.5;
             }
         }

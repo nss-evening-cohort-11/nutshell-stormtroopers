@@ -1,22 +1,29 @@
 import '../styles/main.scss';
 import 'bootstrap';
-import menuComponent from './components/menu/menu';
+import firebase from 'firebase/app';
+import apiKeys from './helpers/apiKeys.json';
+import auth from './auth/auth';
 import home from './components/home/home';
 import staff from './components/staff/staff';
 import reservations from './components/reservations/reservations';
 import ingredients from './components/ingredients/ingredients';
+import menuComponent from './components/menu/menu';
+import authData from './helpers/data/authData';
 
 const navbarClickEvents = () => {
   $('#brand-logo').click(home.showHomePage);
   $('#staff-button').click(staff.buildStaffSection);
   $('#reservations-button').click(reservations.buildReservationsSection);
-  $('#menu-button').click(menuComponent.buildMenuSection);
+  $('#menu-button').on('click', menuComponent.buildMenuSection);
   $('#ingredients-button').click(ingredients.buildIngredientsSection);
 };
 
 const init = () => {
-  menuComponent.menuBuilder();
+  firebase.initializeApp(apiKeys.firebaseKeys);
+  $('#login-button').click(auth.signMeIn);
   navbarClickEvents();
+  authData.checkLoginStatus();
+  authData.logoutEvent();
 };
 
 init();

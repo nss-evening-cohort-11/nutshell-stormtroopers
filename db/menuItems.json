@@ -131,8 +131,8 @@
 		"description": "cage-free egg noodles, organic beef, cremini mushrooms, fresh cream",
 		"price": "$24",
 		"genre": "german",
-		"imageUrl": "shorturl.at/rTY39",
-		"uid": "https://www.platingsandpairings.com/wp-content/uploads/2018/09/instant-pot-beef-stroganoff-6.jpg"
+		"imageUrl": "https://www.platingsandpairings.com/wp-content/uploads/2018/09/instant-pot-beef-stroganoff-6.jpg",
+		"uid": "menuItemUid"
 	},
 	"menuItem16": {
 		"name": "German Salat",
