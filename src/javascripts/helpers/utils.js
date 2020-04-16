@@ -1,5 +1,5 @@
-const printToDom = (divId, textToPrint) => {
-  $(`#${divId}`).html(textToPrint);
+const printToDom = (divId, domString) => {
+  $(`#${divId}`).html(domString);
 };
 
 export default { printToDom };
