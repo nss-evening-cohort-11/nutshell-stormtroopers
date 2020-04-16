@@ -9,6 +9,18 @@ body {
     background-color: white;
 }
 
+#brand-logo {
+    width: 40px;
+}
+
+.hide {
+    display: none;
+}
+
+.nav-link:hover {
+    background-color: grey;
+}
+
 .home-page{
     padding-bottom: 11rem;
     .home-page-logo {
