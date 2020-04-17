@@ -22,6 +22,7 @@ const navbarClickEvents = () => {
 const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   $('#login-button').click(auth.signMeIn);
+  $('#submit-new-member-button').click(staff.addStaffMember);
   navbarClickEvents();
   authData.checkLoginStatus();
   authData.logoutEvent();

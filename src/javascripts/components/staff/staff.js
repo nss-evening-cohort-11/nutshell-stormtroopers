@@ -1,3 +1,5 @@
+// import firebase from 'firebase/app';
+
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import jobData from '../../helpers/data/jobData';
@@ -7,17 +9,21 @@ import newStaffForm from '../newStaffForm/newStaffForm';
 
 import './staff.scss';
 
-const addStaffEvent = () => {
+const addStaffMember = (e) => {
+  console.error('This works');
+  e.preventDefault();
   const newStaffMember = {
     imageUrl: $('#new-staff-member-image').val(),
     name: $('#new-staff-member-name').val(),
     jobId: $("input[name='jobRadio']:checked").val(),
+    uid: '1234567',
   };
   console.error(newStaffMember);
   staffData.setStaffMember(newStaffMember)
     .then(() => {
       $('#new-staff-form').trigger('reset');
       $('#add-staff-modal').modal('hide');
+      utils.printToDom('add-staff-modal-body', '');
       // eslint-disable-next-line no-use-before-define
       staffInit();
     })
@@ -50,6 +56,7 @@ const staffInit = () => {
       buildStaffSection(staff);
     })
     .catch((err) => console.error('Oops', err));
+  // eslint-disable-next-line no-use-before-define
 };
 
 const jobFilterEvent = (e) => {
@@ -74,8 +81,7 @@ const staffSectionEvents = () => {
   $('#ingredients-section').addClass('hide');
   $('body').on('click', '.job-button', jobFilterEvent);
   $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
-  $('body').on('click', '#submit-new-member-button', addStaffEvent);
 };
 
 
-export default { buildStaffSection, staffInit };
+export default { staffInit, staffSectionEvents, addStaffMember };
