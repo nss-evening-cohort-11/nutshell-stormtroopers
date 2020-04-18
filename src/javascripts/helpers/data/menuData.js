@@ -37,13 +37,11 @@ const getMenuItemRecipes = (menuItemId) => new Promise((resolve, reject) => {
     .then((response) => {
       const thoseItemRecipes = response.data;
       const itemRecipesArray = [];
-      // ['farmerCow1', 'farmerCow2'].forEach()
       Object.keys(thoseItemRecipes).forEach((itemIngredId) => {
         thoseItemRecipes[itemIngredId].id = itemIngredId;
         itemRecipesArray.push(thoseItemRecipes[itemIngredId]);
       });
       resolve(itemRecipesArray);
-      console.error('recipes array', itemRecipesArray);
     })
     .catch((err) => reject(err));
 });
@@ -59,10 +57,9 @@ const getIngredientsByMenuItem = (menuItem) => new Promise((resolve, reject) => 
             ingredients.push(addIngred);
           });
           resolve(ingredients);
-          console.error('got ingredients:', ingredients);
         });
     })
     .catch((err) => reject(err));
 });
 
-export default { getMenuItems, getMenuItemRecipes, getIngredientsByMenuItem};
+export default { getMenuItems, getMenuItemRecipes, getIngredientsByMenuItem };

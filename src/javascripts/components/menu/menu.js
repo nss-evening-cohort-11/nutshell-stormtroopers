@@ -7,7 +7,14 @@ import menuData from '../../helpers/data/menuData';
 const editMenuItemIngredients = (e) => {
   const menuItemId = e.target.closest('.edit-ingred').id;
   menuData.getIngredientsByMenuItem(menuItemId)
-  .then()
+    .then((ingredList) => {
+      let domString = '';
+      ingredList.forEach((item) => {
+        domString += `<button type="button" class="btn btn-light col-10 delete-ingred" id="${item.id}"><i class="far fa-times-circle"></i> ${item.name}</button>`;
+      });
+      domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
+      utils.printToDom(`card-body-${menuItemId}`, domString);
+    });
 };
 
 const menuHoverEnter = (e) => {
@@ -40,7 +47,7 @@ const menuBuilder = () => {
         domString += '<div id="whole-card-container">';
         domString += `  <div class="card menu-item-card" id="${item.id}">`;
         domString += `    <h5 class="card-header">${item.name}</h5>`;
-        domString += '    <div class="card-body">';
+        domString += `    <div class="card-body" id="card-body-${item.id}">`;
         domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
         domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}<br>`;
         domString += `      ${item.price}</p></div>`;
