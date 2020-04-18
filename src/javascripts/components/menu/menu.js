@@ -6,8 +6,8 @@ import menuData from '../../helpers/data/menuData';
 
 const editMenuItemIngredients = (e) => {
   const menuItemId = e.target.closest('.edit-ingred').id;
-  console.error('editing menu Item:', menuItemId);
-  menuData.getMenuItemIngredients(menuItemId);
+  menuData.getIngredientsByMenuItem(menuItemId)
+  .then()
 };
 
 const menuHoverEnter = (e) => {

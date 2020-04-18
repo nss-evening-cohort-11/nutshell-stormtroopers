@@ -32,51 +32,37 @@ const getIngredients = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-// const getRecipes = () => new Promise((resolve, reject) => {
-//   axios.get(`${baseUrl}/recipes.json`)
-//     .then((response) => {
-//       const thoseRecipes = response.data;
-//       const recipesArray = [];
-//       Object.keys(thoseRecipes).forEach((recipeId) => {
-//         thoseRecipes[recipeId].id = recipeId;
-//         recipesArray.push(thoseRecipes[recipeId]);
-//       });
-//       resolve(recipesArray);
-//     })
-//     .catch((err) => reject(err));
-// });
-
-const getMenuItemIngredients = (menuItemId) => new Promise((resolve, reject) => {
+const getMenuItemRecipes = (menuItemId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/recipes.json?orderBy="menuItemId"&equalTo="${menuItemId}"`)
     .then((response) => {
-      const thoseItemIngreds = response.data;
-      const itemIngredsArray = [];
+      const thoseItemRecipes = response.data;
+      const itemRecipesArray = [];
       // ['farmerCow1', 'farmerCow2'].forEach()
-      Object.keys(thoseItemIngreds).forEach((itemIngredId) => {
-        thoseItemIngreds[itemIngredId].id = itemIngredId;
-        itemIngredsArray.push(thoseItemIngreds[itemIngredId]);
+      Object.keys(thoseItemRecipes).forEach((itemIngredId) => {
+        thoseItemRecipes[itemIngredId].id = itemIngredId;
+        itemRecipesArray.push(thoseItemRecipes[itemIngredId]);
       });
-      resolve(itemIngredsArray);
+      resolve(itemRecipesArray);
+      console.error('recipes array', itemRecipesArray);
     })
     .catch((err) => reject(err));
 });
 
-const smashFunction = (menuItemId) => new Promise((resolve, reject) => {
-  // eslint-disable-next-line no-param-reassign
-  menuItemId.ingredients = [];
-  getMenuItemIngredients(menuItemId)
-    .then((menuItemIngredients) => {
+const getIngredientsByMenuItem = (menuItem) => new Promise((resolve, reject) => {
+  getMenuItemRecipes(menuItem)
+    .then((menuItemRecipes) => {
+      const ingredients = [];
       getIngredients()
         .then((allIngredients) => {
-          menuItemIngredients.forEach((mII) => {
-            const addIngred = allIngredients.find((x) => x.id === mII.itemIngredId);
-            menuItemId.ingredients.push(addIngred);
+          menuItemRecipes.forEach((mIR) => {
+            const addIngred = allIngredients.find((x) => x.id === mIR.ingredientId);
+            ingredients.push(addIngred);
           });
-          resolve(menuItemId);
-          console.error(menuItemId);
+          resolve(ingredients);
+          console.error('got ingredients:', ingredients);
         });
     })
     .catch((err) => reject(err));
 });
 
-export default { getMenuItems, getMenuItemIngredients, smashFunction };
+export default { getMenuItems, getMenuItemRecipes, getIngredientsByMenuItem};
