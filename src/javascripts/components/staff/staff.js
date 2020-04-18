@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 // import firebase from 'firebase/app';
 
 import utils from '../../helpers/utils';
@@ -16,16 +17,39 @@ const viewStaffModal = (e) => {
 };
 
 const deleteStaffMember = (e) => {
+  e.preventDefault();
   const selectedStaffId = e.target.dataset.staffId;
   staffData.removeStaffMember(selectedStaffId)
     .then(() => {
       $('#edit-staff-form').trigger('reset');
       $('#add-staff-modal').modal('hide');
       utils.printToDom('add-staff-modal-body', '');
-      // eslint-disable-next-line no-use-before-define
       staffInit();
     })
     .catch((err) => console.error('This shit ain\'t workin\', yo', err));
+};
+
+const modifyStaffMember = (e) => {
+  e.preventDefault();
+  const selectedStaffId = e.target.dataset.staffId;
+  const modifiedImage = $('#edit-staff-member-image').val();
+  const modifiedName = $('#edit-staff-member-name').val();
+  const modifiedJobId = $("input[name='editJobRadio']:checked").val();
+  const blankCheck = [modifiedImage, modifiedName, modifiedJobId].some((input) => /^\s*$/.test(input));
+  if (!blankCheck) {
+    const modifiedStaffMember = {
+      imageUrl: modifiedImage,
+      name: modifiedName,
+      jobId: modifiedJobId,
+      uid: '1234567',
+    };
+    console.error(modifiedStaffMember);
+    staffData.updateStaffMember(selectedStaffId, modifiedStaffMember)
+      .then(() => {
+        staffInit();
+      })
+      .catch((err) => console.error('You fucked up.', err));
+  }
 };
 
 const closeStaffModal = () => {
@@ -50,7 +74,6 @@ const addStaffMember = () => {
         $('#new-staff-form').trigger('reset');
         $('#add-staff-modal').modal('hide');
         utils.printToDom('add-staff-modal-body', '');
-        // eslint-disable-next-line no-use-before-define
         staffInit();
       })
       .catch((err) => console.error('Could not add a new member', err));
@@ -110,6 +133,7 @@ const staffSectionEvents = () => {
   $('body').on('click', '.job-button', jobFilterEvent);
   $('body').on('click', '#submit-new-member-button', addStaffMember);
   $('body').on('click', '#delete-member-button', deleteStaffMember);
+  $('body').on('click', '#edit-member-button', modifyStaffMember);
   $('body').on('click', '.staff-card', viewStaffModal);
   $('#close-add-modal').click(closeStaffModal);
 };
