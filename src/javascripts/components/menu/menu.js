@@ -4,11 +4,22 @@ import './menu.scss';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
 
+const editMenuItemIngredients = (e) => {
+  const menuItemId = e.target.closest('.edit-ingred').id;
+  console.error('editing menu Item:', menuItemId);
+  menuData.getMenuItemIngredients(menuItemId);
+};
+
 const menuHoverEnter = (e) => {
   const hoverCard = e.target.closest('.menu-item-card').id;
   let domString = '';
+  const emptyString = '';
   domString += '<p class="card-text">Ingredients:</p>';
+  domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${hoverCard}"><i class="far fa-edit"></i> Ingredients</button>`;
+  domString += '<button type="button" class="btn btn-secondary col-5 edit-item"><i class="far fa-edit"></i> Details</button>';
   utils.printToDom(`desc-${hoverCard}`, domString);
+  utils.printToDom(`price-${hoverCard}`, emptyString);
+  $('.edit-ingred').on('click', editMenuItemIngredients);
 };
 
 const menuHoverLeave = (e) => {
@@ -31,8 +42,8 @@ const menuBuilder = () => {
         domString += `    <h5 class="card-header">${item.name}</h5>`;
         domString += '    <div class="card-body">';
         domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
-        domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}</p></div>`;
-        domString += `      <div class="price-holder"><p class="card-text">${item.price}</p></div>`;
+        domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}<br>`;
+        domString += `      ${item.price}</p></div>`;
         domString += '    </div>';
         domString += '  </div>';
         domString += '</div>';
