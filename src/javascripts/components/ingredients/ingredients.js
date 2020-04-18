@@ -1,6 +1,18 @@
 import ingredientsData from '../../helpers/data/ingredientsData';
 import utils from '../../helpers/utils';
 
+const deleteIngredient = (e) => {
+  e.preventDefault();
+  const ingredientId = e.target.closest('.card').id;
+  ingredientsData.deleteIngredient(ingredientId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildIngredientsSection();
+      utils.printToDom('ingredients-section', '');
+    })
+    .catch((err) => console.error('could not delete ingredient', err));
+};
+
 const createNewIngredient = () => {
   const newIngredient = {
     name: $('#name-input').val(),
@@ -18,7 +30,6 @@ const createNewIngredient = () => {
       utils.printToDom('ingredients-section', '');
     })
     .catch((err) => console.error('Could not add new ingredient', err));
-  console.error('newIngredient', newIngredient);
 };
 
 const modalEvents = () => {
@@ -62,7 +73,7 @@ const addIngredient = () => {
 
 const ingredientEvents = () => {
   $('body').on('click', '#add-ingredient', addIngredient);
-  $('body').on('click', '#ingredient-save-btn', modalEvents);
+  $('body').on('click', '.delete-ingredient', deleteIngredient);
 };
 
 const buildIngredientsSection = () => {
@@ -78,14 +89,17 @@ const buildIngredientsSection = () => {
       domString += '<div class="d-flex flex-wrap p-3 justify-content-around">';
       ingredients.forEach((ingredient) => {
         const Name = ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1);
-        domString += '<div class="card mb-3" style="max-width: 800px;">';
+        domString += `<div id="${ingredient.id}" class="card mb-3 col-8 p-0" style="max-width: 800px;">`;
+        domString += '<div class="d-flex justify-content-between bg-secondary rounded-right">';
+        domString += `<h3 class="card-title m-2">${Name}</h3>`;
+        domString += '<button class="btn btn-danger delete-ingredient col-1"><i class="fas fa-trash"></i></button>';
+        domString += '</div>';
         domString += '<div class="row no-gutters">';
         domString += '<div class="col-md-4">';
         domString += `<img src="${ingredient.imageUrl}" class="card-img" alt="...">`;
         domString += '</div>';
         domString += '<div class="col-md-4">';
         domString += '<div class="card-body">';
-        domString += `<h5 class="card-title">${Name}</h5>`;
         domString += `<p class="card-text">Cost: ${ingredient.cost}</p>`;
         domString += `<p class="card-text">Type: ${ingredient.type}</p>`;
         domString += `<p class="card-text">Size: ${ingredient.size}</p>`;
