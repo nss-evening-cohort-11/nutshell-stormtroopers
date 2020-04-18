@@ -31,6 +31,16 @@ const getStaffByJobId = (jobId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getStaffMemberById = (staffId) => axios.get(`${baseUrl}/staff/${staffId}.json`);
+
 const setStaffMember = (newStaffMember) => axios.post(`${baseUrl}/staff.json`, newStaffMember);
 
-export default { getAllStaffMembers, getStaffByJobId, setStaffMember };
+const removeStaffMember = (staffId) => axios.delete(`${baseUrl}/staff/${staffId}.json`);
+
+export default {
+  getAllStaffMembers,
+  getStaffByJobId,
+  setStaffMember,
+  removeStaffMember,
+  getStaffMemberById,
+};

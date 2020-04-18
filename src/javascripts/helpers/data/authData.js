@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import staff from '../../components/staff/staff';
+
 const loginButton = $('#login-button');
 const logoutButton = $('#navbar-logout-button');
 
@@ -14,6 +16,7 @@ const checkLoginStatus = () => {
       // person not logged in
       logoutButton.addClass('hide');
       loginButton.removeClass('hide');
+      staff.staffSectionEvents();
     }
   });
 };

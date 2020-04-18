@@ -4,7 +4,7 @@ const buildReservationsSection = () => {
   const domString = '<h2>Reservations</h2>';
   utils.printToDom('reservations-section', domString);
   $('#home-page').addClass('hide');
-  $('#staff-section').addClass('hide');
+  $('#staff-section-container').addClass('hide');
   $('#reservations-section').removeClass('hide');
   $('#menu-section').addClass('hide');
   $('#ingredients-section').addClass('hide');

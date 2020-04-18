@@ -6,66 +6,99 @@ import jobData from '../../helpers/data/jobData';
 import staffMemberComponent from '../staffMember/staffMember';
 import jobsDropDownComponent from '../jobsDropDown/jobsDropDown';
 import newStaffForm from '../newStaffForm/newStaffForm';
+import editStaffForm from '../editStaffForm/editStaffForm';
 
 import './staff.scss';
 
-const addStaffMember = (e) => {
-  console.error('This works');
-  e.preventDefault();
-  const newStaffMember = {
-    imageUrl: $('#new-staff-member-image').val(),
-    name: $('#new-staff-member-name').val(),
-    jobId: $("input[name='jobRadio']:checked").val(),
-    uid: '1234567',
-  };
-  console.error(newStaffMember);
-  staffData.setStaffMember(newStaffMember)
+const viewStaffModal = (e) => {
+  const selectedStaffId = e.target.closest('.staff-card').id;
+  editStaffForm.buildEditStaffForm(selectedStaffId);
+};
+
+const deleteStaffMember = (e) => {
+  const selectedStaffId = e.target.dataset.staffId;
+  staffData.removeStaffMember(selectedStaffId)
     .then(() => {
-      $('#new-staff-form').trigger('reset');
+      $('#edit-staff-form').trigger('reset');
       $('#add-staff-modal').modal('hide');
       utils.printToDom('add-staff-modal-body', '');
       // eslint-disable-next-line no-use-before-define
       staffInit();
     })
-    .catch((err) => console.error('Could not add a new member', err));
+    .catch((err) => console.error('This shit ain\'t workin\', yo', err));
+};
+
+const closeStaffModal = () => {
+  utils.printToDom('add-staff-modal-body', '');
+  $('#add-staff-modal').modal('hide');
+};
+
+const addStaffMember = () => {
+  const newImage = $('#new-staff-member-image').val();
+  const newName = $('#new-staff-member-name').val();
+  const newJobId = $("input[name='jobRadio']:checked").val();
+  const blankCheck = [newImage, newName, newJobId].some((input) => /^\s*$/.test(input));
+  if (!blankCheck) {
+    const newStaffMember = {
+      imageUrl: newImage,
+      name: newName,
+      jobId: newJobId,
+      uid: '1234567',
+    };
+    staffData.setStaffMember(newStaffMember)
+      .then(() => {
+        $('#new-staff-form').trigger('reset');
+        $('#add-staff-modal').modal('hide');
+        utils.printToDom('add-staff-modal-body', '');
+        // eslint-disable-next-line no-use-before-define
+        staffInit();
+      })
+      .catch((err) => console.error('Could not add a new member', err));
+  }
 };
 
 const buildStaffSection = (staffArr) => {
   jobData.getAllJobs().then((jobs) => {
     let domString = '';
+    let staffCardDomString = '';
     domString += '<h1 class="col-12 text-center display-4">Staff</h1>';
     domString += '<div class="col-12 d-flex justify-content-center align-items-center">';
     domString += '  <button id="add-staff-button" class="btn btn-outline-dark staff-button">Add New Staff</button>';
     domString += jobsDropDownComponent.jobsDropDown(jobs);
     domString += '</div>';
-    domString += '<div id="staff-card-container" class="col-12 container-fluid p-5 d-flex flex-wrap justify-content-center align-items-center">';
+    domString += '<div id="staff-card-container" class="col-12 container-fluid p-5 d-flex flex-wrap justify-content-center align-items-center"></div>';
+    utils.printToDom('staff-section', domString);
     staffArr.forEach((staffMember) => {
       const thisEmployeeJob = jobs.find((x) => staffMember.jobId === x.id);
-      domString += staffMemberComponent.buildSingleStaffMemberCard(staffMember, thisEmployeeJob);
+      staffCardDomString += staffMemberComponent.buildSingleStaffMemberCard(staffMember, thisEmployeeJob);
     });
-    domString += '</div>';
-    utils.printToDom('staff-section', domString);
-    // eslint-disable-next-line no-use-before-define
-    staffSectionEvents();
+    utils.printToDom('staff-card-container', staffCardDomString);
+    $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
   });
 };
 
 const staffInit = () => {
+  $('#home-page').addClass('hide');
+  $('#staff-section-container').removeClass('hide');
+  $('#reservations-section').addClass('hide');
+  $('#menu-section').addClass('hide');
+  $('#ingredients-section').addClass('hide');
   staffData.getAllStaffMembers()
     .then((staff) => {
       buildStaffSection(staff);
     })
     .catch((err) => console.error('Oops', err));
-  // eslint-disable-next-line no-use-before-define
 };
 
 const jobFilterEvent = (e) => {
   const buttonId = e.target.id;
   if (buttonId === 'all-jobs-button') {
+    utils.printToDom('staff-card-container', '');
     staffInit();
   } else {
     staffData.getStaffByJobId(buttonId)
       .then((selectedStaff) => {
+        utils.printToDom('staff-card-container', '');
         buildStaffSection(selectedStaff);
       })
       .catch((err) => console.error('What the fuck.', err));
@@ -74,13 +107,11 @@ const jobFilterEvent = (e) => {
 
 
 const staffSectionEvents = () => {
-  $('#home-page').addClass('hide');
-  $('#staff-section').removeClass('hide');
-  $('#reservations-section').addClass('hide');
-  $('#menu-section').addClass('hide');
-  $('#ingredients-section').addClass('hide');
   $('body').on('click', '.job-button', jobFilterEvent);
-  $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
+  $('body').on('click', '#submit-new-member-button', addStaffMember);
+  $('body').on('click', '#delete-member-button', deleteStaffMember);
+  $('body').on('click', '.staff-card', viewStaffModal);
+  $('#close-add-modal').click(closeStaffModal);
 };
 
 
