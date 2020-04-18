@@ -4,6 +4,10 @@ import './menu.scss';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
 
+// const menuHover = (e) => {
+//   hoverCard = e.target.closest
+// };
+
 const menuBuilder = () => {
   menuData.getMenuItems()
     .then((menuArray) => {
@@ -18,6 +22,7 @@ const menuBuilder = () => {
         domString += '    <div class="card-body">';
         domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
         domString += `      <div class="desc-holder"><p class="card-text">${item.description}</p></div>`;
+        domString += `      <div class="price-holder"><p class="card-text">${item.price}</p></div>`;
         domString += '    </div>';
         domString += '  </div>';
         domString += '</div>';
