@@ -1,11 +1,25 @@
 import ingredientsData from '../../helpers/data/ingredientsData';
 import utils from '../../helpers/utils';
 
+const addIngredient = () => {
+  const domString = '<h3>Test</h3>';
+  $('#add-ingredient-body').html(domString);
+};
+
+const ingredientEvents = () => {
+  $('body').on('click', '#add-ingredient', addIngredient);
+};
+
 const buildIngredientsSection = () => {
   ingredientsData.getIngredients()
     .then((response) => {
       const ingredients = response;
-      let domString = '<h2>Ingredients</h2>';
+      let domString = '<div class="d-flex justify-content-center">';
+      domString += '<h2>Ingredients</h2>';
+      domString += '</div>';
+      domString += '<div class="d-flex justify-content-center">';
+      domString += '<button id="add-ingredient" class="btn btn-dark" data-toggle="modal" data-target="#addIngredientModal">Add Ingredient</button>';
+      domString += '</div>';
       domString += '<div class="d-flex flex-wrap p-3 justify-content-around">';
       ingredients.forEach((ingredient) => {
         const Name = ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1);
@@ -42,4 +56,4 @@ const buildIngredientsSection = () => {
   $('#ingredients-section').removeClass('hide');
 };
 
-export default { buildIngredientsSection };
+export default { buildIngredientsSection, ingredientEvents };

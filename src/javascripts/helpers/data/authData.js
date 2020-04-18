@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import ingredients from '../../components/ingredients/ingredients';
+
 const loginButton = $('#login-button');
 const logoutButton = $('#navbar-logout-button');
 
@@ -10,6 +12,7 @@ const checkLoginStatus = () => {
       // person logged in
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
+      ingredients.ingredientEvents();
     } else {
       // person not logged in
       logoutButton.addClass('hide');
