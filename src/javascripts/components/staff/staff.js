@@ -4,7 +4,7 @@
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
 import jobData from '../../helpers/data/jobData';
-import staffMemberComponent from '../staffMember/staffMember';
+import singleStaffMemberCard from '../singleStaffMemberCard/singleStaffMemberCard';
 import jobsDropDownComponent from '../jobsDropDown/jobsDropDown';
 import newStaffForm from '../newStaffForm/newStaffForm';
 import editStaffForm from '../editStaffForm/editStaffForm';
@@ -22,8 +22,8 @@ const deleteStaffMember = (e) => {
   staffData.removeStaffMember(selectedStaffId)
     .then(() => {
       $('#edit-staff-form').trigger('reset');
-      $('#add-staff-modal').modal('hide');
-      utils.printToDom('add-staff-modal-body', '');
+      $('#staff-modal').modal('hide');
+      utils.printToDom('staff-modal-body', '');
       staffInit();
     })
     .catch((err) => console.error('This shit ain\'t workin\', yo', err));
@@ -46,6 +46,9 @@ const modifyStaffMember = (e) => {
     console.error(modifiedStaffMember);
     staffData.updateStaffMember(selectedStaffId, modifiedStaffMember)
       .then(() => {
+        $('#edit-staff-form').trigger('reset');
+        $('#staff-modal').modal('hide');
+        utils.printToDom('staff-modal-body', '');
         staffInit();
       })
       .catch((err) => console.error('You fucked up.', err));
@@ -53,8 +56,8 @@ const modifyStaffMember = (e) => {
 };
 
 const closeStaffModal = () => {
-  utils.printToDom('add-staff-modal-body', '');
-  $('#add-staff-modal').modal('hide');
+  utils.printToDom('staff-modal-body', '');
+  $('#staff-modal').modal('hide');
 };
 
 const addStaffMember = () => {
@@ -72,8 +75,8 @@ const addStaffMember = () => {
     staffData.setStaffMember(newStaffMember)
       .then(() => {
         $('#new-staff-form').trigger('reset');
-        $('#add-staff-modal').modal('hide');
-        utils.printToDom('add-staff-modal-body', '');
+        $('#staff-modal').modal('hide');
+        utils.printToDom('staff-modal-body', '');
         staffInit();
       })
       .catch((err) => console.error('Could not add a new member', err));
@@ -93,7 +96,7 @@ const buildStaffSection = (staffArr) => {
     utils.printToDom('staff-section', domString);
     staffArr.forEach((staffMember) => {
       const thisEmployeeJob = jobs.find((x) => staffMember.jobId === x.id);
-      staffCardDomString += staffMemberComponent.buildSingleStaffMemberCard(staffMember, thisEmployeeJob);
+      staffCardDomString += singleStaffMemberCard.buildSingleStaffMemberCard(staffMember, thisEmployeeJob);
     });
     utils.printToDom('staff-card-container', staffCardDomString);
     $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
@@ -128,14 +131,13 @@ const jobFilterEvent = (e) => {
   }
 };
 
-
 const staffSectionEvents = () => {
   $('body').on('click', '.job-button', jobFilterEvent);
   $('body').on('click', '#submit-new-member-button', addStaffMember);
   $('body').on('click', '#delete-member-button', deleteStaffMember);
   $('body').on('click', '#edit-member-button', modifyStaffMember);
   $('body').on('click', '.staff-card', viewStaffModal);
-  $('#close-add-modal').click(closeStaffModal);
+  $('#close-modal').click(closeStaffModal);
 };
 
 

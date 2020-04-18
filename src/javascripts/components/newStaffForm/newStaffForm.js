@@ -22,8 +22,9 @@ const buildNewStaffForm = () => {
       });
       domString += '  <button type="button" id="submit-new-member-button" class="m-3 btn btn-success">Save</button>';
       domString += '</form>';
-      utils.printToDom('add-staff-modal-body', domString);
-      $('#add-staff-modal').modal('show');
+      utils.printToDom('modal-header', 'Add A New Staff Member');
+      utils.printToDom('staff-modal-body', domString);
+      $('#staff-modal').modal('show');
     })
     .catch((err) => console.error('This shit ain\'t workin\', yo', err));
 };

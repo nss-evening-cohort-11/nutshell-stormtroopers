@@ -7,7 +7,7 @@ const jobsDropDown = (jobs) => {
     domString += `      <button id="${job.id}" class="job-button btn-outline-dark dropdown-item" type="button">${job.jobType}</button>`;
   });
   domString += '        <div class="dropdown-divider"></div>';
-  domString += '        <button id="all-jobs-button" class="job-button dropdown-item">All Jobs</button>';
+  domString += '        <button id="all-jobs-button" class="job-button btn-outline-dark dropdown-item">All Jobs</button>';
   domString += '    </div>';
   domString += '</div>';
   return domString;
