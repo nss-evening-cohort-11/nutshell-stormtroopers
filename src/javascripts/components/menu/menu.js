@@ -4,9 +4,19 @@ import './menu.scss';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
 
-// const menuHover = (e) => {
-//   hoverCard = e.target.closest
-// };
+const menuHoverEnter = (e) => {
+  const hoverCard = e.target.closest('.menu-item-card').id;
+  let domString = '';
+  domString += '<p class="card-text">Ingredients:</p>';
+  utils.printToDom(`desc-${hoverCard}`, domString);
+};
+
+const menuHoverLeave = (e) => {
+  const hoverCard = e.target.closest('.menu-item-card').id;
+  let domString = '';
+  domString += '<p class="card-text">Description:</p>';
+  utils.printToDom(`desc-${hoverCard}`, domString);
+};
 
 const menuBuilder = () => {
   menuData.getMenuItems()
@@ -21,7 +31,7 @@ const menuBuilder = () => {
         domString += `    <h5 class="card-header">${item.name}</h5>`;
         domString += '    <div class="card-body">';
         domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
-        domString += `      <div class="desc-holder"><p class="card-text">${item.description}</p></div>`;
+        domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}</p></div>`;
         domString += `      <div class="price-holder"><p class="card-text">${item.price}</p></div>`;
         domString += '    </div>';
         domString += '  </div>';
@@ -32,6 +42,8 @@ const menuBuilder = () => {
       utils.printToDom('menu-section', domString);
     })
     .catch((err) => console.error('problem with menuBuilder', err));
+  $('body').on('mouseenter', '.menu-item-card', menuHoverEnter);
+  $('body').on('mouseleave', '.menu-item-card', menuHoverLeave);
 };
 
 const buildMenuSection = () => {
