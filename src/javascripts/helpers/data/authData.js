@@ -12,11 +12,11 @@ const checkLoginStatus = () => {
       // person logged in
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
+      staff.staffSectionEvents();
     } else {
       // person not logged in
       logoutButton.addClass('hide');
       loginButton.removeClass('hide');
-      staff.staffSectionEvents();
     }
   });
 };

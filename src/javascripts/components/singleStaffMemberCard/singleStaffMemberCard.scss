@@ -1,8 +1,10 @@
-.staff-image {
-    width: auto;
-    height: 275px;
-}
-
 .staff-card-divider {
     margin: 20px 0;
+    .staff-image {
+        width: auto;
+        height: 275px;
+    }
+    .staff-card {
+        background-color: grey;
+    }
 }

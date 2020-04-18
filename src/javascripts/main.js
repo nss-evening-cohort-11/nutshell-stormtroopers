@@ -23,6 +23,7 @@ const init = () => {
   firebase.initializeApp(apiKeys.firebaseKeys);
   $('#login-button').click(auth.signMeIn);
   navbarClickEvents();
+  $('.nav-item').button('toggle');
   authData.checkLoginStatus();
   authData.logoutEvent();
 };

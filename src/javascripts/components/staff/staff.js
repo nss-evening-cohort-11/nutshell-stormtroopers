@@ -1,5 +1,5 @@
-/* eslint-disable no-use-before-define */
-// import firebase from 'firebase/app';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import utils from '../../helpers/utils';
 import staffData from '../../helpers/data/staffData';
@@ -24,6 +24,7 @@ const deleteStaffMember = (e) => {
       $('#edit-staff-form').trigger('reset');
       $('#staff-modal').modal('hide');
       utils.printToDom('staff-modal-body', '');
+      // eslint-disable-next-line no-use-before-define
       staffInit();
     })
     .catch((err) => console.error('This shit ain\'t workin\', yo', err));
@@ -49,6 +50,7 @@ const modifyStaffMember = (e) => {
         $('#edit-staff-form').trigger('reset');
         $('#staff-modal').modal('hide');
         utils.printToDom('staff-modal-body', '');
+        // eslint-disable-next-line no-use-before-define
         staffInit();
       })
       .catch((err) => console.error('You fucked up.', err));
@@ -77,6 +79,7 @@ const addStaffMember = () => {
         $('#new-staff-form').trigger('reset');
         $('#staff-modal').modal('hide');
         utils.printToDom('staff-modal-body', '');
+        // eslint-disable-next-line no-use-before-define
         staffInit();
       })
       .catch((err) => console.error('Could not add a new member', err));
@@ -89,7 +92,7 @@ const buildStaffSection = (staffArr) => {
     let staffCardDomString = '';
     domString += '<h1 id="staff-page-header" class="col-12 text-center display-4">Staff</h1>';
     domString += '<div class="col-12 d-flex justify-content-center align-items-center">';
-    domString += '  <button id="add-staff-button" class="btn btn-outline-dark staff-button">Add New Staff</button>';
+    domString += '  <a role="button" id="add-staff-button" class="btn outline-dark staff-button">Add New Staff</a>';
     domString += jobsDropDownComponent.jobsDropDown(jobs);
     domString += '</div>';
     domString += '<div id="staff-card-container" class="col-12 container-fluid p-5 d-flex flex-wrap justify-content-center align-items-center"></div>';
@@ -99,7 +102,15 @@ const buildStaffSection = (staffArr) => {
       staffCardDomString += singleStaffMemberCard.buildSingleStaffMemberCard(staffMember, thisEmployeeJob);
     });
     utils.printToDom('staff-card-container', staffCardDomString);
-    $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        $('#add-staff-button').removeClass('disabled');
+        $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
+      } else {
+        $('#add-staff-button').addClass('disabled');
+      }
+    });
+    // eslint-disable-next-line no-use-before-define
     $('body').on('click', '.job-button', jobFilterEvent);
   });
 };
