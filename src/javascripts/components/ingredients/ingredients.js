@@ -10,8 +10,14 @@ const createNewIngredient = () => {
     quantity: $('#quantity-input').val(),
     size: $('#unit-size-input').val(),
     unit: $('#unit-type-input').val(),
-
   };
+  ingredientsData.addIngredient(newIngredient)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildIngredientsSection();
+      utils.printToDom('ingredients-section', '');
+    })
+    .catch((err) => console.error('Could not add new ingredient', err));
   console.error('newIngredient', newIngredient);
 };
 
