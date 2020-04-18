@@ -1,5 +1,34 @@
 import ingredientsData from '../../helpers/data/ingredientsData';
+import editIngredientComponent from '../editIngredient/editIngredient';
 import utils from '../../helpers/utils';
+
+const modifyIngredient = (e) => {
+  e.preventDefault();
+  const ingredientId = $('.edit-form-id')[0].id;
+  const modifiedIngredient = {
+    name: $('#name-input').val(),
+    type: $('#type-input').val(),
+    cost: $('#unit-price-input').val(),
+    imageUrl: $('#imageUrl-input').val(),
+    quantity: $('#quantity-input').val() * 1,
+    size: $('#unit-size-input').val(),
+    unit: $('#unit-type-input').val(),
+    uid: '',
+  };
+  ingredientsData.updateIngredient(ingredientId, modifiedIngredient)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildIngredientsSection();
+      utils.printToDom('ingredients-section', '');
+    })
+    .catch((err) => console.error('could not update ingredient', err));
+};
+
+const editIngredient = (e) => {
+  e.preventDefault();
+  const ingredientId = e.target.closest('.card').id;
+  editIngredientComponent.showEditCowModal(ingredientId);
+};
 
 const deleteIngredient = (e) => {
   e.preventDefault();
@@ -17,9 +46,9 @@ const createNewIngredient = () => {
   const newIngredient = {
     name: $('#name-input').val(),
     type: $('#type-input').val(),
-    cost: $('#unit-price-input').val() * 1,
+    cost: $('#unit-price-input').val(),
     imageUrl: $('#imageUrl-input').val(),
-    quantity: $('#quantity-input').val(),
+    quantity: $('#quantity-input').val() * 1,
     size: $('#unit-size-input').val(),
     unit: $('#unit-type-input').val(),
   };
@@ -33,7 +62,8 @@ const createNewIngredient = () => {
 };
 
 const modalEvents = () => {
-  $('#ingredient-save-btn').on('click', createNewIngredient);
+  $('body').on('click', '#new-ingredient-save-btn', createNewIngredient);
+  $('body').on('click', '#edit-ingredient-save-btn', modifyIngredient);
 };
 
 const addIngredient = () => {
@@ -69,11 +99,15 @@ const addIngredient = () => {
   domString += '</div>';
   domString += '</form>';
   $('#add-ingredient-body').html(domString);
+  domString = '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
+  domString += '<button id="new-ingredient-save-btn" type="button" class="btn btn-dark" data-dismiss="modal">Save</button>';
+  $('#add-ingredient-footer').html(domString);
 };
 
 const ingredientEvents = () => {
   $('body').on('click', '#add-ingredient', addIngredient);
   $('body').on('click', '.delete-ingredient', deleteIngredient);
+  $('body').on('click', '.edit-ingredient', editIngredient);
 };
 
 const buildIngredientsSection = () => {
@@ -90,9 +124,14 @@ const buildIngredientsSection = () => {
       ingredients.forEach((ingredient) => {
         const Name = ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1);
         domString += `<div id="${ingredient.id}" class="card mb-3 col-8 p-0" style="max-width: 800px;">`;
-        domString += '<div class="d-flex justify-content-between bg-secondary rounded-right">';
+        domString += '<div class="bg-secondary rounded-right">';
+        domString += '<div class="d-flex justify-content-between">';
         domString += `<h3 class="card-title m-2">${Name}</h3>`;
-        domString += '<button class="btn btn-danger delete-ingredient col-1"><i class="fas fa-trash"></i></button>';
+        domString += '<div class="row m-1">';
+        domString += '<button class="btn btn-dark edit-ingredient col-5 m-1" data-toggle="modal" data-target="#addIngredientModal"><i class="fas fa-pencil-alt"></i></button>';
+        domString += '<button class="btn btn-danger delete-ingredient col-5 m-1"><i class="fas fa-trash"></i></button>';
+        domString += '</div>';
+        domString += '</div>';
         domString += '</div>';
         domString += '<div class="row no-gutters">';
         domString += '<div class="col-md-4">';

@@ -19,8 +19,18 @@ const getIngredients = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getSingleIngredient = (ingredientId) => axios.get(`${baseUrl}/ingredients/${ingredientId}.json`);
+
 const addIngredient = (newIngredient) => axios.post(`${baseUrl}/ingredients.json`, newIngredient);
 
 const deleteIngredient = (ingredientId) => axios.delete(`${baseUrl}/ingredients/${ingredientId}.json`);
 
-export default { getIngredients, addIngredient, deleteIngredient };
+const updateIngredient = (ingredientId, modifiedIngredient) => axios.put(`${baseUrl}/ingredients/${ingredientId}.json`, modifiedIngredient);
+
+export default {
+  getIngredients,
+  addIngredient,
+  deleteIngredient,
+  getSingleIngredient,
+  updateIngredient,
+};
