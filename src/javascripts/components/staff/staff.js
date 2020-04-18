@@ -12,8 +12,12 @@ import editStaffForm from '../editStaffForm/editStaffForm';
 import './staff.scss';
 
 const viewStaffModal = (e) => {
-  const selectedStaffId = e.target.closest('.staff-card').id;
-  editStaffForm.buildEditStaffForm(selectedStaffId);
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      const selectedStaffId = e.target.closest('.staff-card').id;
+      editStaffForm.buildEditStaffForm(selectedStaffId);
+    }
+  });
 };
 
 const deleteStaffMember = (e) => {
@@ -27,7 +31,7 @@ const deleteStaffMember = (e) => {
       // eslint-disable-next-line no-use-before-define
       staffInit();
     })
-    .catch((err) => console.error('This shit ain\'t workin\', yo', err));
+    .catch((err) => console.error('There is a problem with deleting:', err));
 };
 
 const modifyStaffMember = (e) => {
@@ -44,7 +48,6 @@ const modifyStaffMember = (e) => {
       jobId: modifiedJobId,
       uid: '1234567',
     };
-    console.error(modifiedStaffMember);
     staffData.updateStaffMember(selectedStaffId, modifiedStaffMember)
       .then(() => {
         $('#edit-staff-form').trigger('reset');
@@ -53,7 +56,7 @@ const modifyStaffMember = (e) => {
         // eslint-disable-next-line no-use-before-define
         staffInit();
       })
-      .catch((err) => console.error('You fucked up.', err));
+      .catch((err) => console.error('There is a problem with modifying:', err));
   }
 };
 
@@ -82,7 +85,7 @@ const addStaffMember = () => {
         // eslint-disable-next-line no-use-before-define
         staffInit();
       })
-      .catch((err) => console.error('Could not add a new member', err));
+      .catch((err) => console.error('There is a problem with adding:', err));
   }
 };
 
@@ -92,7 +95,7 @@ const buildStaffSection = (staffArr) => {
     let staffCardDomString = '';
     domString += '<h1 id="staff-page-header" class="col-12 text-center display-4">Staff</h1>';
     domString += '<div class="col-12 d-flex justify-content-center align-items-center">';
-    domString += '  <a role="button" id="add-staff-button" class="btn outline-dark staff-button">Add New Staff</a>';
+    domString += '  <a role="button" id="add-staff-button" class="btn btn-outline-dark staff-button">Add New Staff</a>';
     domString += jobsDropDownComponent.jobsDropDown(jobs);
     domString += '</div>';
     domString += '<div id="staff-card-container" class="col-12 container-fluid p-5 d-flex flex-wrap justify-content-center align-items-center"></div>';
@@ -125,7 +128,7 @@ const staffInit = () => {
     .then((staff) => {
       buildStaffSection(staff);
     })
-    .catch((err) => console.error('Oops', err));
+    .catch((err) => console.error('There is a problem with reading the staff members:', err));
 };
 
 const jobFilterEvent = (e) => {
@@ -139,7 +142,7 @@ const jobFilterEvent = (e) => {
         utils.printToDom('staff-card-container', '');
         buildStaffSection(selectedStaff);
       })
-      .catch((err) => console.error('What the fuck.', err));
+      .catch((err) => console.error('There is a problem with filtering:', err));
   }
 };
 

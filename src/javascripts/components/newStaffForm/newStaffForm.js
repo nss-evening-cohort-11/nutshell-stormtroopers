@@ -26,7 +26,7 @@ const buildNewStaffForm = () => {
       utils.printToDom('staff-modal-body', domString);
       $('#staff-modal').modal('show');
     })
-    .catch((err) => console.error('This shit ain\'t workin\', yo', err));
+    .catch((err) => console.error('There is a problem in the new staff form:', err));
 };
 
 export default { buildNewStaffForm };

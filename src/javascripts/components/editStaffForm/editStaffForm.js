@@ -33,7 +33,7 @@ const buildEditStaffForm = (selectedStaffId) => {
         $('#staff-modal').modal('show');
       });
     })
-    .catch((err) => console.error('This shit ain\'t workin\', yo', err));
+    .catch((err) => console.error('There is a problem in the edit staff form:', err));
 };
 
 export default { buildEditStaffForm };
