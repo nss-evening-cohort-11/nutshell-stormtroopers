@@ -1,13 +1,62 @@
 import ingredientsData from '../../helpers/data/ingredientsData';
 import utils from '../../helpers/utils';
 
+const createNewIngredient = () => {
+  const newIngredient = {
+    name: $('#name-input').val(),
+    type: $('#type-input').val(),
+    cost: $('#unit-price-input').val() * 1,
+    imageUrl: $('#imageUrl-input').val(),
+    quantity: $('#quantity-input').val(),
+    size: $('#unit-size-input').val(),
+    unit: $('#unit-type-input').val(),
+
+  };
+  console.error('newIngredient', newIngredient);
+};
+
+const modalEvents = () => {
+  $('#ingredient-save-btn').on('click', createNewIngredient);
+};
+
 const addIngredient = () => {
-  const domString = '<h3>Test</h3>';
+  let domString = '<h3>Add a new Ingredient</h3>';
+  domString += '<form>';
+  domString += '<div class="form-group">';
+  domString += '<label for="name-input">Name:</label>';
+  domString += '<input type="text" class="form-control" id="name-input" placeholder="red onion">';
+  domString += '</div>';
+  domString += '<div class="form-group">';
+  domString += '<label for="imageUrl-input">ImageUrl:</label>';
+  domString += '<input type="text" class="form-control" id="imageUrl-input" placeholder="www.bitly.com">';
+  domString += '</div>';
+  domString += '<div class="form-group">';
+  domString += '<label for="type-input">Type:</label>';
+  domString += '<input type="text" class="form-control" id="type-input" placeholder="fruit, vegetable, etc.">';
+  domString += '</div>';
+  domString += '<div class="form-group">';
+  domString += '<label for="quantity-input">Quantity:</label>';
+  domString += '<input type="text" class="form-control" id="quantity-input" placeholder="whole number">';
+  domString += '</div>';
+  domString += '<div class="form-group">';
+  domString += '<label for="unit-size-input">Unit-size:</label>';
+  domString += '<input type="text" class="form-control" id="unit-size-input" placeholder="14 oz">';
+  domString += '</div>';
+  domString += '<div class="form-group">';
+  domString += '<label for="unit-type-input">Unit-type:</label>';
+  domString += '<input type="text" class="form-control" id="unit-type-input" placeholder="can, bottle, package, etc.">';
+  domString += '</div>';
+  domString += '<div class="form-group">';
+  domString += '<label for="unit-price-input">Unit-price:</label>';
+  domString += '<input type="text" class="form-control" id="unit-price-input" placeholder="$ whole dollar">';
+  domString += '</div>';
+  domString += '</form>';
   $('#add-ingredient-body').html(domString);
 };
 
 const ingredientEvents = () => {
   $('body').on('click', '#add-ingredient', addIngredient);
+  $('body').on('click', '#ingredient-save-btn', modalEvents);
 };
 
 const buildIngredientsSection = () => {
@@ -56,4 +105,4 @@ const buildIngredientsSection = () => {
   $('#ingredients-section').removeClass('hide');
 };
 
-export default { buildIngredientsSection, ingredientEvents };
+export default { buildIngredientsSection, ingredientEvents, modalEvents };

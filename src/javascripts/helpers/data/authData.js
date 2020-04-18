@@ -13,6 +13,7 @@ const checkLoginStatus = () => {
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
       ingredients.ingredientEvents();
+      ingredients.modalEvents();
     } else {
       // person not logged in
       logoutButton.addClass('hide');
