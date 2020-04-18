@@ -1,6 +1,8 @@
+import './jobsDropDown.scss';
+
 const jobsDropDown = (jobs) => {
   let domString = '';
-  domString += '<div class="dropdown">';
+  domString += '<div id="jobs-dropdown" class="dropdown">';
   domString += '    <button class="btn btn-outline-dark dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter Staff by Job</button>';
   domString += '    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">';
   jobs.forEach((job) => {

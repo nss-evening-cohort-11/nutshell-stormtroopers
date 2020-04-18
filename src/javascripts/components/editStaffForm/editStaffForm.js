@@ -9,7 +9,7 @@ const buildEditStaffForm = (selectedStaffId) => {
       selectedStaffMember.id = selectedStaffId;
       jobData.getAllJobs().then((jobs) => {
         let domString = '';
-        domString += '<form class="text-left d-flex flex-column justify-content-between" id="edit-staff-form">';
+        domString += '<form class="staff-form text-left d-flex flex-column justify-content-between" id="edit-staff-form">';
         domString += '    <div class="form-group">';
         domString += '        <label for="edit-staff-member-image">Edit Staff Member Image</label>';
         domString += `        <input type="text" class="form-control" id="edit-staff-member-image" placeholder="Paste updated employee image url here..." value="${selectedStaffMember.imageUrl}">`;
@@ -25,8 +25,8 @@ const buildEditStaffForm = (selectedStaffId) => {
           domString += `  <label class="custom-control-label" for="editJobRadio-${i + 1}">${job.jobType}</label>`;
           domString += '</div>';
         });
-        domString += `  <button type="button" id="edit-member-button" data-staff-id="${selectedStaffMember.id}" class="m-3 btn btn-success">Save</button>`;
-        domString += `  <button type="button" id="delete-member-button" data-staff-id="${selectedStaffMember.id}" class="m-3 btn btn-danger">Delete</button>`;
+        domString += `  <button type="button" id="edit-member-button" data-staff-id="${selectedStaffMember.id}" class="m-3 btn btn-outline-dark">Save</button>`;
+        domString += `  <button type="button" id="delete-member-button" data-staff-id="${selectedStaffMember.id}" class="m-3 btn btn-outline-dark">Delete</button>`;
         domString += '</form>';
         utils.printToDom('modal-header', 'Edit Staff Member');
         utils.printToDom('staff-modal-body', domString);

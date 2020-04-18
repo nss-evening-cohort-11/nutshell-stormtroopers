@@ -5,7 +5,7 @@ const buildNewStaffForm = () => {
   jobData.getAllJobs()
     .then((jobs) => {
       let domString = '';
-      domString += '<form class="text-left d-flex flex-column justify-content-between" id="new-staff-form">';
+      domString += '<form class="staff-form text-left d-flex flex-column justify-content-between" id="new-staff-form">';
       domString += '    <div class="form-group">';
       domString += '        <label for="new-staff-member-image">New Staff Member Image</label>';
       domString += '        <input type="text" class="form-control" id="new-staff-member-image" placeholder="Paste new employee image url here...">';
@@ -20,7 +20,7 @@ const buildNewStaffForm = () => {
         domString += `  <label class="custom-control-label" for="jobRadio-${i + 1}">${job.jobType}</label>`;
         domString += '</div>';
       });
-      domString += '  <button type="button" id="submit-new-member-button" class="m-3 btn btn-success">Save</button>';
+      domString += '  <button type="button" id="submit-new-member-button" class="m-3 btn btn-outline-dark">Save</button>';
       domString += '</form>';
       utils.printToDom('modal-header', 'Add A New Staff Member');
       utils.printToDom('staff-modal-body', domString);

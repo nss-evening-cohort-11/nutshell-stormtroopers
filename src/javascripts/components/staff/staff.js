@@ -87,7 +87,7 @@ const buildStaffSection = (staffArr) => {
   jobData.getAllJobs().then((jobs) => {
     let domString = '';
     let staffCardDomString = '';
-    domString += '<h1 class="col-12 text-center display-4">Staff</h1>';
+    domString += '<h1 id="staff-page-header" class="col-12 text-center display-4">Staff</h1>';
     domString += '<div class="col-12 d-flex justify-content-center align-items-center">';
     domString += '  <button id="add-staff-button" class="btn btn-outline-dark staff-button">Add New Staff</button>';
     domString += jobsDropDownComponent.jobsDropDown(jobs);
@@ -100,6 +100,7 @@ const buildStaffSection = (staffArr) => {
     });
     utils.printToDom('staff-card-container', staffCardDomString);
     $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
+    $('body').on('click', '.job-button', jobFilterEvent);
   });
 };
 
@@ -132,7 +133,6 @@ const jobFilterEvent = (e) => {
 };
 
 const staffSectionEvents = () => {
-  $('body').on('click', '.job-button', jobFilterEvent);
   $('body').on('click', '#submit-new-member-button', addStaffMember);
   $('body').on('click', '#delete-member-button', deleteStaffMember);
   $('body').on('click', '#edit-member-button', modifyStaffMember);
