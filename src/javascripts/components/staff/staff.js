@@ -44,7 +44,7 @@ const modifyStaffMember = (e) => {
       imageUrl: modifiedImage,
       name: modifiedName,
       jobId: modifiedJobId,
-      uid: '1234567',
+      uid: firebase.auth().currentUser.uid,
     };
     staffData.updateStaffMember(selectedStaffId, modifiedStaffMember)
       .then(() => {
@@ -75,7 +75,7 @@ const addStaffMember = () => {
       imageUrl: newImage,
       name: newName,
       jobId: newJobId,
-      uid: '1234567',
+      uid: firebase.auth().currentUser.uid,
     };
     staffData.setStaffMember(newStaffMember)
       .then(() => {
@@ -91,21 +91,11 @@ const addStaffMember = () => {
   }
 };
 
-// const buildStaffCardContainer = (staffArr, jobsArr) => {
-//   jobData.getAllJobs().then((jobs) => {}).catch((err) => console.error('Try again', err));
-//   let staffCardDomString = '';
-//   staffArr.forEach((staffMember) => {
-//     const thisEmployeeJob = jobsArr.find((x) => staffMember.jobId === x.id);
-//     staffCardDomString += singleStaffMemberCard.buildSingleStaffMemberCard(staffMember, thisEmployeeJob);
-//   });
-//   utils.printToDom('staff-card-container', staffCardDomString);
-// };
-
 const buildStaffSection = (staffArr) => {
   jobData.getAllJobs().then((jobs) => {
     let domString = '';
     let staffCardDomString = '';
-    domString += '<h1 id="staff-page-header" class="col-12 text-center display-4">Staff</h1>';
+    domString += '<h1 id="staff-page-header" class="text-center display-4">Staff</h1>';
     domString += '<div class="col-12 d-flex justify-content-center align-items-center">';
     domString += '  <a role="button" id="add-staff-button" class="btn btn-outline-dark staff-button">Add New Staff</a>';
     domString += jobsDropDownComponent.jobsDropDown(jobs);

@@ -10,17 +10,17 @@ const buildEditStaffForm = (selectedStaffId) => {
       jobData.getAllJobs().then((jobs) => {
         let domString = '';
         domString += '<form class="staff-form text-left d-flex flex-column justify-content-between" id="edit-staff-form">';
-        domString += '    <div class="form-group">';
+        domString += '    <div class="form-group staff-form-group">';
         domString += '        <label for="edit-staff-member-image">Edit Staff Member Image</label>';
         domString += `        <input type="text" class="form-control" id="edit-staff-member-image" placeholder="Paste updated employee image url here..." value="${selectedStaffMember.imageUrl}">`;
         domString += '    </div>';
-        domString += '    <div class="form-group">';
+        domString += '    <div class="form-group staff-form-group">';
         domString += '        <label for="edit-staff-member-name">Edit Staff Member Name</label>';
         domString += `        <input type="text" class="form-control" id="edit-staff-member-name" placeholder="Change employee name..." value="${selectedStaffMember.name}">`;
         domString += '    </div>';
         jobs.forEach((job, i) => {
           const checkCurrentJob = job.id === selectedStaffMember.jobId;
-          domString += '<div class="custom-control custom-radio">';
+          domString += '<div class="custom-control custom-radio staff-form-group staff-radio">';
           domString += `  <input type="radio" id="editJobRadio-${i + 1}" name="editJobRadio" class="custom-control-input" value="${job.id}" ${checkCurrentJob ? 'checked' : ''}>`;
           domString += `  <label class="custom-control-label" for="editJobRadio-${i + 1}">${job.jobType}</label>`;
           domString += '</div>';
