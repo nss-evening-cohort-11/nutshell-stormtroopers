@@ -30,7 +30,9 @@ const buildEditStaffForm = (selectedStaffId) => {
         domString += '</form>';
         utils.printToDom('modal-header', 'Edit Staff Member');
         utils.printToDom('staff-modal-body', domString);
-        $('#staff-modal').modal('show');
+        $(document).ready(() => {
+          $('#staff-modal').modal('show');
+        });
       });
     })
     .catch((err) => console.error('There is a problem in the edit staff form:', err));

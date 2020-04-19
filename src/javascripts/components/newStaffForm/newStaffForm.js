@@ -24,7 +24,9 @@ const buildNewStaffForm = () => {
       domString += '</form>';
       utils.printToDom('modal-header', 'Add A New Staff Member');
       utils.printToDom('staff-modal-body', domString);
-      $('#staff-modal').modal('show');
+      $(document).ready(() => {
+        $('#staff-modal').modal('show');
+      });
     })
     .catch((err) => console.error('There is a problem in the new staff form:', err));
 };

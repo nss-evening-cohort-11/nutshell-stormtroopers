@@ -21,8 +21,10 @@ const deleteStaffMember = (e) => {
   const selectedStaffId = e.target.dataset.staffId;
   staffData.removeStaffMember(selectedStaffId)
     .then(() => {
-      $('#edit-staff-form').trigger('reset');
-      $('#staff-modal').modal('hide');
+      $(document).ready(() => {
+        $('#edit-staff-form').trigger('reset');
+        $('#staff-modal').modal('hide');
+      });
       utils.printToDom('staff-modal-body', '');
       // eslint-disable-next-line no-use-before-define
       staffInit();
@@ -46,8 +48,10 @@ const modifyStaffMember = (e) => {
     };
     staffData.updateStaffMember(selectedStaffId, modifiedStaffMember)
       .then(() => {
-        $('#edit-staff-form').trigger('reset');
-        $('#staff-modal').modal('hide');
+        $(document).ready(() => {
+          $('#edit-staff-form').trigger('reset');
+          $('#staff-modal').modal('hide');
+        });
         utils.printToDom('staff-modal-body', '');
         // eslint-disable-next-line no-use-before-define
         staffInit();
@@ -75,8 +79,10 @@ const addStaffMember = () => {
     };
     staffData.setStaffMember(newStaffMember)
       .then(() => {
-        $('#new-staff-form').trigger('reset');
-        $('#staff-modal').modal('hide');
+        $(document).ready(() => {
+          $('#new-staff-form').trigger('reset');
+          $('#staff-modal').modal('hide');
+        });
         utils.printToDom('staff-modal-body', '');
         // eslint-disable-next-line no-use-before-define
         staffInit();
@@ -103,23 +109,31 @@ const buildStaffSection = (staffArr) => {
     utils.printToDom('staff-card-container', staffCardDomString);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        $('#add-staff-button').removeClass('disabled');
-        $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
+        $(document).ready(() => {
+          $('#add-staff-button').removeClass('disabled');
+          $('#add-staff-button').click(newStaffForm.buildNewStaffForm);
+        });
       } else {
-        $('#add-staff-button').addClass('disabled');
+        $(document).ready(() => {
+          $('#add-staff-button').addClass('disabled');
+        });
       }
     });
-    // eslint-disable-next-line no-use-before-define
-    $('body').on('click', '.job-button', jobFilterEvent);
+    $(document).ready(() => {
+      // eslint-disable-next-line no-use-before-define
+      $('body').on('click', '.job-button', jobFilterEvent);
+    });
   });
 };
 
 const staffInit = () => {
-  $('#home-page').addClass('hide');
-  $('#staff-section-container').removeClass('hide');
-  $('#reservations-section').addClass('hide');
-  $('#menu-section').addClass('hide');
-  $('#ingredients-section').addClass('hide');
+  $(document).ready(() => {
+    $('#home-page').addClass('hide');
+    $('#staff-section-container').removeClass('hide');
+    $('#reservations-section').addClass('hide');
+    $('#menu-section').addClass('hide');
+    $('#ingredients-section').addClass('hide');
+  });
   staffData.getAllStaffMembers()
     .then((staff) => {
       buildStaffSection(staff);
@@ -143,18 +157,22 @@ const jobFilterEvent = (e) => {
 };
 
 const staffSectionEvents = () => {
-  $('body').on('click', '#submit-new-member-button', addStaffMember);
-  $('body').on('click', '#delete-member-button', deleteStaffMember);
-  $('body').on('click', '#edit-member-button', modifyStaffMember);
-  $('body').on('click', '.staff-card', viewStaffModal);
-  $('#close-modal').click(closeStaffModal);
+  $(document).ready(() => {
+    $('body').on('click', '#submit-new-member-button', addStaffMember);
+    $('body').on('click', '#delete-member-button', deleteStaffMember);
+    $('body').on('click', '#edit-member-button', modifyStaffMember);
+    $('body').on('click', '.staff-card', viewStaffModal);
+    $('#close-modal').click(closeStaffModal);
+  });
 };
 
 const removeStaffSectionEvents = () => {
-  $('body').off('click', '#submit-new-member-button', addStaffMember);
-  $('body').off('click', '#delete-member-button', deleteStaffMember);
-  $('body').off('click', '#edit-member-button', modifyStaffMember);
-  $('body').off('click', '.staff-card', viewStaffModal);
+  $(document).ready(() => {
+    $('body').off('click', '#submit-new-member-button', addStaffMember);
+    $('body').off('click', '#delete-member-button', deleteStaffMember);
+    $('body').off('click', '#edit-member-button', modifyStaffMember);
+    $('body').off('click', '.staff-card', viewStaffModal);
+  });
 };
 
 
