@@ -17,6 +17,7 @@ const checkLoginStatus = () => {
       // person not logged in
       logoutButton.addClass('hide');
       loginButton.removeClass('hide');
+      staff.removeStaffSectionEvents();
     }
   });
 };

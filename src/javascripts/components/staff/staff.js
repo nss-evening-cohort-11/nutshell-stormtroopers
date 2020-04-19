@@ -12,12 +12,8 @@ import editStaffForm from '../editStaffForm/editStaffForm';
 import './staff.scss';
 
 const viewStaffModal = (e) => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      const selectedStaffId = e.target.closest('.staff-card').id;
-      editStaffForm.buildEditStaffForm(selectedStaffId);
-    }
-  });
+  const selectedStaffId = e.target.closest('.staff-card').id;
+  editStaffForm.buildEditStaffForm(selectedStaffId);
 };
 
 const deleteStaffMember = (e) => {
@@ -154,5 +150,17 @@ const staffSectionEvents = () => {
   $('#close-modal').click(closeStaffModal);
 };
 
+const removeStaffSectionEvents = () => {
+  $('body').off('click', '#submit-new-member-button', addStaffMember);
+  $('body').off('click', '#delete-member-button', deleteStaffMember);
+  $('body').off('click', '#edit-member-button', modifyStaffMember);
+  $('body').off('click', '.staff-card', viewStaffModal);
+};
 
-export default { staffInit, staffSectionEvents, addStaffMember };
+
+export default {
+  staffInit,
+  staffSectionEvents,
+  addStaffMember,
+  removeStaffSectionEvents,
+};
