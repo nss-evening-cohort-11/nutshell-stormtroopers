@@ -94,7 +94,7 @@ const deleteRecipeItem = (e) => {
   //     $('.delete-ingred').on('click', deleteRecipeItem);
   //   });
   // eslint-disable-next-line no-use-before-define
-  // showIngredientEdits(parentMenuItem);
+  showIngredientList(parentMenuItem);
 };
 
 const showIngredientEdits = (menuItemId) => {
@@ -111,6 +111,21 @@ const showIngredientEdits = (menuItemId) => {
     });
 };
 
+const showIngredientList = (menuItemId) => {
+  getIngredientsByMenuItem(menuItemId)
+    .then((ingredList) => {
+      let domString = '';
+      domString += '<p class="card-text">Ingredients:</p>';
+      ingredList.forEach((item) => {
+        domString += `<p>${item.name}</p>`;
+      });
+      domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${menuItemId}"><i class="far fa-edit"></i> Ingredients</button>`;
+      domString += '<button type="button" class="btn btn-secondary col-5 edit-item"><i class="far fa-edit"></i> Details</button>';
+      domString += '<button type="button" class="btn btn-secondary col-10 back-btn"><i class="fas fa-reply"></i> Go Back</button>';
+      utils.printToDom(`card-body-${menuItemId}`, domString);
+    });
+};
+
 export default {
   getAllMenuItems,
   getMenuItemRecipes,
@@ -118,4 +133,5 @@ export default {
   getSingleMenuItem,
   deleteItemFromRecipe,
   showIngredientEdits,
+  showIngredientList,
 };

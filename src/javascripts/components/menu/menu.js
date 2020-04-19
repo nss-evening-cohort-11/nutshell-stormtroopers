@@ -19,7 +19,7 @@ const editMenuItemIngredients = (e) => {
   //   });
   menuData.showIngredientEdits(menuItemId);
   // eslint-disable-next-line no-use-before-define
-  $('.save-ingred').on('click', openIngredientView);
+  $('body').on('click', '.save-ingred', openIngredientView);
 
   // WORK ON GETTING THE SAVE VIEW TO PRINT OUT THE LIST OF INGREDIENTS AGAIN (openIngredientView)
   // was having issue with save button (e) target not same as original targeting
@@ -44,20 +44,23 @@ const closeIngredientView = (e) => {
 
 const openIngredientView = (e) => {
   const selectedCard = e.target.closest('.menu-item-card').id;
-  menuData.getIngredientsByMenuItem(selectedCard)
-    .then((ingredList) => {
-      let domString = '';
-      domString += '<p class="card-text">Ingredients:</p>';
-      ingredList.forEach((item) => {
-        domString += `<p>${item.name}</p>`;
-      });
-      domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${selectedCard}"><i class="far fa-edit"></i> Ingredients</button>`;
-      domString += '<button type="button" class="btn btn-secondary col-5 edit-item"><i class="far fa-edit"></i> Details</button>';
-      domString += '<button type="button" class="btn btn-secondary col-10 back-btn"><i class="fas fa-reply"></i> Go Back</button>';
-      utils.printToDom(`card-body-${selectedCard}`, domString);
-      $('.edit-ingred').on('click', editMenuItemIngredients);
-      $('.back-btn').on('click', closeIngredientView);
-    });
+  // menuData.getIngredientsByMenuItem(selectedCard)
+  //   .then((ingredList) => {
+  //     let domString = '';
+  //     domString += '<p class="card-text">Ingredients:</p>';
+  //     ingredList.forEach((item) => {
+  //       domString += `<p>${item.name}</p>`;
+  //     });
+  //     domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${selectedCard}"><i class="far fa-edit"></i> Ingredients</button>`;
+  //     domString += '<button type="button" class="btn btn-secondary col-5 edit-item"><i class="far fa-edit"></i> Details</button>';
+  //     domString += '<button type="button" class="btn btn-secondary col-10 back-btn"><i class="fas fa-reply"></i> Go Back</button>';
+  //     utils.printToDom(`card-body-${selectedCard}`, domString);
+  //     $('.edit-ingred').on('click', editMenuItemIngredients);
+  //     $('.back-btn').on('click', closeIngredientView);
+  //   });
+  menuData.showIngredientList(selectedCard);
+  $('body').on('click', '.edit-ingred', editMenuItemIngredients);
+  $('body').on('click', '.back-btn', closeIngredientView);
 };
 
 const menuBuilder = () => {
