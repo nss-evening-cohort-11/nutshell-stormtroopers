@@ -91,6 +91,16 @@ const addStaffMember = () => {
   }
 };
 
+// const buildStaffCardContainer = (staffArr, jobsArr) => {
+//   jobData.getAllJobs().then((jobs) => {}).catch((err) => console.error('Try again', err));
+//   let staffCardDomString = '';
+//   staffArr.forEach((staffMember) => {
+//     const thisEmployeeJob = jobsArr.find((x) => staffMember.jobId === x.id);
+//     staffCardDomString += singleStaffMemberCard.buildSingleStaffMemberCard(staffMember, thisEmployeeJob);
+//   });
+//   utils.printToDom('staff-card-container', staffCardDomString);
+// };
+
 const buildStaffSection = (staffArr) => {
   jobData.getAllJobs().then((jobs) => {
     let domString = '';
@@ -119,15 +129,14 @@ const buildStaffSection = (staffArr) => {
         });
       }
     });
-    $(document).ready(() => {
-      // eslint-disable-next-line no-use-before-define
-      $('body').on('click', '.job-button', jobFilterEvent);
-    });
-  });
+  }).catch((err) => console.error('There is a problem with building the staff section', err));
 };
+
 
 const staffInit = () => {
   $(document).ready(() => {
+    // eslint-disable-next-line no-use-before-define
+    $('body').on('click', '.job-button', jobFilterEvent);
     $('#home-page').addClass('hide');
     $('#staff-section-container').removeClass('hide');
     $('#reservations-section').addClass('hide');
