@@ -1,17 +1,21 @@
-const buildTimeSlots = (timeSlots, reservations) => {
-  console.log('reservations in timeslots', reservations);
+const buildTimeSlots = (timeSlots) => {
   let domString = '';
   timeSlots.forEach((timeSlot) => {
-    domString += '<div>';
-    domString += `<li class="list-group-item individual-time-slot" id="${timeSlot.id}">`;
-    domString += `${timeSlot.time}`;
-    domString += '</li>';
-    domString += '</div>';
-  });
-  reservations.forEach((reservation) => {
-    if (reservation.reservedTimeSlot === true) {
-      console.log('reserved time');
-      $('#individual-time-slot').addClass('reserved-timeslot');
+    if (timeSlot.reservations[0] !== undefined) {
+      // time reserved
+      timeSlot.reservations.forEach((reservation) => {
+        domString += `<li class="list-group-item" id="${timeSlot.id}">`;
+        domString += `<p class="individual-time-slot">(Reserved) ${timeSlot.time}</p>`;
+        domString += `<p>Party Name: ${reservation.partyName}</p>`;
+        domString += `<p>Number of Guests: ${reservation.numOfGuests}</p>`;
+        domString += `<button class="btn btn-danger delete-reservation-button" id="${reservation.id}"><i class="fas fa-trash"></i></button>`;
+        domString += '</li>';
+      });
+    } else {
+      // time not reserved
+      domString += `<li class="list-group-item individual-time-slot" id="${timeSlot.id}">`;
+      domString += `<p class="individual-time-slot">${timeSlot.time}</p>`;
+      domString += '</li>';
     }
   });
   return domString;

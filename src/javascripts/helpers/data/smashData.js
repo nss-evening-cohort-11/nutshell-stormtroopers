@@ -7,19 +7,22 @@ import reservationData from './reservationData';
 const getTablesWithReservations = () => new Promise((resolve, reject) => {
   tableData.getTables().then((tables) => {
     timeSlotData.getTimeSlots().then((timeSlots) => {
+      const finalTables = [];
       reservationData.getReservations().then((reservationsResponse) => {
-        const finalTables = [];
         tables.forEach((table) => {
-          const newTable = { reservations: [], ...table };
+          const newTable = { ...table };
           const tableReservations = reservationsResponse.filter((x) => x.tableId === table.id);
           newTable.timeSlots = timeSlots;
+          const newTimeSlot = [];
           timeSlots.forEach((oneTimeSlot) => {
-            const timeSlot = { ...oneTimeSlot };
+            const timeSlot = { reservations: [], ...oneTimeSlot };
             const isReserved = tableReservations.find((x) => x.timeSlotId === timeSlot.id);
             timeSlot.reservedTimeSlot = isReserved !== undefined;
             timeSlot.tableReservationId = isReserved ? isReserved.id : `nope-${table.id}-${timeSlot.id}`;
-            newTable.reservations.push(timeSlot);
+            timeSlot.reservations.push(isReserved);
+            newTimeSlot.push(timeSlot);
           });
+          newTable.timeSlots = newTimeSlot;
           finalTables.push(newTable);
         });
         resolve(finalTables);

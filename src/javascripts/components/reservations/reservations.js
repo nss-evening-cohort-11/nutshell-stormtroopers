@@ -8,6 +8,17 @@ import newReservationForm from '../newReservationForm/newReservationForm';
 import reservationData from '../../helpers/data/reservationData';
 // import timeSlots from '../timeSlots/timeSlots';
 
+const deleteReservationEvent = (e) => {
+  console.log(e.target.id);
+  const reservationId = e.target.id;
+  reservationData.deleteReservation(reservationId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      buildReservationsSection();
+    })
+    .catch((err) => console.error('could not delete reservation', err));
+};
+
 const makeNewReservation = (e) => {
   e.preventDefault();
   const newReservation = {
@@ -16,7 +27,6 @@ const makeNewReservation = (e) => {
     numOfGuests: $('#new-number-of-guests').val() * 1,
     partyName: $('#new-party-name').val(),
   };
-  console.log('newest reservation', newReservation);
   reservationData.addReservation(newReservation).then(() => {
     $('#reservation-modal').modal('hide');
     // eslint-disable-next-line no-use-before-define
@@ -34,7 +44,6 @@ const openModal = (e) => {
     let domString = '';
     domString += newReservationForm.makeNewReservationForm(selectedTable, timeSlotId);
     utils.printToDom('single-view', domString);
-    console.log(selectedTable);
   });
   $('body').on('click', '#new-reservation-button', makeNewReservation);
 };
@@ -51,12 +60,13 @@ const buildReservationsSection = () => {
         domString += '</div>';
         domString += `Available Seats: ${table.numOfSeats}`;
         domString += '<ul class="list-group list-group-flush">';
-        domString += timeSlotsComponent.buildTimeSlots(table.timeSlots, table.reservations);
+        domString += timeSlotsComponent.buildTimeSlots(table.timeSlots);
         domString += '</ul>';
         domString += '</div>';
       });
       domString += '</div>';
       utils.printToDom('reservations-section', domString);
+      $('.delete-reservation-button').click(deleteReservationEvent);
       $('.individual-time-slot').click(openModal);
       $('#home-page').addClass('hide');
       $('#staff-section').addClass('hide');
