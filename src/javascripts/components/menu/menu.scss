@@ -5,22 +5,27 @@ h2 {
   font-size: 40pt;
 }
 
+#inner-menu-container {
+  margin: 50px;
+}
+
 .menu-item-card {
   margin-bottom: 30px;
   font-family: "Open Sans";
+  font-size: 10pt;
   text-align: center;
   border-radius: 0;
   height: 580px;
   h5 {
     font-family: "Allura";
-    font-size: 24pt;
+    font-size: 20pt;
   }
   &:hover {
     background-color: lightgray;
     opacity: 90%;
   }
   button {
-    font-size: 10px;
+    font-size: 10pt;
     margin-right: 10px;
     margin-bottom: 10px;
   }

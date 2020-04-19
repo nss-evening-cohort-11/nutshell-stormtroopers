@@ -18,9 +18,35 @@ const getAllMenuItems = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-const getSingleMenuItem = (menuItemId) => axios.get(`${baseUrl}/menuItems/${menuItemId}.json`);
+const buildMenuCards = () => {
+  getAllMenuItems()
+    .then((menuArray) => {
+      let domString = '';
+      domString += '<h2 class="text-center" style="font-family: Allura">Menu</h2>';
+      domString += '      <div class="text-center"><button type="button" class="btn btn-secondary col-3" id="view-all">View All</button>';
+      domString += '      <button type="button" class="btn btn-secondary col-3" id="view-filter">Filter by Ingredient</button></div>';
+      domString += '<div class="row wrap text-center" id="inner-menu-container">';
+      menuArray.forEach((item) => {
+        domString += '<div class="col-3">';
+        domString += '<div id="whole-card-container">';
+        domString += `  <div class="card menu-item-card" id="${item.id}">`;
+        domString += `    <h5 class="card-header">${item.name}</h5>`;
+        domString += `    <div class="card-body" id="card-body-${item.id}">`;
+        domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
+        domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}<br>`;
+        domString += `      ${item.price}</p>`;
+        domString += `      <button type="button" class="btn btn-light col-10 offset-1 view-ingred" id="${item.id}"><i class="far fa-list-alt"></i> Ingredients/Info</button></div>`;
+        domString += '    </div>';
+        domString += '  </div>';
+        domString += '</div>';
+        domString += '</div>';
+      });
+      domString += '</div>';
+      utils.printToDom('menu-section', domString);
+    })
+    .catch((err) => console.error('problem with menuBuilder', err));
+};
 
-// update to ingredientData.getIngredients ?
 const getIngredients = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/ingredients.json`)
     .then((response) => {
@@ -83,18 +109,7 @@ const deleteRecipeItem = (e) => {
   const parentMenuItem = e.target.closest('.card').id;
   deleteItemFromRecipe(ingredToDelete, parentMenuItem);
   // eslint-disable-next-line no-use-before-define
-  // menuData.getIngredientsByMenuItem(parentMenuItem)
-  //   .then((ingredList) => {
-  //     let domString = '';
-  //     ingredList.forEach((item) => {
-  //       domString += `<button type="button" class="btn btn-light col-10 delete-ingred" id="${item.id}"><i class="far fa-times-circle"></i> ${item.name}</button>`;
-  //     });
-  //     domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${parentMenuItem}"><i class="far fa-check-circle"></i> Save</button>`;
-  //     utils.printToDom(`card-body-${parentMenuItem}`, domString);
-  //     $('.delete-ingred').on('click', deleteRecipeItem);
-  //   });
-  // eslint-disable-next-line no-use-before-define
-  showIngredientList(parentMenuItem);
+  showIngredientEdits(parentMenuItem);
 };
 
 const showIngredientEdits = (menuItemId) => {
@@ -104,6 +119,7 @@ const showIngredientEdits = (menuItemId) => {
       ingredList.forEach((item) => {
         domString += `<button type="button" class="btn btn-light col-10 delete-ingred" id="${item.id}"><i class="far fa-times-circle"></i> ${item.name}</button>`;
       });
+      domString += `<br><button type="button" class="btn btn-light col-10 add-ingred" id="${menuItemId}"><i class="fas fa-plus"></i> Add</button>`;
       domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
       utils.printToDom(`card-body-${menuItemId}`, domString);
       // eslint-disable-next-line no-use-before-define
@@ -120,18 +136,104 @@ const showIngredientList = (menuItemId) => {
         domString += `<p>${item.name}</p>`;
       });
       domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${menuItemId}"><i class="far fa-edit"></i> Ingredients</button>`;
-      domString += '<button type="button" class="btn btn-secondary col-5 edit-item"><i class="far fa-edit"></i> Details</button>';
+      domString += `<button type="button" class="btn btn-secondary col-5 edit-item" id="${menuItemId}"><i class="far fa-edit"></i> Details</button>`;
       domString += '<button type="button" class="btn btn-secondary col-10 back-btn"><i class="fas fa-reply"></i> Go Back</button>';
       utils.printToDom(`card-body-${menuItemId}`, domString);
     });
 };
 
+const addSelectedIngreds = (e) => {
+  const menuItem = e.target.id;
+  const ingredsToAdd = utils.getCheckboxVal();
+  ingredsToAdd.forEach((item) => {
+    const newRecipe = {
+      menuItemId: menuItem,
+      ingredientId: item,
+    };
+    axios.post(`${baseUrl}/recipes.json`, newRecipe).then(buildMenuCards());
+    // BUILD CARDS NEEDS A DELAY TO PRINT THE FRESH DATABASE...
+  });
+};
+
+const showAvailableIngreds = (e) => {
+  e.preventDefault();
+  const menuItemId = e.target.id;
+  getIngredients()
+    .then((allIngreds) => {
+      let domString = '';
+      domString += '<div class="form-check">';
+      allIngreds.forEach((item) => {
+        domString += '<div class="row">';
+        domString += `<input class="form-check-input add-ingred-checks" type="checkbox" value="${item.id}" id="${item.id}">`;
+        domString += `<label class="form-check-label" for="defaultCheck1">${item.name}</label>`;
+        domString += '</div>';
+      });
+      domString += `<br><button type="button" class="btn btn-secondary col-10 save-recipe" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
+      domString += '</div>';
+      utils.printToDom('inner-menu-container', domString);
+      $('.save-recipe').on('click', addSelectedIngreds);
+    });
+};
+
+const submitMenuItemChanges = (e) => {
+  const menuItemId = e.target.id;
+  const newName = $(`#${menuItemId}NameInput`).val();
+  const newDesc = $(`#${menuItemId}DescInput`).val();
+  const newImage = $(`#${menuItemId}ImageInput`).val();
+  axios.patch(`${baseUrl}/menuItems/${menuItemId}.json`, { name: newName });
+  axios.patch(`${baseUrl}/menuItems/${menuItemId}.json`, { description: newDesc });
+  axios.patch(`${baseUrl}/menuItems/${menuItemId}.json`, { imageUrl: newImage });
+  buildMenuCards();
+};
+
+const deleteEntireItem = (e) => {
+  const menuItem = e.target.id;
+  axios.delete(`${baseUrl}/menuItems/${menuItem}.json`);
+  getMenuItemRecipes(menuItem)
+    .then(buildMenuCards());
+  // BUILD CARDS NEEDS A DELAY TO PRINT THE FRESH DATABASE...
+};
+
+const getSingleMenuItem = (menuItemId) => axios.get(`${baseUrl}/menuItems/${menuItemId}.json`);
+
+const showItemEditor = (menuItem) => {
+  getSingleMenuItem(menuItem)
+    .then((response) => {
+      const thisMenuItem = response.data;
+      thisMenuItem.id = menuItem;
+      let domString = '';
+      domString += '<form>';
+      domString += '  <div class="form-group">';
+      domString += '    <label for="itemNameInput">Item Name:</label>';
+      domString += `    <input type="text" class="form-control" id="${thisMenuItem.id}NameInput" value="${thisMenuItem.name}">`;
+      domString += '  </div>';
+      domString += '  <div class="form-group">';
+      domString += '    <label for="itemDescInput">Description:</label>';
+      domString += `    <input type="text" class="form-control" id="${thisMenuItem.id}DescInput" value="${thisMenuItem.description}">`;
+      domString += '  </div>';
+      domString += '  <div class="form-group">';
+      domString += '    <label for="itemImageInput">Image URL:</label>';
+      domString += `    <input type="text" class="form-control" id="${thisMenuItem.id}ImageInput" value="${thisMenuItem.imageUrl}">`;
+      domString += '  </div>';
+      domString += `  <br><button type="button" class="btn btn-secondary col-10 save-details" id="${menuItem}"><i class="far fa-check-circle"></i> Save</button>`;
+      domString += `  <br><button type="button" class="btn btn-secondary col-10 delete-item" id="${menuItem}"><i class="far fa-trash-alt"></i> Delete Item</button>`;
+      domString += '</form>';
+      utils.printToDom(`card-body-${menuItem}`, domString);
+      $('.save-details').on('click', submitMenuItemChanges);
+      $('.delete-item').on('click', deleteEntireItem);
+    });
+};
+
 export default {
   getAllMenuItems,
+  buildMenuCards,
   getMenuItemRecipes,
   getIngredientsByMenuItem,
   getSingleMenuItem,
   deleteItemFromRecipe,
   showIngredientEdits,
   showIngredientList,
+  showAvailableIngreds,
+  addSelectedIngreds,
+  showItemEditor,
 };
