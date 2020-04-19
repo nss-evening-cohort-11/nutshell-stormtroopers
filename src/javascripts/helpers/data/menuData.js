@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getMenuItems = () => new Promise((resolve, reject) => {
+const getAllMenuItems = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/menuItems.json`)
     .then((response) => {
       const theseMenuItems = response.data;
@@ -16,6 +16,8 @@ const getMenuItems = () => new Promise((resolve, reject) => {
     })
     .catch((err) => reject(err));
 });
+
+const getSingleMenuItem = (menuItemId) => axios.get(`${baseUrl}/menuItems/${menuItemId}.json`);
 
 // update to ingredientData.getIngredients ?
 const getIngredients = () => new Promise((resolve, reject) => {
@@ -46,6 +48,10 @@ const getMenuItemRecipes = (menuItemId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const deleteItemFromRecipe = (ingredientId, menuItemId) => {
+  console.error(`delete ${ingredientId} from ${menuItemId}`);
+};
+
 const getIngredientsByMenuItem = (menuItem) => new Promise((resolve, reject) => {
   getMenuItemRecipes(menuItem)
     .then((menuItemRecipes) => {
@@ -62,4 +68,10 @@ const getIngredientsByMenuItem = (menuItem) => new Promise((resolve, reject) => 
     .catch((err) => reject(err));
 });
 
-export default { getMenuItems, getMenuItemRecipes, getIngredientsByMenuItem };
+export default {
+  getAllMenuItems,
+  getMenuItemRecipes,
+  getIngredientsByMenuItem,
+  getSingleMenuItem,
+  deleteItemFromRecipe,
+};

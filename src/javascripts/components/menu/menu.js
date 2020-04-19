@@ -4,7 +4,16 @@ import './menu.scss';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
 
+const deleteRecipeItem = (e) => {
+  e.preventDefault();
+  const ingredToDelete = e.target.closest('.delete-ingred').id;
+  const parentMenuItem = e.target.closest('.card').id;
+  menuData.deleteItemFromRecipe(ingredToDelete, parentMenuItem);
+  // then reprint remaining ingredients
+};
+
 const editMenuItemIngredients = (e) => {
+  e.preventDefault();
   const menuItemId = e.target.closest('.edit-ingred').id;
   menuData.getIngredientsByMenuItem(menuItemId)
     .then((ingredList) => {
@@ -14,30 +23,49 @@ const editMenuItemIngredients = (e) => {
       });
       domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
       utils.printToDom(`card-body-${menuItemId}`, domString);
+      $('.delete-ingred').on('click', deleteRecipeItem);
+    });
+  // $('.save-ingred').on('click', console.error('clicked Save'));
+  //
+};
+
+const closeIngredientView = (e) => {
+  const selectedCard = e.target.closest('.menu-item-card').id;
+  menuData.getSingleMenuItem(selectedCard)
+    .then((response) => {
+      const item = response.data;
+      let domString = '';
+      domString += `    <div class="card-body" id="card-body-${item.id}">`;
+      domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
+      domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}<br>`;
+      domString += `      ${item.price}</p>`;
+      domString += `      <button type="button" class="btn btn-light col-10 offset-1 view-ingred" id="${item.id}"><i class="far fa-list-alt"></i> Ingredients</button></div>`;
+      domString += '    </div>';
+      utils.printToDom(`card-body-${selectedCard}`, domString);
+      utils.printToDom(`btn-holder-${selectedCard}`, '');
     });
 };
 
-const menuHoverEnter = (e) => {
-  const hoverCard = e.target.closest('.menu-item-card').id;
-  let domString = '';
-  const emptyString = '';
-  domString += '<p class="card-text">Ingredients:</p>';
-  domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${hoverCard}"><i class="far fa-edit"></i> Ingredients</button>`;
-  domString += '<button type="button" class="btn btn-secondary col-5 edit-item"><i class="far fa-edit"></i> Details</button>';
-  utils.printToDom(`desc-${hoverCard}`, domString);
-  utils.printToDom(`price-${hoverCard}`, emptyString);
-  $('.edit-ingred').on('click', editMenuItemIngredients);
-};
-
-const menuHoverLeave = (e) => {
-  const hoverCard = e.target.closest('.menu-item-card').id;
-  let domString = '';
-  domString += '<p class="card-text">Description:</p>';
-  utils.printToDom(`desc-${hoverCard}`, domString);
+const openIngredientView = (e) => {
+  const selectedCard = e.target.closest('.menu-item-card').id;
+  menuData.getIngredientsByMenuItem(selectedCard)
+    .then((ingredList) => {
+      let domString = '';
+      domString += '<p class="card-text">Ingredients:</p>';
+      ingredList.forEach((item) => {
+        domString += `<p>${item.name}</p>`;
+      });
+      domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${selectedCard}"><i class="far fa-edit"></i> Ingredients</button>`;
+      domString += '<button type="button" class="btn btn-secondary col-5 edit-item"><i class="far fa-edit"></i> Details</button>';
+      domString += '<button type="button" class="btn btn-secondary col-10 back-btn"><i class="fas fa-reply"></i> Go Back</button>';
+      utils.printToDom(`card-body-${selectedCard}`, domString);
+      $('.edit-ingred').on('click', editMenuItemIngredients);
+      $('.back-btn').on('click', closeIngredientView);
+    });
 };
 
 const menuBuilder = () => {
-  menuData.getMenuItems()
+  menuData.getAllMenuItems()
     .then((menuArray) => {
       let domString = '';
       domString += '<h2 class="text-center" style="font-family: Allura">Menu</h2>';
@@ -50,7 +78,8 @@ const menuBuilder = () => {
         domString += `    <div class="card-body" id="card-body-${item.id}">`;
         domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
         domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}<br>`;
-        domString += `      ${item.price}</p></div>`;
+        domString += `      ${item.price}</p>`;
+        domString += `      <button type="button" class="btn btn-light col-10 offset-1 view-ingred" id="${item.id}"><i class="far fa-list-alt"></i> Ingredients</button></div>`;
         domString += '    </div>';
         domString += '  </div>';
         domString += '</div>';
@@ -60,8 +89,7 @@ const menuBuilder = () => {
       utils.printToDom('menu-section', domString);
     })
     .catch((err) => console.error('problem with menuBuilder', err));
-  $('body').on('mouseenter', '.menu-item-card', menuHoverEnter);
-  $('body').on('mouseleave', '.menu-item-card', menuHoverLeave);
+  $('body').on('click', '.view-ingred', openIngredientView);
 };
 
 const buildMenuSection = () => {
