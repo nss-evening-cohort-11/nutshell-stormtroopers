@@ -21,6 +21,10 @@ body {
     background-color: grey;
 }
 
+.reserved-timeslot {
+    color: red;
+}
+
 .full-page {
     padding-bottom: 11rem;
     .home-page{
@@ -60,6 +64,7 @@ body {
 }
 
 #footer {
+    display: none;
     background-color: grey;
     position: fixed;
     bottom: 0;
