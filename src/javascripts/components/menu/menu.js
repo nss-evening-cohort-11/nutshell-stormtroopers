@@ -4,29 +4,25 @@ import './menu.scss';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
 
-const deleteRecipeItem = (e) => {
-  e.preventDefault();
-  const ingredToDelete = e.target.closest('.delete-ingred').id;
-  const parentMenuItem = e.target.closest('.card').id;
-  menuData.deleteItemFromRecipe(ingredToDelete, parentMenuItem);
-  // then reprint remaining ingredients
-};
-
 const editMenuItemIngredients = (e) => {
   e.preventDefault();
   const menuItemId = e.target.closest('.edit-ingred').id;
-  menuData.getIngredientsByMenuItem(menuItemId)
-    .then((ingredList) => {
-      let domString = '';
-      ingredList.forEach((item) => {
-        domString += `<button type="button" class="btn btn-light col-10 delete-ingred" id="${item.id}"><i class="far fa-times-circle"></i> ${item.name}</button>`;
-      });
-      domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
-      utils.printToDom(`card-body-${menuItemId}`, domString);
-      $('.delete-ingred').on('click', deleteRecipeItem);
-    });
-  // $('.save-ingred').on('click', console.error('clicked Save'));
-  //
+  // menuData.getIngredientsByMenuItem(menuItemId)
+  //   .then((ingredList) => {
+  //     let domString = '';
+  //     ingredList.forEach((item) => {
+  //       domString += `<button type="button" class="btn btn-light col-10 delete-ingred" id="${item.id}"><i class="far fa-times-circle"></i> ${item.name}</button>`;
+  //     });
+  //     domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
+  //     utils.printToDom(`card-body-${menuItemId}`, domString);
+  //     $('.delete-ingred').on('click', deleteRecipeItem);
+  //   });
+  menuData.showIngredientEdits(menuItemId);
+  // eslint-disable-next-line no-use-before-define
+  $('.save-ingred').on('click', openIngredientView);
+
+  // WORK ON GETTING THE SAVE VIEW TO PRINT OUT THE LIST OF INGREDIENTS AGAIN (openIngredientView)
+  // was having issue with save button (e) target not same as original targeting
 };
 
 const closeIngredientView = (e) => {

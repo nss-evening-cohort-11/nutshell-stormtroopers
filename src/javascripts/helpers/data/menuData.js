@@ -1,5 +1,6 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys.json';
+import utils from '../utils';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
@@ -48,10 +49,6 @@ const getMenuItemRecipes = (menuItemId) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-const deleteItemFromRecipe = (ingredientId, menuItemId) => {
-  console.error(`delete ${ingredientId} from ${menuItemId}`);
-};
-
 const getIngredientsByMenuItem = (menuItem) => new Promise((resolve, reject) => {
   getMenuItemRecipes(menuItem)
     .then((menuItemRecipes) => {
@@ -68,10 +65,57 @@ const getIngredientsByMenuItem = (menuItem) => new Promise((resolve, reject) => 
     .catch((err) => reject(err));
 });
 
+const deleteItemFromRecipe = (ingredientId, menuItemId) => {
+  getMenuItemRecipes(menuItemId)
+    .then((recipes) => {
+      const removeThis = recipes.find((r) => ingredientId === r.ingredientId);
+      axios.delete(`${baseUrl}/recipes/${removeThis.id}.json`)
+        .then(() => {
+          // eslint-disable-next-line no-use-before-define
+          showIngredientEdits(menuItemId);
+        });
+    });
+};
+
+const deleteRecipeItem = (e) => {
+  e.preventDefault();
+  const ingredToDelete = e.target.closest('.delete-ingred').id;
+  const parentMenuItem = e.target.closest('.card').id;
+  deleteItemFromRecipe(ingredToDelete, parentMenuItem);
+  // eslint-disable-next-line no-use-before-define
+  // menuData.getIngredientsByMenuItem(parentMenuItem)
+  //   .then((ingredList) => {
+  //     let domString = '';
+  //     ingredList.forEach((item) => {
+  //       domString += `<button type="button" class="btn btn-light col-10 delete-ingred" id="${item.id}"><i class="far fa-times-circle"></i> ${item.name}</button>`;
+  //     });
+  //     domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${parentMenuItem}"><i class="far fa-check-circle"></i> Save</button>`;
+  //     utils.printToDom(`card-body-${parentMenuItem}`, domString);
+  //     $('.delete-ingred').on('click', deleteRecipeItem);
+  //   });
+  // eslint-disable-next-line no-use-before-define
+  // showIngredientEdits(parentMenuItem);
+};
+
+const showIngredientEdits = (menuItemId) => {
+  getIngredientsByMenuItem(menuItemId)
+    .then((ingredList) => {
+      let domString = '';
+      ingredList.forEach((item) => {
+        domString += `<button type="button" class="btn btn-light col-10 delete-ingred" id="${item.id}"><i class="far fa-times-circle"></i> ${item.name}</button>`;
+      });
+      domString += `<br><button type="button" class="btn btn-secondary col-10 save-ingred" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
+      utils.printToDom(`card-body-${menuItemId}`, domString);
+      // eslint-disable-next-line no-use-before-define
+      $('.delete-ingred').on('click', deleteRecipeItem);
+    });
+};
+
 export default {
   getAllMenuItems,
   getMenuItemRecipes,
   getIngredientsByMenuItem,
   getSingleMenuItem,
   deleteItemFromRecipe,
+  showIngredientEdits,
 };
