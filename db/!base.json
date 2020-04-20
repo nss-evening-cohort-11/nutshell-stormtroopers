@@ -6,5 +6,6 @@
     "recipes" : "recipes",
     "ingredients" : "ingredients",
     "timeSlots": "time",
-    "tables": "tables"
+    "tables": "tables",
+    "jobs": "occupation"
 }

@@ -5,6 +5,7 @@
 // font-family: 'Allura', cursive;
 // font-family: 'Open Sans', sans-serif; 
 
+<<<<<<< HEAD
 body {
     background-color: white;
 }
@@ -41,6 +42,89 @@ body {
     }
 }
 
+=======
+.nav-link:hover {
+    background-color: lightgrey;
+    color: white;
+    text-decoration: underline;
+}
+
+.reserved-timeslot {
+    color: red;
+    margin-top: 10px;
+}
+
+.card-header {
+    font-family: 'Allura', cursive;
+    font-weight: bolder;
+}
+
+.reservations-title {
+    margin: 0 auto;
+    width: 50%;
+    font-family: 'Allura', cursive;
+    font-size: 80px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
+}
+
+.reservation-modals {
+    h2 {
+        font-weight: bolder;
+        font-size: 50px;
+        text-align: center;
+        font-family: 'Allura', cursive;
+    }
+    .new-reservation-form {
+        display: flex;
+        justify-content: space-between;
+    }
+    button {
+        background-color: white;
+        color:rgb(82, 79, 79);
+        border: none;
+    }
+    button:hover {
+        background-color: darkgray;
+        color: white !important;
+        text-decoration: underline;
+    }
+    
+}
+
+.individual-table {
+    font-family: 'Open Sans', sans-serif; 
+    margin: 15px; 
+    padding: 2px;
+    .edit-reservation-button {
+            background-color: white;
+            color:rgb(82, 79, 79);
+            border: none;
+            margin: 5px;
+            font-weight: bolder;
+            padding: 5px;
+    }
+    .edit-reservation-button:hover {
+        background-color: darkgray;
+        color: white !important;
+        text-decoration: underline;
+    }
+    .delete-reservation-button {
+        background-color: white;
+        color:rgb(82, 79, 79);
+        border: none;
+        margin: 5px;
+        font-weight: bolder;
+        padding: 5px;
+    }
+    .delete-reservation-button:hover {
+        background-color: darkgray;
+        color: white !important;
+    }
+}
+>>>>>>> master
 
 .hide {
     display: none;
