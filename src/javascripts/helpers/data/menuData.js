@@ -300,6 +300,22 @@ const showItemEditor = (menuItem) => {
     });
 };
 
+const addNewItem = (e) => {
+  e.preventDefault();
+  const newMenuItem = {
+    name: $('#input-item-name').val(),
+    description: $('#input-item-desc').val(),
+    category: $('#input-item-category').val(),
+    genre: $('#input-item-genre').val(),
+    price: $('#input-item-price').val(),
+  };
+  axios.post(`${baseUrl}/menuItems.json`, newMenuItem)
+    .then(() => {
+      $('#add-menu-item-modal').modal('hide');
+      buildMenuCards();
+    });
+};
+
 export default {
   getAllMenuItems,
   buildMenuCards,
@@ -313,4 +329,5 @@ export default {
   showAvailableIngreds,
   addSelectedIngreds,
   showItemEditor,
+  addNewItem,
 };

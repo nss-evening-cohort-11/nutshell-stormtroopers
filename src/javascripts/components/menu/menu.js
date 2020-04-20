@@ -1,8 +1,7 @@
-// import axios from 'axios';
-// import apiKeys from '../../helpers/apiKeys.json';
 import './menu.scss';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
+import menuForm from './menuAddForm';
 
 const editMenuItemIngredients = (e) => {
   e.preventDefault();
@@ -17,9 +16,6 @@ const editMenuItemDetails = (e) => {
   e.preventDefault();
   const menuItemId = e.target.id;
   menuData.showItemEditor(menuItemId);
-  // eslint-disable-next-line no-use-before-define
-  // $('body').on('click', '.save-ingred', openIngredientView);
-  // $('body').on('click', '.add-ingred', menuData.showAvailableIngreds);
 };
 
 const closeIngredientView = (e) => {
@@ -59,7 +55,8 @@ const buildFilterList = () => {
 const buildMenuSection = () => {
   let domString = '';
   domString += '<h2 class="text-center" style="font-family: Allura">Menu</h2>';
-  domString += '  <div class="text-center"><button type="button" class="btn btn-secondary col-3" id="view-all">View All</button>';
+  domString += '  <div class="text-center"><button type="button" class="btn btn-secondary col-3" id="add-item">Add Item</button>';
+  domString += '  <button type="button" class="btn btn-secondary col-3" id="view-all">View All</button>';
   domString += '  <button type="button" class="btn btn-secondary col-3" id="view-filter">Filter by Ingredient</button></div>';
   domString += '<div class="row wrap text-center" id="inner-menu-container"></div>';
   utils.printToDom('menu-section', domString);
@@ -70,6 +67,7 @@ const buildMenuSection = () => {
   $('#ingredients-section').addClass('hide');
   $('body').on('click', '#view-all', menuBuilder);
   $('body').on('click', '#view-filter', buildFilterList);
+  $('body').on('click', '#add-item', menuForm.menuModalBuilder);
   menuBuilder();
 };
 
