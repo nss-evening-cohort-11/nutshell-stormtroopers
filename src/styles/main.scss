@@ -21,10 +21,14 @@
 }
 
 .reservations-title {
-    font-weight: bolder;
-    font-size: 100px;
-    text-align: center;
+    margin: 0 auto;
+    width: 50%;
     font-family: 'Allura', cursive;
+    font-size: 80px;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 30px;
 }
 
 .reservation-modals {
