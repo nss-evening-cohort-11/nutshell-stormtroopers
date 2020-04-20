@@ -54,7 +54,6 @@ const openNewReservationModal = (e) => {
     domString += newReservationForm.makeNewReservationForm(selectedTable, timeSlotId);
     utils.printToDom('single-view', domString);
   });
-  $('body').on('click', '#new-reservation-button', makeNewReservation);
 };
 
 const openExistingReservationEditModal = (e) => {
@@ -68,13 +67,15 @@ const openExistingReservationEditModal = (e) => {
       domString += editReservationForm.showEditReservationForm(selectedReservation);
       utils.printToDom('edit-single-view', domString);
     });
-  $('body').on('click', '#edit-reservation-button', editExistingReservation);
 };
 
 const reservationSectionEvents = () => {
   $('body').on('click', '.edit-reservation-button', openExistingReservationEditModal);
   $('body').on('click', '.delete-reservation-button', deleteReservationEvent);
+  // $('.delete-reservation-button').click(deleteReservationEvent);
   $('body').on('click', '.individual-time-slot', openNewReservationModal);
+  $('body').on('click', '#new-reservation-button', makeNewReservation);
+  $('body').on('click', '#edit-reservation-button', editExistingReservation);
 };
 
 const buildReservationsSection = () => {
