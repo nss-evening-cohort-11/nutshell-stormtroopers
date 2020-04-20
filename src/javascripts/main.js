@@ -30,7 +30,6 @@ const init = () => {
   navbarClickEvents();
   authData.checkLoginStatus();
   authData.logoutEvent();
-  reservations.reservationSectionEvents();
 };
 
 init();

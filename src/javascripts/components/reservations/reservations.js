@@ -76,6 +76,14 @@ const openExistingReservationEditModal = (e) => {
     });
 };
 
+const removeReservationSectionEvents = () => {
+  $('body').off('click', '.edit-reservation-button', openExistingReservationEditModal);
+  $('body').off('click', '.delete-reservation-button', deleteReservationEvent);
+  $('body').off('click', '.individual-time-slot', openNewReservationModal);
+  $('body').off('click', '#new-reservation-button', makeNewReservation);
+  $('body').off('click', '#edit-reservation-button', editExistingReservation);
+};
+
 const reservationSectionEvents = () => {
   $('body').on('click', '.edit-reservation-button', openExistingReservationEditModal);
   $('body').on('click', '.delete-reservation-button', deleteReservationEvent);
@@ -114,4 +122,9 @@ const buildReservationsSection = () => {
     .catch((err) => console.error('could not get tables', err));
 };
 
-export default { buildReservationsSection, makeNewReservation, reservationSectionEvents };
+export default {
+  buildReservationsSection,
+  makeNewReservation,
+  reservationSectionEvents,
+  removeReservationSectionEvents,
+};
