@@ -62,19 +62,16 @@ const openNewReservationModal = (e) => {
     domString += newReservationForm.makeNewReservationForm(selectedTable, timeSlotId);
     utils.printToDom('single-view', domString);
   });
-  $('body').on('click', '#new-reservation-button', makeNewReservation);
+  $('body').on('click', '.new-reservation-button', makeNewReservation);
 };
 
 const openExistingReservationEditModal = (e) => {
   $('#edit-reservation-modal').modal('show');
   $('#close-edit-resevation-modal').click(() => { $('#edit-reservation-modal').modal('hide'); });
   const reservationId = e.target.id;
-  // const tableId = e.target.closest('.card').id;
-  // const timeSlotId = e.target.closest('.list-group-item').id;
   reservationData.getReservations()
     .then((reservations) => {
       const selectedReservation = reservations.find((currentReservation) => reservationId === currentReservation.id);
-      console.log(selectedReservation);
       let domString = '';
       domString += editReservationForm.showEditReservationForm(selectedReservation);
       utils.printToDom('edit-single-view', domString);
@@ -84,6 +81,13 @@ const openExistingReservationEditModal = (e) => {
 
 const buildReservationsSection = () => {
   let domString = '<h2>Reservations</h2>';
+  $(document).ready(() => {
+    $('#home-page').addClass('hide');
+    $('#staff-section-container').addClass('hide');
+    $('#reservations-section').removeClass('hide');
+    $('#menu-section').addClass('hide');
+    $('#ingredients-section').addClass('hide');
+  });
   smashData.getTablesWithReservations()
     .then((tables) => {
       domString += '<div class="d-flex flex-wrap justify-content-center id="table-container">';
@@ -103,11 +107,6 @@ const buildReservationsSection = () => {
       $('.edit-reservation-button').click(openExistingReservationEditModal);
       $('.delete-reservation-button').click(deleteReservationEvent);
       $('.individual-time-slot').click(openNewReservationModal);
-      $('#home-page').addClass('hide');
-      $('#staff-section').addClass('hide');
-      $('#reservations-section').removeClass('hide');
-      $('#menu-section').addClass('hide');
-      $('#ingredients-section').addClass('hide');
     });
 // .catch((err) => console.error('could not get tables', err));
 };

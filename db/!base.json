@@ -1,5 +1,6 @@
 {
     "staff" : "staff",
+    "jobs" : "jobs",
     "reservations" : "reservations",
     "menuItems" : "menuItems",
     "recipes" : "recipes",

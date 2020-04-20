@@ -12,16 +12,21 @@ import ingredients from './components/ingredients/ingredients';
 import authData from './helpers/data/authData';
 
 const navbarClickEvents = () => {
-  $('#brand-logo').click(home.showHomePage);
-  $('#staff-button').click(staff.buildStaffSection);
-  $('#reservations-button').click(reservations.buildReservationsSection);
-  $('#menu-button').click(menu.buildMenuSection);
-  $('#ingredients-button').click(ingredients.buildIngredientsSection);
+  $(document).ready(() => {
+    $('#brand-logo').click(home.showHomePage);
+    $('#staff-button').click(staff.staffInit);
+    $('#reservations-button').click(reservations.buildReservationsSection);
+    $('#menu-button').click(menu.buildMenuSection);
+    $('#ingredients-button').click(ingredients.buildIngredientsSection);
+  });
 };
 
 const init = () => {
+  $(document).ready(() => {
+    $('#login-button').click(auth.signMeIn);
+    $('.nav-item').button('toggle');
+  });
   firebase.initializeApp(apiKeys.firebaseKeys);
-  $('#login-button').click(auth.signMeIn);
   navbarClickEvents();
   authData.checkLoginStatus();
   authData.logoutEvent();
