@@ -1,6 +1,6 @@
 const makeNewReservationForm = (selectedTable, timeSlotId) => {
   let domString = '';
-  domString += `<h2>${selectedTable.tableNumber}`;
+  domString += `<h2>${selectedTable.tableNumber}</h2>`;
   domString += '<form>';
   domString += '<div class="form-group">';
   domString += '<label for="Number of Guests">Number of Guests</label>';

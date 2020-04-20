@@ -1,8 +1,6 @@
 import tableData from './tableData';
 import timeSlotData from './timeSlotData';
 import reservationData from './reservationData';
-// import reservations from '../../components/reservations/reservations';
-// import reservations from '../../components/reservations/reservations';
 
 const getTablesWithReservations = () => new Promise((resolve, reject) => {
   tableData.getTables().then((tables) => {

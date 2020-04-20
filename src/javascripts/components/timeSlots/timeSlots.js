@@ -9,6 +9,7 @@ const buildTimeSlots = (timeSlots) => {
         domString += `<p>Party Name: ${reservation.partyName}</p>`;
         domString += `<p>Number of Guests: ${reservation.numOfGuests}</p>`;
         domString += `<button class="btn btn-danger delete-reservation-button" id="${reservation.id}"><i class="fas fa-trash"></i></button>`;
+        domString += `<button class="btn btn-danger edit-reservation-button" id="${reservation.id}"><i class="fas fa-user-edit"></i></button>`;
         domString += '</li>';
       });
     } else {
