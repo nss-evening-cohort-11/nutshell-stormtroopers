@@ -119,7 +119,7 @@ const buildIngredientsSection = () => {
       domString += '<h2 class="ing-header">Ingredients</h2>';
       domString += '</div>';
       domString += '<div class="d-flex justify-content-center">';
-      domString += '<button id="add-ingredient" class="btn btn-dark btn-font" data-toggle="modal" data-target="#addIngredientModal">Add Ingredient</button>';
+      domString += '<button id="add-ingredient" class="btn btn-dark btn-font hide" data-toggle="modal" data-target="#addIngredientModal">Add Ingredient</button>';
       domString += '</div>';
       domString += '<div class="d-flex flex-wrap p-3 justify-content-around">';
       ingredients.forEach((ingredient) => {
@@ -129,8 +129,8 @@ const buildIngredientsSection = () => {
         domString += '<div class="d-flex justify-content-between">';
         domString += `<h3 class="card-title m-2">${Name}</h3>`;
         domString += '<div class="row m-1">';
-        domString += '<button class="btn btn-dark edit-ingredient col-5 m-1" data-toggle="modal" data-target="#addIngredientModal"><i class="fas fa-pencil-alt"></i></button>';
-        domString += '<button class="btn btn-danger delete-ingredient col-5 m-1"><i class="fas fa-trash"></i></button>';
+        domString += '<button class="btn btn-dark edit-ingredient hide col-5 m-1" data-toggle="modal" data-target="#addIngredientModal"><i class="fas fa-pencil-alt"></i></button>';
+        domString += '<button class="btn btn-danger delete-ingredient hide col-5 m-1"><i class="fas fa-trash"></i></button>';
         domString += '</div>';
         domString += '</div>';
         domString += '</div>';
