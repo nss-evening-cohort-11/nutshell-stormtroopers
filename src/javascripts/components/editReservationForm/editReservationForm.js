@@ -2,6 +2,7 @@
 // import smashData from '../../helpers/data/smashData';
 
 const showEditReservationForm = (selectedReservation) => {
+  console.log(selectedReservation);
   let domString = '';
   domString += '<form class="new-reservation-form">';
   domString += '<div class="form-group">';

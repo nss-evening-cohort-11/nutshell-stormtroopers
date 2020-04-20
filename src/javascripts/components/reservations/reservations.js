@@ -7,7 +7,7 @@ import reservationData from '../../helpers/data/reservationData';
 import editReservationForm from '../editReservationForm/editReservationForm';
 
 const deleteReservationEvent = (e) => {
-  const reservationId = e.target.id;
+  const reservationId = e.target.closest('.delete-reservation-button').id;
   reservationData.deleteReservation(reservationId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
@@ -72,7 +72,6 @@ const openExistingReservationEditModal = (e) => {
 const reservationSectionEvents = () => {
   $('body').on('click', '.edit-reservation-button', openExistingReservationEditModal);
   $('body').on('click', '.delete-reservation-button', deleteReservationEvent);
-  // $('.delete-reservation-button').click(deleteReservationEvent);
   $('body').on('click', '.individual-time-slot', openNewReservationModal);
   $('body').on('click', '#new-reservation-button', makeNewReservation);
   $('body').on('click', '#edit-reservation-button', editExistingReservation);
