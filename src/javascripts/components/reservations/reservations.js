@@ -6,6 +6,7 @@ import newReservationForm from '../newReservationForm/newReservationForm';
 import reservationData from '../../helpers/data/reservationData';
 import editReservationForm from '../editReservationForm/editReservationForm';
 
+// deleting reservation
 const deleteReservationEvent = (e) => {
   const reservationId = e.target.closest('.delete-reservation-button').id;
   reservationData.deleteReservation(reservationId)
@@ -16,6 +17,7 @@ const deleteReservationEvent = (e) => {
     .catch((err) => console.error('could not delete reservation', err));
 };
 
+// editing reservation
 const editExistingReservation = (e) => {
   e.preventDefault();
   const editedReservationId = e.target.dataset.reservationId;
@@ -28,6 +30,7 @@ const editExistingReservation = (e) => {
   });
 };
 
+// making new reservation
 const makeNewReservation = (e) => {
   e.preventDefault();
   const newReservation = {

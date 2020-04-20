@@ -3,7 +3,7 @@ const showEditReservationForm = (selectedReservation) => {
   domString += '<form class="new-reservation-form">';
   domString += '<div class="form-group">';
   domString += '<label for="Current Number of Guests">Current Number of Guests</label>';
-  domString += `<input type="number" class="form-control" id="edit-number-of-guests" value="${selectedReservation.numOfGuests}">`;
+  domString += `<input type="number" min="0" class="form-control" id="edit-number-of-guests" value="${selectedReservation.numOfGuests}">`;
   domString += '</div>';
   domString += '<div class="form-group">';
   domString += '<label for="Party Name">Party Name</label>';
