@@ -3,12 +3,11 @@ import 'bootstrap';
 import firebase from 'firebase/app';
 import apiKeys from './helpers/apiKeys.json';
 import auth from './components/auth/auth';
-
 import home from './components/home/home';
 import staff from './components/staff/staff';
 import reservations from './components/reservations/reservations';
-import menu from './components/menu/menu';
 import ingredients from './components/ingredients/ingredients';
+import menu from './components/menu/menu';
 import authData from './helpers/data/authData';
 
 const navbarClickEvents = () => {

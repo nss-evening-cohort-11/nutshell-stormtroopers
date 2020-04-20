@@ -86,11 +86,51 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="staff-section"></div>
+    <div id="reservations-section"></div>
+    <div id="menu-section" class="hide"></div>
+            <!-- ADD MENU ITEM MODAL -->
+            <div class="modal fade" id="add-menu-item-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div id="add-menu-item-modal-header" class="modal-content border-dark">
+                        <div id="header-section" class="modal-header">
+                            <h2 id="modal-header">Add New Menu Item</h2>
+                            <button id="close-menu-modal" class="btn btn-outline-dark"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div id="add-menu-item-modal-body" class="modal-body"></div>
+                    </div>
+                </div>
+            </div>
+    <div id="ingredients-section"></div>
+</div>
 
-        <div id="reservations-section"></div>
-        <div id="menu-section"></div>
-        <div id="ingredients-section"></div>
-    </main>
+<div class="reservation-modals">       <!--New Reservation Modal -->
+    <div class="modal fade" id="reservation-modal" tabindex="-1" role="dialog" aria-labelledby="reservationView" aria-hidden="true">
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Make a Reservation</h2>
+          <button id="close-resevation-modal" class="btn btn-outline-dark"><i class="far fa-times-circle"></i></button>
+        </div>
+        <div id="single-view" class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+             <!--Edit Reservation Modal -->
+  <div class="modal fade" id="edit-reservation-modal" tabindex="-1" role="dialog" aria-labelledby="reservationView" aria-hidden="true">
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Current Reservation</h2>
+          <button id="close-edit-resevation-modal" class="btn btn-outline-dark"><i class="far fa-times-circle"></i></button>
+        </div>
+        <div id="edit-single-view" class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
 
     <footer id="footer" class="page-footer">
         <div class="p-2">

@@ -1,0 +1,53 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+h2 {
+  font-size: 40pt;
+}
+
+.hide {
+  display: none;
+}
+
+#inner-menu-container {
+  margin: 50px;
+}
+
+.menu-item-card {
+  margin-bottom: 30px;
+  font-family: "Open Sans";
+  font-size: 10pt;
+  text-align: center;
+  border-radius: 0;
+  height: 580px;
+  h5 {
+    font-family: "Allura";
+    font-size: 20pt;
+  }
+  &:hover {
+    background-color: lightgray;
+    opacity: 90%;
+  }
+  button {
+    font-size: 10pt;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.menu-item-img {
+  width: 250px;
+}
+
+.img-holder {
+  height: 300px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+}
+
+.desc-holder {
+  height: 50px;
+  margin-top: 10px;
+}
