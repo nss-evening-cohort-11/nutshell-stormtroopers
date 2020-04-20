@@ -13,6 +13,47 @@ body {
     width: 40px;
 }
 
+.new-reservation-modal {
+    display: flex;
+    justify-content: center;
+    h2 {
+        font-family: 'Allura', cursive;
+        text-align: center;
+    }
+}
+
+.individual-table {
+    margin: 15px;
+    h3 {
+        font-family: 'Allura', cursive;
+        font-weight: bolder;
+    }
+
+}
+
+.modal-title {
+    text-align: center;
+    font-family: 'Allura', cursive;
+
+}
+
+.new-reservation-form {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+        background: white;
+        color: darkgrey;
+        border: darkgrey;
+    }
+    button:hover {
+        background-color: lightgrey;
+        color: white;
+        text-decoration: underline;
+    }
+}
+
 #staff-modal-content {
     border: 2px solid black;
     #header-section {
@@ -48,6 +89,13 @@ body {
 .reserved-timeslot {
     color: red;
 }
+
+.reservations-title {
+    font-weight: bolder;
+    font-size: 100px;
+    text-align: center;
+    font-family: 'Allura', cursive;
+    }
 
 .full-page {
     padding-bottom: 11rem;

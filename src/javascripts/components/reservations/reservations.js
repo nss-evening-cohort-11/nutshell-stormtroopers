@@ -1,13 +1,10 @@
 import utils from '../../helpers/utils';
 import tableData from '../../helpers/data/tableData';
-// import timeSlotData from '../../helpers/data/timeSlotData';
 import timeSlotsComponent from '../timeSlots/timeSlots';
-// import timeSlotData from '../../helpers/data/timeSlotData';
 import smashData from '../../helpers/data/smashData';
 import newReservationForm from '../newReservationForm/newReservationForm';
 import reservationData from '../../helpers/data/reservationData';
 import editReservationForm from '../editReservationForm/editReservationForm';
-// import timeSlots from '../timeSlots/timeSlots';
 
 const deleteReservationEvent = (e) => {
   const reservationId = e.target.id;
@@ -75,7 +72,7 @@ const openExistingReservationEditModal = (e) => {
 };
 
 const buildReservationsSection = () => {
-  let domString = '<h2>Reservations</h2>';
+  let domString = '<strong><h1 class="reservations-title">Reservations</h1></strong>';
   $(document).ready(() => {
     $('#home-page').addClass('hide');
     $('#staff-section-container').addClass('hide');
@@ -85,11 +82,11 @@ const buildReservationsSection = () => {
   });
   smashData.getTablesWithReservations()
     .then((tables) => {
-      domString += '<div class="d-flex flex-wrap justify-content-center id="table-container">';
+      domString += '<div class="d-flex flex-wrap justify-content-around id="table-container">';
       tables.forEach((table) => {
-        domString += `<div class="card col-3" id="${table.id}">`;
-        domString += '<div class="card-header">';
-        domString += `${table.tableNumber}`;
+        domString += `<div class="card col-3 d-flex individual-table" id="${table.id}">`;
+        domString += '<div class="card-header text-center">';
+        domString += `<h3>${table.tableNumber}</h3>`;
         domString += '</div>';
         domString += `Available Seats: ${table.numOfSeats}`;
         domString += '<ul class="list-group list-group-flush">';
@@ -102,8 +99,8 @@ const buildReservationsSection = () => {
       $('body').on('click', '.edit-reservation-button', openExistingReservationEditModal);
       $('body').on('click', '.delete-reservation-button', deleteReservationEvent);
       $('body').on('click', '.individual-time-slot', openNewReservationModal);
-    });
-// .catch((err) => console.error('could not get tables', err));
+    })
+    .catch((err) => console.error('could not get tables', err));
 };
 
 export default { buildReservationsSection, makeNewReservation };
