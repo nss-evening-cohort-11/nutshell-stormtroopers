@@ -71,6 +71,12 @@ const openExistingReservationEditModal = (e) => {
   $('body').on('click', '#edit-reservation-button', editExistingReservation);
 };
 
+const reservationSectionEvents = () => {
+  $('body').on('click', '.edit-reservation-button', openExistingReservationEditModal);
+  $('body').on('click', '.delete-reservation-button', deleteReservationEvent);
+  $('body').on('click', '.individual-time-slot', openNewReservationModal);
+};
+
 const buildReservationsSection = () => {
   let domString = '<strong><h1 class="reservations-title">Reservations</h1></strong>';
   $(document).ready(() => {
@@ -96,11 +102,8 @@ const buildReservationsSection = () => {
       });
       domString += '</div>';
       utils.printToDom('reservations-section', domString);
-      $('body').on('click', '.edit-reservation-button', openExistingReservationEditModal);
-      $('body').on('click', '.delete-reservation-button', deleteReservationEvent);
-      $('body').on('click', '.individual-time-slot', openNewReservationModal);
     })
     .catch((err) => console.error('could not get tables', err));
 };
 
-export default { buildReservationsSection, makeNewReservation };
+export default { buildReservationsSection, makeNewReservation, reservationSectionEvents };

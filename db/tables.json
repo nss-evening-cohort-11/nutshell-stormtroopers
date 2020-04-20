@@ -9,6 +9,11 @@
 		"numOfSeats": 8,
 		"uid": "tAbLe2uiD"
 	},
+	"table12": {
+		"tableNumber": "Table 12",
+		"numOfSeats": 8,
+		"uid": "tAbLe52uiD"
+	},
 	"table13": {
 		"tableNumber": "Table 13",
 		"numOfSeats": 2,

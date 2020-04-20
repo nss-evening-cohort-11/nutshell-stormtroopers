@@ -14,7 +14,7 @@ const buildTimeSlots = (timeSlots) => {
     } else {
       // time not reserved
       domString += `<li class="list-group-item individual-time-slot text-center" id="${timeSlot.id}">`;
-      domString += `<p class="individual-time-slot"><strong>(Open Time)</strong> ${timeSlot.time}</p>`;
+      domString += `<p class="individual-time-slot"><strong>(Open Time)</strong>     ${timeSlot.time}</p>`;
       domString += '</li>';
     }
   });
