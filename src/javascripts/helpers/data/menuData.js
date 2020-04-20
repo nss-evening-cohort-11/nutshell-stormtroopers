@@ -210,6 +210,7 @@ const showFilteredMenuCards = () => {
                 filteredItemsArray.push(item);
               }
             });
+            domString = '';
             filteredItemsArray.forEach((item) => {
               domString += '<div class="col-4">';
               domString += '<div id="whole-card-container">';
