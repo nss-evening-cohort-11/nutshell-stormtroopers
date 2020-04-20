@@ -86,11 +86,15 @@ const buildMenuSection = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       $(document).ready(() => {
+        $('#navbar-logout-button').removeClass('hide');
+        $('#login-button').addClass('hide');
         $('#add-item').removeClass('disabled');
         $('body').on('click', '#add-item', menuForm.menuModalBuilder);
       });
     } else {
       $(document).ready(() => {
+        $('#navbar-logout-button').addClass('hide');
+        $('#login-button').removeClass('hide');
         $('#add-item').addClass('disabled');
       });
     }
