@@ -22,12 +22,8 @@ const buildMenuCards = () => {
   getAllMenuItems()
     .then((menuArray) => {
       let domString = '';
-      domString += '<h2 class="text-center" style="font-family: Allura">Menu</h2>';
-      domString += '      <div class="text-center"><button type="button" class="btn btn-secondary col-3" id="view-all">View All</button>';
-      domString += '      <button type="button" class="btn btn-secondary col-3" id="view-filter">Filter by Ingredient</button></div>';
-      domString += '<div class="row wrap text-center" id="inner-menu-container">';
       menuArray.forEach((item) => {
-        domString += '<div class="col-3">';
+        domString += '<div class="col-4">';
         domString += '<div id="whole-card-container">';
         domString += `  <div class="card menu-item-card" id="${item.id}">`;
         domString += `    <h5 class="card-header">${item.name}</h5>`;
@@ -42,7 +38,7 @@ const buildMenuCards = () => {
         domString += '</div>';
       });
       domString += '</div>';
-      utils.printToDom('menu-section', domString);
+      utils.printToDom('inner-menu-container', domString);
     })
     .catch((err) => console.error('problem with menuBuilder', err));
 };
@@ -165,13 +161,100 @@ const showAvailableIngreds = (e) => {
       allIngreds.forEach((item) => {
         domString += '<div class="row">';
         domString += `<input class="form-check-input add-ingred-checks" type="checkbox" value="${item.id}" id="${item.id}">`;
-        domString += `<label class="form-check-label" for="defaultCheck1">${item.name}</label>`;
+        domString += `<label class="form-check-label" for="itemName">${item.name}</label>`;
         domString += '</div>';
       });
       domString += `<br><button type="button" class="btn btn-secondary col-10 save-recipe" id="${menuItemId}"><i class="far fa-check-circle"></i> Save</button>`;
       domString += '</div>';
       utils.printToDom('inner-menu-container', domString);
       $('.save-recipe').on('click', addSelectedIngreds);
+    });
+};
+
+const getAllRecipes = () => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/recipes.json`)
+    .then((response) => {
+      const thoseRecipes = response.data;
+      const recipesArray = [];
+      Object.keys(thoseRecipes).forEach((recipeId) => {
+        thoseRecipes[recipeId].id = recipeId;
+        recipesArray.push(thoseRecipes[recipeId]);
+      });
+      resolve(recipesArray);
+    })
+    .catch((err) => reject(err));
+});
+
+const getMenuItemsByIngredient = (ingredId) => {
+  let filteredItems = [];
+  getAllRecipes()
+    .then((allRecipes) => {
+      filteredItems = allRecipes.filter((recipe) => recipe.ingredientId === ingredId);
+    });
+  // resolve(filteredItems);
+  console.error('filtered items:', filteredItems);
+  // .catch((err) => reject(err));
+};
+
+const showFilteredMenuCards = () => {
+  const checkedRadio = utils.getRadioVal();
+  getMenuItemsByIngredient(checkedRadio);
+  console.error('filter on:', checkedRadio);
+
+  // const getIngredientsByMenuItem = (menuItem) => new Promise((resolve, reject) => {
+  //   getMenuItemRecipes(menuItem)
+  //     .then((menuItemRecipes) => {
+  //       const ingredients = [];
+  //       getIngredients()
+  //         .then((allIngredients) => {
+  //           menuItemRecipes.forEach((mIR) => {
+  //             const addIngred = allIngredients.find((x) => x.id === mIR.ingredientId);
+  //             ingredients.push(addIngred);
+  //           });
+  //           resolve(ingredients);
+  //         });
+  //     })
+  //     .catch((err) => reject(err));
+  // });
+
+  // .then((menuArray) => {
+  //   let domString = '';
+  //   menuArray.forEach((item) => {
+  //     domString += '<div class="col-4">';
+  //     domString += '<div id="whole-card-container">';
+  //     domString += `  <div class="card menu-item-card" id="${item.id}">`;
+  //     domString += `    <h5 class="card-header">${item.name}</h5>`;
+  //     domString += `    <div class="card-body" id="card-body-${item.id}">`;
+  //     domString += `      <div class="img-holder"><img src="${item.imageUrl}" style="width: 100%"></div>`;
+  //     domString += `      <div class="desc-holder" id="desc-${item.id}"><p class="card-text">${item.description}<br>`;
+  //     domString += `      ${item.price}</p>`;
+  //     domString += `      <button type="button" class="btn btn-light col-10 offset-1 view-ingred" id="${item.id}"><i class="far fa-list-alt"></i> Ingredients/Info</button></div>`;
+  //     domString += '    </div>';
+  //     domString += '  </div>';
+  //     domString += '</div>';
+  //     domString += '</div>';
+  //   });
+  //   domString += '</div>';
+  //   utils.printToDom('inner-menu-container', domString);
+  // })
+  // .catch((err) => console.error('problem with menuBuilder', err));
+};
+
+const buildFilterList = () => {
+  getIngredients()
+    .then((allIngreds) => {
+      let domString = '';
+      domString += '<div class="form-check">';
+      allIngreds.forEach((item) => {
+        domString += '<div class="row">';
+        domString += `<input class="form-check-input filter-ingred-radios" type="radio" value="${item.id}" id="${item.id}">`;
+        domString += `<label class="form-check-label" for="itemName">${item.name}</label>`;
+        domString += '</div>';
+      });
+      domString += '<br><button type="button" class="btn btn-secondary col-4" id="apply-filter"><i class="far fa-check-circle"></i> Apply Filter</button>';
+      domString += '</div>';
+      utils.printToDom('inner-menu-container', domString);
+      $('#apply-filter').on('click', showFilteredMenuCards);
     });
 };
 
@@ -227,6 +310,7 @@ const showItemEditor = (menuItem) => {
 export default {
   getAllMenuItems,
   buildMenuCards,
+  buildFilterList,
   getMenuItemRecipes,
   getIngredientsByMenuItem,
   getSingleMenuItem,

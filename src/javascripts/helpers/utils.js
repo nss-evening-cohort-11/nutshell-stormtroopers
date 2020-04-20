@@ -12,4 +12,14 @@ const getCheckboxVal = () => {
   return checkedItems;
 };
 
-export default { printToDom, getCheckboxVal };
+const getRadioVal = () => {
+  let val;
+  Array.from($('.filter-ingred-radios')).forEach((item) => {
+    if (item.checked) {
+      val = item.id;
+    }
+  });
+  return val;
+};
+
+export default { printToDom, getCheckboxVal, getRadioVal };

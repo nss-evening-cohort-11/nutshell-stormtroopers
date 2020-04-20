@@ -52,14 +52,24 @@ const menuBuilder = () => {
   $('body').on('click', '.view-ingred', openIngredientView);
 };
 
+const buildFilterList = () => {
+  menuData.buildFilterList();
+};
+
 const buildMenuSection = () => {
-  const domString = '<h2>Menu</h2>';
+  let domString = '';
+  domString += '<h2 class="text-center" style="font-family: Allura">Menu</h2>';
+  domString += '  <div class="text-center"><button type="button" class="btn btn-secondary col-3" id="view-all">View All</button>';
+  domString += '  <button type="button" class="btn btn-secondary col-3" id="view-filter">Filter by Ingredient</button></div>';
+  domString += '<div class="row wrap text-center" id="inner-menu-container"></div>';
   utils.printToDom('menu-section', domString);
   $('#home-page').addClass('hide');
   $('#staff-section').addClass('hide');
   $('#reservations-section').addClass('hide');
   $('#menu-section').removeClass('hide');
   $('#ingredients-section').addClass('hide');
+  $('body').on('click', '#view-all', menuBuilder);
+  $('body').on('click', '#view-filter', buildFilterList);
   menuBuilder();
 };
 
