@@ -1,6 +1,7 @@
 import ingredientsData from '../../helpers/data/ingredientsData';
 import editIngredientComponent from '../editIngredient/editIngredient';
 import utils from '../../helpers/utils';
+import './ingredients.scss';
 
 const modifyIngredient = (e) => {
   e.preventDefault();
@@ -115,10 +116,10 @@ const buildIngredientsSection = () => {
     .then((response) => {
       const ingredients = response;
       let domString = '<div class="d-flex justify-content-center">';
-      domString += '<h2>Ingredients</h2>';
+      domString += '<h2 class="ing-header">Ingredients</h2>';
       domString += '</div>';
       domString += '<div class="d-flex justify-content-center">';
-      domString += '<button id="add-ingredient" class="btn btn-dark" data-toggle="modal" data-target="#addIngredientModal">Add Ingredient</button>';
+      domString += '<button id="add-ingredient" class="btn btn-dark btn-font" data-toggle="modal" data-target="#addIngredientModal">Add Ingredient</button>';
       domString += '</div>';
       domString += '<div class="d-flex flex-wrap p-3 justify-content-around">';
       ingredients.forEach((ingredient) => {
@@ -138,7 +139,7 @@ const buildIngredientsSection = () => {
         domString += `<img src="${ingredient.imageUrl}" class="card-img" alt="...">`;
         domString += '</div>';
         domString += '<div class="col-md-4">';
-        domString += '<div class="card-body">';
+        domString += '<div class="card-body ingredient-card-body">';
         domString += `<p class="card-text">Cost: ${ingredient.cost}</p>`;
         domString += `<p class="card-text">Type: ${ingredient.type}</p>`;
         domString += `<p class="card-text">Size: ${ingredient.size}</p>`;
@@ -146,7 +147,7 @@ const buildIngredientsSection = () => {
         domString += '</div>';
         domString += '</div>';
         domString += '<div class="col-md-4">';
-        domString += '<div class="d-flex card-body align-content-center">';
+        domString += '<div class="d-flex card-body align-content-center ingredient-card-body">';
         domString += `<p class="card-text">Quantity: ${ingredient.quantity}</p>`;
         domString += '</div>';
         domString += '</div>';
@@ -164,4 +165,22 @@ const buildIngredientsSection = () => {
   $('#ingredients-section').removeClass('hide');
 };
 
-export default { buildIngredientsSection, ingredientEvents, modalEvents };
+const loggedOutIngredients = () => {
+  $('#add-ingredient').addClass('hide');
+  $('.delete-ingredient').addClass('hide');
+  $('.edit-ingredient').addClass('hide');
+};
+
+const loggedInIngredients = () => {
+  $('#add-ingredient').removeClass('hide');
+  $('.delete-ingredient').removeClass('hide');
+  $('.edit-ingredient').removeClass('hide');
+};
+
+export default {
+  loggedInIngredients,
+  loggedOutIngredients,
+  buildIngredientsSection,
+  ingredientEvents,
+  modalEvents,
+};

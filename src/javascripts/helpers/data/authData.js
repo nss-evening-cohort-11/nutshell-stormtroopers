@@ -12,6 +12,7 @@ const checkLoginStatus = () => {
       // person logged in
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
+      ingredients.loggedInIngredients();
       ingredients.ingredientEvents();
       ingredients.modalEvents();
       staff.staffSectionEvents();
@@ -19,6 +20,7 @@ const checkLoginStatus = () => {
       // person not logged in
       logoutButton.addClass('hide');
       loginButton.removeClass('hide');
+      ingredients.loggedOutIngredients();
       staff.removeStaffSectionEvents();
     }
   });
