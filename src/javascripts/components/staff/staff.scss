@@ -22,3 +22,15 @@
 .staff-button {
     margin: 30px;
 }
+
+.staff-image {
+    width: 450px;
+}
+  
+.img-container {
+    height: 300px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+}
