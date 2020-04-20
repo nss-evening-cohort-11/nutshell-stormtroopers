@@ -10,7 +10,6 @@ import editReservationForm from '../editReservationForm/editReservationForm';
 // import timeSlots from '../timeSlots/timeSlots';
 
 const deleteReservationEvent = (e) => {
-  console.log(e.target.id);
   const reservationId = e.target.id;
   reservationData.deleteReservation(reservationId)
     .then(() => {
@@ -23,13 +22,9 @@ const deleteReservationEvent = (e) => {
 const editExistingReservation = (e) => {
   e.preventDefault();
   const editedReservationId = e.target.dataset.reservationId;
-  const editedReservation = {
-    timeSlotId: e.target.dataset.timeSlotId,
-    tableId: e.target.dataset.tableId,
-    numOfGuests: $('#edit-number-of-guests').val() * 1,
-    partyName: $('#edit-party-name').val(),
-  };
-  reservationData.editReservation(editedReservationId, editedReservation).then(() => {
+  const newNumOfGuests = $('#edit-number-of-guests').val() * 1;
+  const newPartyName = $('#edit-party-name').val();
+  reservationData.editReservation(editedReservationId, newNumOfGuests, newPartyName).then(() => {
     $('#edit-reservation-modal').modal('hide');
     // eslint-disable-next-line no-use-before-define
     buildReservationsSection();
@@ -62,7 +57,7 @@ const openNewReservationModal = (e) => {
     domString += newReservationForm.makeNewReservationForm(selectedTable, timeSlotId);
     utils.printToDom('single-view', domString);
   });
-  $('body').on('click', '.new-reservation-button', makeNewReservation);
+  $('body').on('click', '#new-reservation-button', makeNewReservation);
 };
 
 const openExistingReservationEditModal = (e) => {
@@ -104,9 +99,9 @@ const buildReservationsSection = () => {
       });
       domString += '</div>';
       utils.printToDom('reservations-section', domString);
-      $('.edit-reservation-button').click(openExistingReservationEditModal);
-      $('.delete-reservation-button').click(deleteReservationEvent);
-      $('.individual-time-slot').click(openNewReservationModal);
+      $('body').on('click', '.edit-reservation-button', openExistingReservationEditModal);
+      $('body').on('click', '.delete-reservation-button', deleteReservationEvent);
+      $('body').on('click', '.individual-time-slot', openNewReservationModal);
     });
 // .catch((err) => console.error('could not get tables', err));
 };

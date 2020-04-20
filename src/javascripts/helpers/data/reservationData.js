@@ -17,7 +17,7 @@ const getReservations = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-const editReservation = (editedReservationId, editedReservation) => axios.put(`${baseUrl}/reservations/${editedReservationId}`, editedReservation);
+const editReservation = (editedReservationId, newNumOfGuests, newPartyName) => axios.patch(`${baseUrl}/reservations/${editedReservationId}.json`, { numOfGuests: newNumOfGuests, partyName: newPartyName });
 
 const deleteReservation = (axedReservationId) => axios.delete(`${baseUrl}/reservations/${axedReservationId}.json`);
 

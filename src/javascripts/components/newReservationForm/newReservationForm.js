@@ -10,7 +10,7 @@ const makeNewReservationForm = (selectedTable, timeSlotId) => {
   domString += '<label for="Party Name">Party Name</label>';
   domString += '<input type="text" class="form-control" id="new-party-name" placeholder="Party Name">';
   domString += '</div>';
-  domString += `<button type="submit" id="new-reservation-button" data-table-id="${selectedTable.id}" data-time-slot-id="${timeSlotId}" class="btn btn-primary">Create New Reservation</button>`;
+  domString += `<button type="button" id="new-reservation-button" data-table-id="${selectedTable.id}" data-time-slot-id="${timeSlotId}" class="btn btn-primary">Create New Reservation</button>`;
   domString += '</form>';
   return domString;
 };
