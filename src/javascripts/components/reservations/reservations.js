@@ -43,6 +43,7 @@ const makeNewReservation = (e) => {
   });
 };
 
+// make new reservation modal
 const openNewReservationModal = (e) => {
   $('#reservation-modal').modal('show');
   $('#close-resevation-modal').click(() => { $('#reservation-modal').modal('hide'); });
@@ -51,11 +52,13 @@ const openNewReservationModal = (e) => {
   tableData.getTables().then((tables) => {
     const selectedTable = tables.find((currentTable) => tableId === currentTable.id);
     let domString = '';
+    // new reservation modal form
     domString += newReservationForm.makeNewReservationForm(selectedTable, timeSlotId);
     utils.printToDom('single-view', domString);
   });
 };
 
+// edit existing reservation
 const openExistingReservationEditModal = (e) => {
   $('#edit-reservation-modal').modal('show');
   $('#close-edit-resevation-modal').click(() => { $('#edit-reservation-modal').modal('hide'); });
@@ -64,6 +67,7 @@ const openExistingReservationEditModal = (e) => {
     .then((reservations) => {
       const selectedReservation = reservations.find((currentReservation) => reservationId === currentReservation.id);
       let domString = '';
+      // form for edit modal
       domString += editReservationForm.showEditReservationForm(selectedReservation);
       utils.printToDom('edit-single-view', domString);
     });
@@ -86,6 +90,7 @@ const buildReservationsSection = () => {
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
   });
+  // table builder
   smashData.getTablesWithReservations()
     .then((tables) => {
       domString += '<div class="d-flex flex-wrap justify-content-around id="table-container">';
