@@ -143,12 +143,10 @@ const staffInit = () => {
 const jobFilterEvent = (e) => {
   const buttonId = e.target.id;
   if (buttonId === 'all-jobs-button') {
-    utils.printToDom('staff-card-container', '');
     staffInit();
   } else {
     staffData.getStaffByJobId(buttonId)
       .then((selectedStaff) => {
-        utils.printToDom('staff-card-container', '');
         buildStaffSection(selectedStaff);
       })
       .catch((err) => console.error('There is a problem with filtering:', err));
