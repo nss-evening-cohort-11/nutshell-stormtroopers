@@ -12,7 +12,7 @@ import authData from './helpers/data/authData';
 
 const navbarClickEvents = () => {
   $('#brand-logo').click(home.showHomePage);
-  $('#staff-button').click(staff.buildStaffSection);
+  $('#staff-button').click(staff.staffInit);
   $('#reservations-button').click(reservations.buildReservationsSection);
   $('#menu-button').on('click', menuComponent.buildMenuSection);
   $('#ingredients-button').click(ingredients.buildIngredientsSection);
