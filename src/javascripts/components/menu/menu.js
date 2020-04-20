@@ -1,4 +1,6 @@
 import './menu.scss';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import utils from '../../helpers/utils';
 import menuData from '../../helpers/data/menuData';
 import menuForm from './menuAddForm';
@@ -38,9 +40,22 @@ const closeIngredientView = (e) => {
 const openIngredientView = (e) => {
   const selectedCard = e.target.closest('.menu-item-card').id;
   menuData.showIngredientList(selectedCard);
-  $('body').on('click', '.edit-ingred', editMenuItemIngredients);
-  $('body').on('click', '.edit-item', editMenuItemDetails);
   $('body').on('click', '.back-btn', closeIngredientView);
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      $(document).ready(() => {
+        $('.edit-ingred').removeClass('disabled');
+        $('.edit-item').removeClass('disabled');
+        $('body').on('click', '.edit-ingred', editMenuItemIngredients);
+        $('body').on('click', '.edit-item', editMenuItemDetails);
+      });
+    } else {
+      $(document).ready(() => {
+        $('.edit-ingred').addClass('disabled');
+        $('.edit-item').addClass('disabled');
+      });
+    }
+  });
 };
 
 const menuBuilder = () => {
@@ -55,7 +70,7 @@ const buildFilterList = () => {
 const buildMenuSection = () => {
   let domString = '';
   domString += '<h2 class="text-center" style="font-family: Allura">Menu</h2>';
-  domString += '  <div class="text-center"><button type="button" class="btn btn-secondary col-3" id="add-item">Add Item</button>';
+  domString += '  <div class="text-center"><button type="button" class="btn btn-secondary col-3 disabled" id="add-item">Add Item</button>';
   domString += '  <button type="button" class="btn btn-secondary col-3" id="view-all">View All</button>';
   domString += '  <button type="button" class="btn btn-secondary col-3" id="view-filter">Filter by Ingredient</button></div>';
   domString += '<div class="row wrap text-center" id="inner-menu-container"></div>';
@@ -67,8 +82,19 @@ const buildMenuSection = () => {
   $('#ingredients-section').addClass('hide');
   $('body').on('click', '#view-all', menuBuilder);
   $('body').on('click', '#view-filter', buildFilterList);
-  $('body').on('click', '#add-item', menuForm.menuModalBuilder);
   menuBuilder();
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      $(document).ready(() => {
+        $('#add-item').removeClass('disabled');
+        $('body').on('click', '#add-item', menuForm.menuModalBuilder);
+      });
+    } else {
+      $(document).ready(() => {
+        $('#add-item').addClass('disabled');
+      });
+    }
+  });
 };
 
 export default { buildMenuSection, menuBuilder };

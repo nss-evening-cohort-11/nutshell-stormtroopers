@@ -131,8 +131,8 @@ const showIngredientList = (menuItemId) => {
       ingredList.forEach((item) => {
         domString += `<p>${item.name}</p>`;
       });
-      domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred" id="${menuItemId}"><i class="far fa-edit"></i> Ingredients</button>`;
-      domString += `<button type="button" class="btn btn-secondary col-5 edit-item" id="${menuItemId}"><i class="far fa-edit"></i> Details</button>`;
+      domString += `<button type="button" class="btn btn-secondary col-6 edit-ingred disabled" id="${menuItemId}"><i class="far fa-edit"></i> Ingredients</button>`;
+      domString += `<button type="button" class="btn btn-secondary col-5 edit-item disabled" id="${menuItemId}"><i class="far fa-edit"></i> Details</button>`;
       domString += '<button type="button" class="btn btn-secondary col-10 back-btn"><i class="fas fa-reply"></i> Go Back</button>';
       utils.printToDom(`card-body-${menuItemId}`, domString);
     });
