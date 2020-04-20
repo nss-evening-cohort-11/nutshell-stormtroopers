@@ -158,7 +158,7 @@ const buildIngredientsSection = () => {
     })
     .catch((err) => console.error('Could not get ingredients', err));
   $('#home-page').addClass('hide');
-  $('#staff-section').addClass('hide');
+  $('#staff-section-container').addClass('hide');
   $('#reservations-section').addClass('hide');
   $('#menu-section').addClass('hide');
   $('#ingredients-section').removeClass('hide');
