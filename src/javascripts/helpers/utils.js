@@ -1,5 +1,7 @@
 const printToDom = (divId, domString) => {
-  $(`#${divId}`).html(domString);
+  $(document).ready(() => {
+    $(`#${divId}`).html(domString);
+  });
 };
 
 const getCheckboxVal = () => {

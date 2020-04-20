@@ -19,8 +19,11 @@ const navbarClickEvents = () => {
 };
 
 const init = () => {
+  $(document).ready(() => {
+    $('#login-button').click(auth.signMeIn);
+    $('.nav-item').button('toggle');
+  });
   firebase.initializeApp(apiKeys.firebaseKeys);
-  $('#login-button').click(auth.signMeIn);
   navbarClickEvents();
   authData.checkLoginStatus();
   authData.logoutEvent();
