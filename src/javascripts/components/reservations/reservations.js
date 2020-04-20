@@ -86,7 +86,7 @@ const buildReservationsSection = () => {
       tables.forEach((table) => {
         domString += `<div class="card col-3 d-flex individual-table" id="${table.id}">`;
         domString += '<div class="card-header text-center">';
-        domString += `<h3>${table.tableNumber}</h3>`;
+        domString += `<h2><strong>${table.tableNumber}</strong></h2>`;
         domString += `<h4>Available Seats: ${table.numOfSeats}</h4>`;
         domString += '</div>';
         domString += '<ul class="list-group list-group-flush">';

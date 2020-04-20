@@ -56,7 +56,31 @@
 }
 
 .individual-table {
+    font-family: 'Open Sans', sans-serif; 
     margin: 15px; 
+    .edit-reservation-button {
+            background-color: white;
+            color:rgb(82, 79, 79);
+            border: none;
+            margin: 5px;
+            font-weight: bolder;
+    }
+    .edit-reservation-button:hover {
+        background-color: darkgray;
+        color: white !important;
+        text-decoration: underline;
+    }
+    .delete-reservation-button {
+        background-color: white;
+        color:rgb(82, 79, 79);
+        border: none;
+        margin: 5px;
+        font-weight: bolder;
+    }
+    .delete-reservation-button:hover {
+        background-color: darkgray;
+        color: white !important;
+    }
 }
 
 .hide {
