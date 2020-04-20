@@ -264,10 +264,17 @@ const submitMenuItemChanges = (e) => {
 
 const deleteEntireItem = (e) => {
   const menuItem = e.target.id;
-  axios.delete(`${baseUrl}/menuItems/${menuItem}.json`);
-  getMenuItemRecipes(menuItem)
-    .then(buildMenuCards());
-  // BUILD CARDS NEEDS A DELAY TO PRINT THE FRESH DATABASE...
+  axios.delete(`${baseUrl}/menuItems/${menuItem}.json`)
+    .then(() => {
+      getMenuItemRecipes(menuItem)
+      // delete each recipe for that Item
+        .then((recipesArray) => {
+          recipesArray.forEach((recipe) => {
+            axios.delete(`${baseUrl}/recipes/${recipe.id}.json`);
+          });
+          buildMenuCards();
+        });
+    });
 };
 
 const getSingleMenuItem = (menuItemId) => axios.get(`${baseUrl}/menuItems/${menuItemId}.json`);
@@ -295,8 +302,8 @@ const showItemEditor = (menuItem) => {
       domString += `  <br><button type="button" class="btn btn-secondary col-10 delete-item" id="${menuItem}"><i class="far fa-trash-alt"></i> Delete Item</button>`;
       domString += '</form>';
       utils.printToDom(`card-body-${menuItem}`, domString);
-      $('.save-details').on('click', submitMenuItemChanges);
-      $('.delete-item').on('click', deleteEntireItem);
+      $('body').on('click', '.save-details', submitMenuItemChanges);
+      $('body').on('click', '.delete-item', deleteEntireItem);
     });
 };
 
