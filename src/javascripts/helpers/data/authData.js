@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
+import ingredients from '../../components/ingredients/ingredients';
 import staff from '../../components/staff/staff';
 
 const loginButton = $('#login-button');
@@ -12,11 +12,15 @@ const checkLoginStatus = () => {
       // person logged in
       loginButton.addClass('hide');
       logoutButton.removeClass('hide');
+      ingredients.loggedInIngredients();
+      ingredients.ingredientEvents();
+      ingredients.modalEvents();
       staff.staffSectionEvents();
     } else {
       // person not logged in
       logoutButton.addClass('hide');
       loginButton.removeClass('hide');
+      ingredients.loggedOutIngredients();
       staff.removeStaffSectionEvents();
     }
   });
