@@ -5,44 +5,6 @@
 // font-family: 'Allura', cursive;
 // font-family: 'Open Sans', sans-serif; 
 
-<<<<<<< HEAD
-body {
-    background-color: white;
-}
-
-#brand-logo {
-    width: 40px;
-}
-
-#staff-modal-content {
-    border: 2px solid black;
-    #header-section {
-        border-bottom: 2px solid black;
-        #modal-header {
-            font-family: 'Allura', cursive;
-        }
-    }
-    #staff-modal-body {
-        background-color: lightgray;
-        .staff-form {
-            font-family: 'Open Sans', sans-serif;
-            .staff-form-group {
-                border-bottom: 1px solid black;
-                padding-bottom: 10px;
-                margin-bottom: 10px;
-            }
-        }
-    }
-}
-
-#add-menu-item-modal {
-    font-family: 'Open Sans', sans-serif;
-    h2 {
-        font-family: 'Allura', cursive;
-    }
-}
-
-=======
 .nav-link:hover {
     background-color: lightgrey;
     color: white;
@@ -124,10 +86,16 @@ body {
         color: white !important;
     }
 }
->>>>>>> master
 
 .hide {
     display: none;
+}
+
+#add-menu-item-modal {
+    font-family: 'Open Sans', sans-serif;
+    h2 {
+        font-family: 'Allura', cursive;
+    }
 }
 
 html {
