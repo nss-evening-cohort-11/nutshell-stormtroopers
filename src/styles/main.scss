@@ -91,6 +91,13 @@
     display: none;
 }
 
+#add-menu-item-modal {
+    font-family: 'Open Sans', sans-serif;
+    h2 {
+        font-family: 'Allura', cursive;
+    }
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -248,4 +255,3 @@ html {
         }
     }
 }
-
