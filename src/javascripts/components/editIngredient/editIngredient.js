@@ -1,7 +1,7 @@
 import util from '../../helpers/utils';
 import ingredientsData from '../../helpers/data/ingredientsData';
 
-const showEditCowModal = (ingredientId) => {
+const showEditIngredientModal = (ingredientId) => {
   ingredientsData.getSingleIngredient(ingredientId)
     .then((response) => {
       const ingredient = response.data;
@@ -44,4 +44,4 @@ const showEditCowModal = (ingredientId) => {
     .catch((err) => console.error(err));
 };
 
-export default { showEditCowModal };
+export default { showEditIngredientModal };

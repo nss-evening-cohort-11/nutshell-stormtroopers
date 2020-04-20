@@ -27,7 +27,7 @@ const modifyIngredient = (e) => {
 const editIngredient = (e) => {
   e.preventDefault();
   const ingredientId = e.target.closest('.card').id;
-  editIngredientComponent.showEditCowModal(ingredientId);
+  editIngredientComponent.showEditIngredientModal(ingredientId);
 };
 
 const deleteIngredient = (e) => {
