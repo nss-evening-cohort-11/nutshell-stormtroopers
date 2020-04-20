@@ -13,7 +13,7 @@
 
 .reserved-timeslot {
     color: red;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .card-header {
@@ -66,12 +66,12 @@
             border: none;
             margin: 5px;
             font-weight: bolder;
+            padding: 5px;
     }
     .edit-reservation-button:hover {
         background-color: darkgray;
         color: white !important;
         text-decoration: underline;
-        padding: 5px;
     }
     .delete-reservation-button {
         background-color: white;
@@ -79,11 +79,11 @@
         border: none;
         margin: 5px;
         font-weight: bolder;
+        padding: 5px;
     }
     .delete-reservation-button:hover {
         background-color: darkgray;
         color: white !important;
-        padding: 5px;
     }
 }
 
