@@ -76,7 +76,7 @@ const buildMenuSection = () => {
   domString += '<div class="row wrap text-center" id="inner-menu-container"></div>';
   utils.printToDom('menu-section', domString);
   $('#home-page').addClass('hide');
-  $('#staff-section').addClass('hide');
+  $('#staff-section-container').addClass('hide');
   $('#reservations-section').addClass('hide');
   $('#menu-section').removeClass('hide');
   $('#ingredients-section').addClass('hide');
