@@ -1,17 +1,22 @@
 {
   "timeSlot1": {
-    "time": "5:30pm"
+    "time": "5:30pm",
+    "date": "2020-04-20"
   },
   "timeSlot2": {
-    "time": "6:30pm"
+    "time": "6:30pm",
+    "date": "2020-04-20"
   },
   "timeSlot3": {
-    "time": "7:30pm"
+    "time": "7:30pm",
+    "date": "2020-04-20"
   },
   "timeSlot4": {
-    "time": "8:30pm"
+    "time": "8:30pm",
+    "date": "2020-04-20"
   },
   "timeSlot5": {
-    "time": "9:30pm"
+    "time": "9:30pm",
+    "date": "2020-04-20"
   }
 }
