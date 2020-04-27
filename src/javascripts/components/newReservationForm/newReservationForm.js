@@ -1,5 +1,4 @@
 const makeNewReservationForm = (selectedTable, timeSlotId) => {
-  console.log(selectedTable);
   let domString = '';
   domString += '<div class="new-reservation-modal">';
   domString += `<h2>${selectedTable.tableNumber}</h2>`;
