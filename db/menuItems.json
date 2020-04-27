@@ -6,7 +6,8 @@
 		"price": "$12",
 		"genre": "asian",
 		"imageUrl": "http://www.themostlyvegan.com/wp-content/uploads/2017/02/TurmericSpicedVeggiePotstickers3.jpg",
-		"uid": "meNuItem1uiD"
+    "uid": "meNuItem1uiD",
+    "isAvailable": true
 	},
 	"menuItem2": {
 		"name": "Cherry Blossom-tini",
@@ -15,7 +16,8 @@
 		"price": "$9",
 		"genre": "asian",
 		"imageUrl": "https://fthmb.tqn.com/Isn_0p3zuLeIGL61VAIM6Y2vvuU=/960x0/filters:no_upscale()/CherryBlossomTini-sb10066073u-001-56a171263df78cf7726aad7e.jpg",
-		"uid": "meNuItem2uiD"
+    "uid": "meNuItem2uiD",
+    "isAvailable": true
 	},
 	"menuItem3": {
 		"name": "Shibuya Shake",
@@ -24,7 +26,8 @@
 		"price": "$13",
 		"genre": "asian",
 		"imageUrl": "http://www.endlesssimmer.com/wp-content/uploads/2011/08/Shibuya-Shake-Virginia-Miller-2.jpg",
-		"uid": "meNuItem3uiD"
+    "uid": "meNuItem3uiD",
+    "isAvailable": true
 	},
 	"menuItem4": {
 		"name": "Peking Duck Salad",
@@ -33,7 +36,8 @@
 		"price": "$15",
 		"genre": "asian",
 		"imageUrl": "https://www.vanskitchen.com/wp-content/uploads/2016/02/Crunchy-Asian-Egg-Roll-Salad-1024x683.jpg",
-		"uid": "meNuItem4uiD"
+    "uid": "meNuItem4uiD",
+    "isAvailable": true
 	},
 	"menuItem5": {
 		"name": "Cantonese Chow Mein",
@@ -42,7 +46,8 @@
 		"price": "$28",
 		"genre": "asian",
 		"imageUrl": "https://cdn.apartmenttherapy.info/image/fetch/f_auto,q_auto:eco/https%3A%2F%2Fstorage.googleapis.com%2Fgen-atmedia%2F3%2F2019%2F01%2F9866e9a738238dcfb92974e40d43ab18e1d7c836.jpeg",
-		"uid": "meNuItem5uiD"
+    "uid": "meNuItem5uiD",
+    "isAvailable": true
 	},
 	"menuItem6": {
 		"name": "Wolf Berry Jelly",
@@ -51,7 +56,8 @@
 		"price": "$7",
 		"genre": "gen",
 		"imageUrl": "https://1.bp.blogspot.com/_qlduyzkSj8o/SI35aJwjhmI/AAAAAAAABKE/EpgO3KmpvKE/s400/DSCF1586-1.jpg",
-		"uid": "meNuItem6uiD"
+    "uid": "meNuItem6uiD",
+    "isAvailable": true
 	},
 	"menuItem7": {
 		"name": "Pain au Brie",
@@ -60,7 +66,8 @@
 		"price": "$12",
 		"genre": "french",
 		"imageUrl": "https://www.iheartnaptime.net/wp-content/uploads/2015/07/appetizers-homemade-fig-jam-725x977.jpg",
-		"uid": "meNuItem7uiD"
+    "uid": "meNuItem7uiD",
+    "isAvailable": true
 	},
 	"menuItem8": {
 		"name": "Beet Salad",
@@ -69,7 +76,8 @@
 		"price": "$16",
 		"genre": "french",
 		"imageUrl": "https://thestayathomechef.com/wp-content/uploads/2013/04/Beet-Salad-3-e1520389016838.jpg",
-		"uid": "meNuItem8uiD"
+    "uid": "meNuItem8uiD",
+    "isAvailable": true
 	},
 	"menuItem9": {
 		"name": "Rosemary Lamb Shank",
@@ -78,7 +86,8 @@
 		"price": "$30",
 		"genre": "french",
 		"imageUrl": "https://coffeyskitchen.files.wordpress.com/2012/09/lamb-shank-with-rosemary-gremolata-and-mash1.jpg",
-		"uid": "meNuItem9uiD"
+    "uid": "meNuItem9uiD",
+    "isAvailable": true
 	},
 	"menuItem10": {
 		"name": "Chardonnay",
@@ -87,7 +96,8 @@
 		"price": "$8",
 		"genre": "french",
 		"imageUrl": "https://cdn1.wine-searcher.net/images/labels/83/16/domaine-jean-touzot-macon-villages-vieilles-vignes-burgundy-france-10378316.jpg",
-		"uid": "meNuItem10uiD"
+    "uid": "meNuItem10uiD",
+    "isAvailable": true
 	},
 	"menuItem11": {
 		"name": "Pinot Noir",
@@ -96,7 +106,8 @@
 		"price": "$8",
 		"genre": "french",
 		"imageUrl": "https://trekronorvin-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/les-ursulines-etikett.jpg",
-		"uid": "meNuItem11uiD"
+    "uid": "meNuItem11uiD",
+    "isAvailable": true
 	},
 	"menuItem12": {
 		"name": "Tulipe Sorbét",
@@ -105,7 +116,8 @@
 		"price": "$6",
 		"genre": "french",
 		"imageUrl": "https://livelycandy.files.wordpress.com/2011/07/tulipes-raspberry-sorbet-0408-fb-73003697.jpg",
-		"uid": "meNuItem12uiD"
+    "uid": "meNuItem12uiD",
+    "isAvailable": true
 	},
 	"menuItem13": {
 		"name": "Brat and Bacon Flatbread",
@@ -114,7 +126,8 @@
 		"price": "$10",
 		"genre": "german",
 		"imageUrl": "https://cdn2.tmbi.com/TOH/Images/Photos/37/300x300/exps180594_SD153208D08_20_6b.jpg",
-		"uid": "meNuItem13uiD"
+    "uid": "meNuItem13uiD",
+    "isAvailable": true
 	},
 	"menuItem14": {
 		"name": "Königsberg meatballs",
@@ -123,7 +136,8 @@
 		"price": "$29",
 		"genre": "german",
 		"imageUrl": "https://www.ilovecruising.com/wp-content/uploads/2018/08/Uniworld_German-meatballs.jpg",
-		"uid": "meNuItem14uiD"
+    "uid": "meNuItem14uiD",
+    "isAvailable": true
 	},
 	"menuItem15": {
 		"name": "Beef Stroganoff",
@@ -132,7 +146,8 @@
 		"price": "$24",
 		"genre": "german",
 		"imageUrl": "https://www.platingsandpairings.com/wp-content/uploads/2018/09/instant-pot-beef-stroganoff-6.jpg",
-		"uid": "menuItemUid"
+    "uid": "menuItemUid",
+    "isAvailable": true
 	},
 	"menuItem16": {
 		"name": "German Salat",
@@ -141,7 +156,8 @@
 		"price": "$11",
 		"genre": "german",
 		"imageUrl": "https://www.thespruceeats.com/thmb/wBEA32Y-CAQHr__lM53rVsEC9ow=/2500x1672/filters:fill(auto,1)/perfectgreensalad2500-5993ab28c412440011db26df.jpg",
-		"uid": "meNuItem16uiD"
+    "uid": "meNuItem16uiD",
+    "isAvailable": true
 	},
 	"menuItem17": {
 		"name": "Black Forest Bundt Cake",
@@ -150,7 +166,8 @@
 		"price": "$8",
 		"genre": "german",
 		"imageUrl": "https://www.courtneyssweets.com/wp-content/uploads/2019/04/black-forest-cake-8-640x896.jpg",
-		"uid": "meNuItem17uiD"
+    "uid": "meNuItem17uiD",
+    "isAvailable": true
 	},
 	"menuItem18": {
 		"name": "Oktoberfest Märzen",
@@ -159,7 +176,8 @@
 		"price": "$5",
 		"genre": "german",
 		"imageUrl": "https://i.ytimg.com/vi/t5ueAJQCVnM/maxresdefault.jpg",
-		"uid": "meNuItem18uiD"
+    "uid": "meNuItem18uiD",
+    "isAvailable": true
 	},
 	"menuItem19": {
 		"name": "Eggplant Zakuska",
@@ -168,7 +186,8 @@
 		"price": "$11",
 		"genre": "russian",
 		"imageUrl": "http://4.bp.blogspot.com/-o0TyVSVy0O0/TiEQOq7ORYI/AAAAAAAACSs/oU2D_64Jp4w/s1600/DSC_0265.JPG",
-		"uid": "meNuItem19uiD"
+    "uid": "meNuItem19uiD",
+    "isAvailable": true
 	},
 	"menuItem20": {
 		"name": "Classic White Russian",
@@ -177,7 +196,8 @@
 		"price": "$13",
 		"genre": "russian",
 		"imageUrl": "https://cdn.liquor.com/wp-content/uploads/2017/12/20073201/white-russian-720x720-article.jpg",
-		"uid": "meNuItem20uiD"
+    "uid": "meNuItem20uiD",
+    "isAvailable": true
 	},
 	"menuItem21": {
 		"name": "Moscow Borscht",
@@ -186,7 +206,8 @@
 		"price": "$17",
 		"genre": "russian",
 		"imageUrl": "http://www.europeanfoodbayarea.com/wp-content/uploads/2012/01/Ukrainian_Borscht.jpg",
-		"uid": "meNuItem21uiD"
+    "uid": "meNuItem21uiD",
+    "isAvailable": true
 	},
 	"menuItem22": {
 		"name": "Olivier Salad",
@@ -195,7 +216,8 @@
 		"price": "$15",
 		"genre": "russian",
 		"imageUrl": "http://www.recipeyard.com/wp-content/uploads/2015/08/Russian_Salad.jpg",
-		"uid": "meNuItem22uiD"
+    "uid": "meNuItem22uiD",
+    "isAvailable": true
 	},
 	"menuItem23": {
 		"name": "Medovik Honey Cake",
@@ -204,6 +226,7 @@
 		"price": "$9",
 		"genre": "russian",
 		"imageUrl": "https://img.theculturetrip.com/1440x/wp-content/uploads/2017/04/honey_cake_medovik.jpg",
-		"uid": "meNuItem23uiD"
+    "uid": "meNuItem23uiD",
+    "isAvailable": true
 	}
 	}
