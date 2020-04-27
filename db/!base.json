@@ -7,5 +7,5 @@
     "ingredients" : "ingredients",
     "timeSlots": "time",
     "tables": "tables",
-    "jobs": "occupation"
+    "orders": "orders"
 }

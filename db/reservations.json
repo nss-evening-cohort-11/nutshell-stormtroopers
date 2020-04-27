@@ -3,108 +3,180 @@
     "timeSlotId": "timeSlot1",
     "tableId": "table11",
     "numOfGuests": 3,
-    "partyName": "Flenderson"
+    "partyName": "Flenderson",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation2": {
     "timeSlotId": "timeSlot2",
     "tableId": "table11",
     "numOfGuests": 4,
-    "partyName": "Contras"
+    "partyName": "Contras",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation3": {
     "timeSlotId": "timeSlot3",
     "tableId": "table11",
     "numOfGuests": 4,
-    "partyName": "Humbuckers"
+    "partyName": "Humbuckers",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation4": {
     "timeSlotId": "timeSlot4",
     "tableId": "table11",
     "numOfGuests": 1,
-    "partyName": "Hofstra"
+    "partyName": "Hofstra",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation5": {
     "timeSlotId": "timeSlot5",
     "tableId": "table11",
     "numOfGuests": 3,
-    "partyName": "Cornell"
+    "partyName": "Cornell",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation6": {
     "timeSlotId": "timeSlot1",
     "tableId": "table22",
     "numOfGuests": 6,
-    "partyName": "Darthmouth"
+    "partyName": "Darthmouth",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation7": {
     "timeSlotId": "timeSlot2",
     "tableId": "table22",
     "numOfGuests": 8,
-    "partyName": "Cisquo"
+    "partyName": "Cisquo",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation8": {
     "timeSlotId": "timeSlot3",
     "tableId": "table22",
     "numOfGuests": 6,
-    "partyName": "Smith"
+    "partyName": "Smith",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation9": {
     "timeSlotId": "timeSlot4",
     "tableId": "table22",
     "numOfGuests": 8,
-    "partyName": "Webb"
+    "partyName": "Webb",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation10": {
     "timeSlotId": "timeSlot5",
     "tableId": "table22",
     "numOfGuests": 7,
-    "partyName": "Nevers"
+    "partyName": "Nevers",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation11": {
     "timeSlotId": "timeSlot1",
     "tableId": "table23",
     "numOfGuests": 2,
-    "partyName": "Truley"
+    "partyName": "Truley",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation12": {
     "timeSlotId": "timeSlot2",
     "tableId": "table23",
     "numOfGuests": 2,
-    "partyName": "Ernest"
+    "partyName": "Ernest",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation13": {
     "timeSlotId": "timeSlot3",
     "tableId": "table23",
     "numOfGuests": 1,
-    "partyName": "Trainer"
+    "partyName": "Trainer",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation14": {
     "timeSlotId": "timeSlot4",
     "tableId": "table23",
     "numOfGuests": 2,
-    "partyName": "Bothan"
+    "partyName": "Bothan",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation15": {
     "timeSlotId": "timeSlot5",
     "tableId": "table23",
     "numOfGuests": 2,
-    "partyName": "Twi'lek"
+    "partyName": "Twi'lek",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation16": {
     "timeSlotId": "timeSlot1",
     "tableId": "table12",
     "numOfGuests": 10,
-    "partyName": "Gungans"
+    "partyName": "Gungans",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation17": {
     "timeSlotId": "timeSlot2",
     "tableId": "table12",
     "numOfGuests": 8,
-    "partyName": "Rodian"
+    "partyName": "Rodian",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   },
   "reservation18": {
     "timeSlotId": "timeSlot3",
     "tableId": "table12",
     "numOfGuests": 7,
-    "partyName": "Bothan"
+    "partyName": "Bothan",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": ""
   }
 }
