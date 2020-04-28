@@ -7,7 +7,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation2": {
     "timeSlotId": "timeSlot2",
@@ -17,7 +18,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation3": {
     "timeSlotId": "timeSlot3",
@@ -27,7 +29,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation4": {
     "timeSlotId": "timeSlot4",
@@ -37,7 +40,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation5": {
     "timeSlotId": "timeSlot5",
@@ -47,7 +51,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation6": {
     "timeSlotId": "timeSlot1",
@@ -57,7 +62,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation7": {
     "timeSlotId": "timeSlot2",
@@ -67,7 +73,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation8": {
     "timeSlotId": "timeSlot3",
@@ -77,7 +84,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation9": {
     "timeSlotId": "timeSlot4",
@@ -87,7 +95,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation10": {
     "timeSlotId": "timeSlot5",
@@ -97,7 +106,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation11": {
     "timeSlotId": "timeSlot1",
@@ -107,7 +117,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation12": {
     "timeSlotId": "timeSlot2",
@@ -117,7 +128,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation13": {
     "timeSlotId": "timeSlot3",
@@ -127,7 +139,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation14": {
     "timeSlotId": "timeSlot4",
@@ -137,7 +150,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation15": {
     "timeSlotId": "timeSlot5",
@@ -147,7 +161,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation16": {
     "timeSlotId": "timeSlot1",
@@ -157,7 +172,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation17": {
     "timeSlotId": "timeSlot2",
@@ -167,7 +183,8 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   },
   "reservation18": {
     "timeSlotId": "timeSlot3",
@@ -177,6 +194,7 @@
     "fullyStaffed": false,
     "hasServer": false,
     "hasServerAssistant": false,
-    "billTotal": ""
+    "billTotal": "",
+    "date": "2020-04-21"
   }
 }

@@ -1,22 +1,23 @@
 {
   "timeSlot1": {
-    "time": "5:30pm",
-    "date": "2020-04-20"
+    "time": "5:30pm"
   },
   "timeSlot2": {
-    "time": "6:30pm",
-    "date": "2020-04-20"
+    "time": "6:30pm"
   },
   "timeSlot3": {
-    "time": "7:30pm",
-    "date": "2020-04-20"
+    "time": "7:30pm"
   },
   "timeSlot4": {
-    "time": "8:30pm",
-    "date": "2020-04-20"
+    "time": "8:30pm"
   },
   "timeSlot5": {
-    "time": "9:30pm",
-    "date": "2020-04-20"
+    "time": "9:30pm"
+  },
+  "timeSlot6": {
+    "time": "10:30pm"
+  },
+  "timeSlot7": {
+    "time": "11:00pm"
   }
 }
