@@ -80,6 +80,7 @@ const buildMenuSection = () => {
   $('#reservations-section').addClass('hide');
   $('#menu-section').removeClass('hide');
   $('#ingredients-section').addClass('hide');
+  $('#orders-section').addClass('hide');
   $('body').on('click', '#view-all', menuBuilder);
   $('body').on('click', '#view-filter', buildFilterList);
   menuBuilder();

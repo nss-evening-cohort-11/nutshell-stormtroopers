@@ -162,6 +162,7 @@ const buildIngredientsSection = () => {
   $('#staff-section-container').addClass('hide');
   $('#reservations-section').addClass('hide');
   $('#menu-section').addClass('hide');
+  $('#orders-section').addClass('hide');
   $('#ingredients-section').removeClass('hide');
 };
 

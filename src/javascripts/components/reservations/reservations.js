@@ -100,6 +100,7 @@ const buildReservationsSection = () => {
     $('#reservations-section').removeClass('hide');
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
+    $('#orders-section').addClass('hide');
   });
   // table builder
   smashData.getTablesWithReservations()

@@ -132,6 +132,7 @@ const staffInit = () => {
     $('#reservations-section').addClass('hide');
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
+    $('#orders-section').addClass('hide');
   });
   staffData.getAllStaffMembers()
     .then((staff) => {

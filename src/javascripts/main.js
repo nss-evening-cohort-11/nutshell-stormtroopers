@@ -9,6 +9,7 @@ import reservations from './components/reservations/reservations';
 import ingredients from './components/ingredients/ingredients';
 import menu from './components/menu/menu';
 import authData from './helpers/data/authData';
+import orders from './components/orders/orders';
 
 const navbarClickEvents = () => {
   $(document).ready(() => {
@@ -17,6 +18,7 @@ const navbarClickEvents = () => {
     $('#reservations-button').click(reservations.buildReservationsSection);
     $('#menu-button').click(menu.buildMenuSection);
     $('#ingredients-button').click(ingredients.buildIngredientsSection);
+    $('#orders-button').click(orders.editOrdersPage);
   });
 };
 
