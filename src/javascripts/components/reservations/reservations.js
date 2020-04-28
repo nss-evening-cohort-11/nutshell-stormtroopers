@@ -92,18 +92,10 @@ const reservationSectionEvents = () => {
   $('body').on('click', '#edit-reservation-button', editExistingReservation);
 };
 
-const buildReservationsSection = () => {
-  let domString = '<strong><h1 class="reservations-title">Reservations</h1></strong>';
-  $(document).ready(() => {
-    $('#home-page').addClass('hide');
-    $('#staff-section-container').addClass('hide');
-    $('#reservations-section').removeClass('hide');
-    $('#menu-section').addClass('hide');
-    $('#ingredients-section').addClass('hide');
-  });
-  // table builder
+const showReservationsByTable = () => {
   smashData.getTablesWithReservations()
     .then((tables) => {
+      let domString = '';
       domString += '<div class="d-flex flex-wrap justify-content-around id="table-container">';
       tables.forEach((table) => {
         domString += `<div class="card col-3 d-flex individual-table" id="${table.id}">`;
@@ -117,9 +109,25 @@ const buildReservationsSection = () => {
         domString += '</div>';
       });
       domString += '</div>';
-      utils.printToDom('reservations-section', domString);
+      utils.printToDom('table-reservations-container', domString);
     })
     .catch((err) => console.error('could not get tables', err));
+};
+
+const buildReservationsSection = () => {
+  let domString = '<strong><h1 class="reservations-title">Reservations</h1></strong>';
+  domString += '<div class="col-12 text-center"><input type="date" id="reservation-date-selector" class="mx-1" value="2020-04-20"><button type="submit" id="filter-date-btn" class="btn btn-secondary mx-1">Select Date:</button></div>';
+  domString += '<div id="table-reservations-container"></div>';
+  utils.printToDom('reservations-section', domString);
+  showReservationsByTable();
+  $(document).ready(() => {
+    $('#home-page').addClass('hide');
+    $('#staff-section-container').addClass('hide');
+    $('#reservations-section').removeClass('hide');
+    $('#menu-section').addClass('hide');
+    $('#ingredients-section').addClass('hide');
+  });
+  // table builder
 };
 
 export default {
