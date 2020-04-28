@@ -1,6 +1,13 @@
+import axios from 'axios';
 import tableData from './tableData';
 import timeSlotData from './timeSlotData';
 import reservationData from './reservationData';
+import apiKeys from '../apiKeys.json';
+// import menuData from './menuData';
+import orderData from './ordersData';
+import menuData from './menuData';
+
+const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getTablesWithReservations = () => new Promise((resolve, reject) => {
   tableData.getTables().then((tables) => {
@@ -28,5 +35,53 @@ const getTablesWithReservations = () => new Promise((resolve, reject) => {
     });
   }).catch((err) => reject(err));
 });
+
+const getReservationByDate = (date) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/reservations.json?orderBy="date"&equalTo="${date}"`)
+    .then((response) => {
+      const rezzies = response.data;
+      const rezziesArray = [];
+      Object.keys(rezzies).forEach((rezzieDate) => {
+        rezzies[rezzieDate].id = rezzieDate;
+        rezziesArray.push(rezzies[rezzieDate]);
+      });
+      console.error(rezziesArray, 'rezziesArray');
+      resolve(rezziesArray);
+    })
+    .catch((err) => reject(err));
+});
+
+const getOrdersByReservation = (date) => new Promise((resolve, reject) => {
+  orderData.getSingleOrders().then((orders) => {
+    const ordersArray = [];
+    getReservationByDate(date).then((reservations) => {
+      reservations.forEach((rez) => {
+        const rezOrders = orders.find((x) => x.reservationId === rez.id);
+        if (rezOrders) ordersArray.push(rezOrders);
+      });
+      resolve(ordersArray);
+      console.error(ordersArray, 'ordersArray');
+    });
+  })
+    .catch((err) => reject(err));
+});
+
+const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) => {
+  getOrdersByReservation(date).then((orders) => {
+    const ingredients = [];
+    orders.forEach((order) => {
+      const menuIngredient = menuData.getIngredientsByMenuItem(order.menuItemId);
+      ingredients.push(menuIngredient);
+    });
+    Promise.all(ingredients)
+      .then((results) => {
+        resolve(results);
+        console.error(results, 'results');
+      });
+  })
+    .catch((err) => reject(err));
+});
+
+getIngredientsByReservationDate('2020-04-21');
 
 export default { getTablesWithReservations };
