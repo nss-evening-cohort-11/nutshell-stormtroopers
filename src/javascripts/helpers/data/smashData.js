@@ -82,6 +82,7 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
     .catch((err) => reject(err));
 });
 
+
 getIngredientsByReservationDate('2020-04-21');
 
 export default { getTablesWithReservations };
