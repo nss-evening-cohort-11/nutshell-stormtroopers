@@ -45,7 +45,6 @@ const getReservationByDate = (date) => new Promise((resolve, reject) => {
         rezzies[rezzieDate].id = rezzieDate;
         rezziesArray.push(rezzies[rezzieDate]);
       });
-
       resolve(rezziesArray);
     })
     .catch((err) => reject(err));
