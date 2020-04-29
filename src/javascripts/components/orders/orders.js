@@ -7,7 +7,26 @@ import './orders.scss';
 
 const addToOrder = (e) => {
   const addMenuItemId = e.target.closest('.card').id;
-  console.log('addMenuItemId', addMenuItemId);
+  const reservatoinId = e.target.closest('.card-body').id;
+
+  menuData.getSingleMenuItem(addMenuItemId)
+    .then((response) => {
+      const menuItem = response.data;
+
+      const newOrder = {
+        reservationId: reservatoinId,
+        menuItemId: addMenuItemId,
+        singleOrderTotal: menuItem.price,
+      };
+
+      ordersData.addOrder(newOrder)
+        .then(() => {
+          // eslint-disable-next-line no-use-before-define
+          editOrdersPage();
+        })
+        .catch((err) => console.error('problem with get single menu item in add to order', err));
+    })
+    .catch((err) => console.error('problem with get single menu item in add to order', err));
 };
 
 const removeFromOrder = (e) => {
@@ -17,14 +36,14 @@ const removeFromOrder = (e) => {
       // eslint-disable-next-line no-use-before-define
       editOrdersPage();
     })
-    .catch();
+    .catch((err) => console.error('problem with delete order in remove from order', err));
 };
 
 const editOrdersPage = () => {
   const reservationId = 'reservation5';
   let domString = '';
 
-  domString += '<strong><h1 id="orders-page-header" class="text-center display-4">Reservation Orders</h1></strong>';
+  domString += '<strong><h1 id="orders-page-header" class="text-center display-4">Reservation Order</h1></strong>';
 
   // RESRVATION //
   reservationData.getReservationById(reservationId)
@@ -48,8 +67,8 @@ const editOrdersPage = () => {
               domString += '<div id="edit-orders-container" class="col-9">';
 
               // RESRVATION ORDERS //
-              domString += '<h3 id="reservation-orders-page-header" class="mt-4">Orders</h3>';
-              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
+              domString += '<h3 id="reservation-orders-page-header" class="mt-4">Order</h3>';
+              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
               reservationOrders.forEach((order) => {
                 const orderMenuItem = menuItems.find((menuItem) => menuItem.id === order.menuItemId);
@@ -67,12 +86,12 @@ const editOrdersPage = () => {
 
               // BEVERAGES //
               domString += '<h3 id="reservation-orders-page-header" class="mt-4">Beverages</h3>';
-              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
+              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
               menuBeverages.forEach((beverage) => {
                 domString += `<div class="card mr-2 col-3" id="${beverage.id}">`;
                 domString += `<img class="card-img-top" src="${beverage.imageUrl}" alt="Card image cap">`;
-                domString += '<div class="card-body text-center d-flex flex-column">';
+                domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${beverage.name}</h5>`;
                 domString += `<p class="card-text text-left">${beverage.description}</p>`;
                 domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
@@ -84,12 +103,12 @@ const editOrdersPage = () => {
 
               // APPETIZERS //
               domString += '<h3 id="reservation-orders-page-header" class="mt-4">Appetizers</h3>';
-              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
+              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
               menuAppetizers.forEach((appetizer) => {
                 domString += `<div class="card mr-2 col-3" id="${appetizer.id}">`;
                 domString += `<img class="card-img-top" src="${appetizer.imageUrl}" alt="Card image cap">`;
-                domString += '<div class="card-body text-center d-flex flex-column">';
+                domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${appetizer.name}</h5>`;
                 domString += `<p class="card-text text-left">${appetizer.description}</p>`;
                 domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
@@ -101,12 +120,12 @@ const editOrdersPage = () => {
 
               // SALADS //
               domString += '<h3 id="reservation-orders-page-header" class="mt-4">Salads</h3>';
-              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
+              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
               menuSalads.forEach((salad) => {
                 domString += `<div class="card mr-2 col-3" id="${salad.id}">`;
                 domString += `<img class="card-img-top" src="${salad.imageUrl}" alt="Card image cap">`;
-                domString += '<div class="card-body text-center d-flex flex-column">';
+                domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${salad.name}</h5>`;
                 domString += `<p class="card-text text-left">${salad.description}</p>`;
                 domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
@@ -118,12 +137,12 @@ const editOrdersPage = () => {
 
               // Main Dishes //
               domString += '<h3 id="reservation-orders-page-header" class="mt-4">Main Dishes</h3>';
-              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
+              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
               menuMainDishes.forEach((mainDish) => {
                 domString += `<div class="card mr-2 col-3" id="${mainDish.id}">`;
                 domString += `<img class="card-img-top" src="${mainDish.imageUrl}" alt="Card image cap">`;
-                domString += '<div class="card-body text-center d-flex flex-column">';
+                domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${mainDish.name}</h5>`;
                 domString += `<p class="card-text text-left">${mainDish.description}</p>`;
                 domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
@@ -135,12 +154,12 @@ const editOrdersPage = () => {
 
               // Desserts //
               domString += '<h3 id="reservation-orders-page-header" class="mt-4">Desserts</h3>';
-              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
+              domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
               menuDesserts.forEach((dessert) => {
                 domString += `<div class="card mr-2 col-3" id="${dessert.id}">`;
                 domString += `<img class="card-img-top" src="${dessert.imageUrl}" alt="Card image cap">`;
-                domString += '<div class="card-body text-center d-flex flex-column">';
+                domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${dessert.name}</h5>`;
                 domString += `<p class="card-text text-left">${dessert.description}</p>`;
                 domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
