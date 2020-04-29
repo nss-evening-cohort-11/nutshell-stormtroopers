@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Moment from 'moment';
+import { extendMoment } from 'moment-range';
 import tableData from './tableData';
 import timeSlotData from './timeSlotData';
 import reservationData from './reservationData';
@@ -7,6 +9,7 @@ import apiKeys from '../apiKeys.json';
 import orderData from './ordersData';
 import menuData from './menuData';
 
+const moment = extendMoment(Moment);
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getTablesWithReservations = () => new Promise((resolve, reject) => {
@@ -82,7 +85,18 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
     .catch((err) => reject(err));
 });
 
-
 getIngredientsByReservationDate('2020-04-21');
+
+const getDates = (startDate) => {
+  const start = new Date(moment().format(startDate));
+  const end = new Date(moment().add(7, 'days'));
+  console.error(end, 'end');
+  const timeRange = moment.range(start, end);
+  const timeArray = Array.from(timeRange.by('days'));
+  console.error(timeRange);
+  console.error(timeArray);
+};
+
+getDates('2020-04-01');
 
 export default { getTablesWithReservations };
