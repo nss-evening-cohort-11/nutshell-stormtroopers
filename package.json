@@ -46,6 +46,6 @@
     "jquery": "^3.5.0",
     "moment": "^2.24.0",
     "moment-range": "^4.0.2",
-    "popper.js": "^1.16.1"merge
+    "popper.js": "^1.16.1"
   }
 }
