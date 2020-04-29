@@ -1,5 +1,4 @@
 const makeNewReservationForm = (selectedTable, timeSlotId) => {
-  console.log(selectedTable);
   let domString = '';
   domString += '<div class="new-reservation-modal">';
   domString += `<h2>${selectedTable.tableNumber}</h2>`;
@@ -18,4 +17,6 @@ const makeNewReservationForm = (selectedTable, timeSlotId) => {
   return domString;
 };
 
-export default { makeNewReservationForm };
+export default {
+  makeNewReservationForm,
+};

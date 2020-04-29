@@ -49,7 +49,9 @@ const makeNewReservation = (e) => {
 // make new reservation modal
 const openNewReservationModal = (e) => {
   $('#reservation-modal').modal('show');
-  $('#close-resevation-modal').click(() => { $('#reservation-modal').modal('hide'); });
+  $('#close-resevation-modal').click(() => {
+    $('#reservation-modal').modal('hide');
+  });
   const tableId = e.target.closest('.card').id;
   const timeSlotId = e.target.closest('.list-group-item').id;
   tableData.getTables().then((tables) => {
@@ -64,7 +66,9 @@ const openNewReservationModal = (e) => {
 // edit existing reservation
 const openExistingReservationEditModal = (e) => {
   $('#edit-reservation-modal').modal('show');
-  $('#close-edit-resevation-modal').click(() => { $('#edit-reservation-modal').modal('hide'); });
+  $('#close-edit-resevation-modal').click(() => {
+    $('#edit-reservation-modal').modal('hide');
+  });
   const reservationId = e.target.id;
   reservationData.getReservations()
     .then((reservations) => {
@@ -100,6 +104,7 @@ const buildReservationsSection = () => {
     $('#reservations-section').removeClass('hide');
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
+    $('#reporting-section').addClass('hide');
   });
   // table builder
   smashData.getTablesWithReservations()
