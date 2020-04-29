@@ -1,11 +1,9 @@
 import axios from 'axios';
 import moment from 'moment';
-// import 'twix';
 import tableData from './tableData';
 import timeSlotData from './timeSlotData';
 import reservationData from './reservationData';
 import apiKeys from '../apiKeys.json';
-// import menuData from './menuData';
 import orderData from './ordersData';
 import menuData from './menuData';
 
@@ -47,7 +45,7 @@ const getReservationByDate = (date) => new Promise((resolve, reject) => {
         rezzies[rezzieDate].id = rezzieDate;
         rezziesArray.push(rezzies[rezzieDate]);
       });
-      console.error(rezziesArray, 'rezziesArray');
+
       resolve(rezziesArray);
     })
     .catch((err) => reject(err));
@@ -62,7 +60,6 @@ const getOrdersByReservation = (date) => new Promise((resolve, reject) => {
         if (rezOrders) ordersArray.push(rezOrders);
       });
       resolve(ordersArray);
-      console.error(ordersArray, 'ordersArray');
     });
   })
     .catch((err) => reject(err));
@@ -78,7 +75,6 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
     Promise.all(ingredients)
       .then((results) => {
         resolve(results);
-        console.error(results, 'results');
       });
   })
     .catch((err) => reject(err));
@@ -91,7 +87,7 @@ const getDateArray = (start, end) => {
     dateArray.push(moment(date).format('YYYY-MM-DD'));
     date.setDate(date.getDate() + 1);
   }
-  console.error(dateArray);
+  dateArray.forEach((x) => moment(x).format('YYYY-MM-DD'));
   return dateArray;
 };
 
@@ -99,24 +95,24 @@ const getDatesForAWeek = (startDate, endDate) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  getDateArray(start, end);
+  return getDateArray(start, end);
 };
 
 const getIngredientsForDateRange = (start, end) => new Promise((resolve, reject) => {
-  getDatesForAWeek(start, end)
-    .then((dates) => {
-      const rezRange = [];
-      dates.forEach((date) => {
-        const rezzie = getIngredientsByReservationDate(date);
-        rezRange.push(rezzie);
-      });
-      Promise.all(rezRange)
-        .then((results) => {
-          resolve(results);
-          console.error(results, 'results');
-        });
-    })
-    .catch((err) => reject(err));
+  const dates = getDatesForAWeek(start, end);
+  const rezRange = [];
+  dates.forEach((date) => {
+    const rezzie = getIngredientsByReservationDate(date);
+    if (rezzie) rezRange.push(rezzie);
+  });
+  Promise.all(rezRange)
+    .then((results) => {
+      resolve(results);
+      console.error(results, 'results');
+    }).catch((err) => reject(err));
 });
+
+
+getIngredientsForDateRange('2020-04-20', '2020-04-27');
 
 export default { getTablesWithReservations, getIngredientsByReservationDate, getIngredientsForDateRange };
