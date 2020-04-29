@@ -1,6 +1,6 @@
 import axios from 'axios';
-import Moment from 'moment';
-import { extendMoment } from 'moment-range';
+import moment from 'moment';
+// import 'twix';
 import tableData from './tableData';
 import timeSlotData from './timeSlotData';
 import reservationData from './reservationData';
@@ -9,7 +9,6 @@ import apiKeys from '../apiKeys.json';
 import orderData from './ordersData';
 import menuData from './menuData';
 
-const moment = extendMoment(Moment);
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getTablesWithReservations = () => new Promise((resolve, reject) => {
@@ -85,18 +84,39 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
     .catch((err) => reject(err));
 });
 
-getIngredientsByReservationDate('2020-04-21');
-
-const getDates = (startDate) => {
-  const start = new Date(moment().format(startDate));
-  const end = new Date(moment().add(7, 'days'));
-  console.error(end, 'end');
-  const timeRange = moment.range(start, end);
-  const timeArray = Array.from(timeRange.by('days'));
-  console.error(timeRange);
-  console.error(timeArray);
+const getDateArray = (start, end) => {
+  const dateArray = [];
+  const date = new Date(start);
+  while (date <= end) {
+    dateArray.push(moment(date).format('YYYY-MM-DD'));
+    date.setDate(date.getDate() + 1);
+  }
+  console.error(dateArray);
+  return dateArray;
 };
 
-getDates('2020-04-01');
+const getDatesForAWeek = (startDate, endDate) => {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
 
-export default { getTablesWithReservations };
+  getDateArray(start, end);
+};
+
+const getIngredientsForDateRange = (start, end) => new Promise((resolve, reject) => {
+  getDatesForAWeek(start, end)
+    .then((dates) => {
+      const rezRange = [];
+      dates.forEach((date) => {
+        const rezzie = getIngredientsByReservationDate(date);
+        rezRange.push(rezzie);
+      });
+      Promise.all(rezRange)
+        .then((results) => {
+          resolve(results);
+          console.error(results, 'results');
+        });
+    })
+    .catch((err) => reject(err));
+});
+
+export default { getTablesWithReservations, getIngredientsByReservationDate, getIngredientsForDateRange };
