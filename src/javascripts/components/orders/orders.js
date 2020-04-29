@@ -1,9 +1,24 @@
 import reservationData from '../../helpers/data/reservationData';
 import ordersData from '../../helpers/data/ordersData';
+import menuData from '../../helpers/data/menuData';
 import utils from '../../helpers/utils';
 
 import './orders.scss';
-import menuData from '../../helpers/data/menuData';
+
+const addToOrder = (e) => {
+  const addMenuItemId = e.target.closest('.card').id;
+  console.log('addMenuItemId', addMenuItemId);
+};
+
+const removeFromOrder = (e) => {
+  const removeOrderId = e.target.closest('.card').id;
+  ordersData.deleteOrder(removeOrderId)
+    .then(() => {
+      // eslint-disable-next-line no-use-before-define
+      editOrdersPage();
+    })
+    .catch();
+};
 
 const editOrdersPage = () => {
   const reservationId = 'reservation5';
@@ -38,7 +53,7 @@ const editOrdersPage = () => {
 
               reservationOrders.forEach((order) => {
                 const orderMenuItem = menuItems.find((menuItem) => menuItem.id === order.menuItemId);
-                domString += '<div class="card mr-2 col-3">';
+                domString += `<div class="card mr-2 col-3" id="${order.id}">`;
                 domString += `<img class="card-img-top" src="${orderMenuItem.imageUrl}" alt="Card image cap">`;
                 domString += '<div class="card-body text-center d-flex flex-column">';
                 domString += `<h5 class="card-title text-left">${orderMenuItem.name}</h5>`;
@@ -55,7 +70,7 @@ const editOrdersPage = () => {
               domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
 
               menuBeverages.forEach((beverage) => {
-                domString += '<div class="card mr-2 col-3">';
+                domString += `<div class="card mr-2 col-3" id="${beverage.id}">`;
                 domString += `<img class="card-img-top" src="${beverage.imageUrl}" alt="Card image cap">`;
                 domString += '<div class="card-body text-center d-flex flex-column">';
                 domString += `<h5 class="card-title text-left">${beverage.name}</h5>`;
@@ -72,12 +87,12 @@ const editOrdersPage = () => {
               domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
 
               menuAppetizers.forEach((appetizer) => {
-                domString += '<div class="card mr-2 col-3">';
+                domString += `<div class="card mr-2 col-3" id="${appetizer.id}">`;
                 domString += `<img class="card-img-top" src="${appetizer.imageUrl}" alt="Card image cap">`;
                 domString += '<div class="card-body text-center d-flex flex-column">';
                 domString += `<h5 class="card-title text-left">${appetizer.name}</h5>`;
                 domString += `<p class="card-text text-left">${appetizer.description}</p>`;
-                domString += '<button class="btn btn-primary mt-auto">Add To Order</button>';
+                domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                 domString += '</div>';
                 domString += '</div>';
               });
@@ -89,12 +104,12 @@ const editOrdersPage = () => {
               domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
 
               menuSalads.forEach((salad) => {
-                domString += '<div class="card mr-2 col-3">';
+                domString += `<div class="card mr-2 col-3" id="${salad.id}">`;
                 domString += `<img class="card-img-top" src="${salad.imageUrl}" alt="Card image cap">`;
                 domString += '<div class="card-body text-center d-flex flex-column">';
                 domString += `<h5 class="card-title text-left">${salad.name}</h5>`;
                 domString += `<p class="card-text text-left">${salad.description}</p>`;
-                domString += '<button class="btn btn-primary mt-auto">Add To Order</button>';
+                domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                 domString += '</div>';
                 domString += '</div>';
               });
@@ -106,12 +121,12 @@ const editOrdersPage = () => {
               domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
 
               menuMainDishes.forEach((mainDish) => {
-                domString += '<div class="card mr-2 col-3">';
+                domString += `<div class="card mr-2 col-3" id="${mainDish.id}">`;
                 domString += `<img class="card-img-top" src="${mainDish.imageUrl}" alt="Card image cap">`;
                 domString += '<div class="card-body text-center d-flex flex-column">';
                 domString += `<h5 class="card-title text-left">${mainDish.name}</h5>`;
                 domString += `<p class="card-text text-left">${mainDish.description}</p>`;
-                domString += '<button class="btn btn-primary mt-auto">Add To Order</button>';
+                domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                 domString += '</div>';
                 domString += '</div>';
               });
@@ -123,12 +138,12 @@ const editOrdersPage = () => {
               domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 p-3 border overflow-auto">';
 
               menuDesserts.forEach((dessert) => {
-                domString += '<div class="card mr-2 col-3">';
+                domString += `<div class="card mr-2 col-3" id="${dessert.id}">`;
                 domString += `<img class="card-img-top" src="${dessert.imageUrl}" alt="Card image cap">`;
                 domString += '<div class="card-body text-center d-flex flex-column">';
                 domString += `<h5 class="card-title text-left">${dessert.name}</h5>`;
                 domString += `<p class="card-text text-left">${dessert.description}</p>`;
-                domString += '<button class="btn btn-primary mt-auto">Add To Order</button>';
+                domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                 domString += '</div>';
                 domString += '</div>';
               });
@@ -155,4 +170,9 @@ const editOrdersPage = () => {
   $('#orders-section').removeClass('hide');
 };
 
-export default { editOrdersPage };
+const ordersSectionEvents = () => {
+  $('body').on('click', '.add-to-order-button', addToOrder);
+  $('body').on('click', '.remove-from-order-button', removeFromOrder);
+};
+
+export default { editOrdersPage, ordersSectionEvents };

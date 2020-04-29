@@ -3,6 +3,7 @@ import 'firebase/auth';
 import ingredients from '../../components/ingredients/ingredients';
 import staff from '../../components/staff/staff';
 import reservations from '../../components/reservations/reservations';
+import orders from '../../components/orders/orders';
 
 const loginButton = $('#login-button');
 const logoutButton = $('#navbar-logout-button');
@@ -18,6 +19,7 @@ const checkLoginStatus = () => {
       ingredients.modalEvents();
       staff.staffSectionEvents();
       reservations.reservationSectionEvents();
+      orders.ordersSectionEvents();
     } else {
       // person not logged in
       logoutButton.addClass('hide');
