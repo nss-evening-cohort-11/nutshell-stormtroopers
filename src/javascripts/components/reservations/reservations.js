@@ -170,6 +170,7 @@ const buildReservationsSection = () => {
     $('#reservations-section').removeClass('hide');
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
+    $('#reservations-portal-section').addClass('hide');
   });
 };
 

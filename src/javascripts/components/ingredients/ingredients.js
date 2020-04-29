@@ -163,6 +163,7 @@ const buildIngredientsSection = () => {
   $('#reservations-section').addClass('hide');
   $('#menu-section').addClass('hide');
   $('#ingredients-section').removeClass('hide');
+  $('#reservations-portal-section').addClass('hide');
 };
 
 const loggedOutIngredients = () => {

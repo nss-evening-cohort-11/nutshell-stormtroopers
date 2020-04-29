@@ -8,6 +8,7 @@ import staff from './components/staff/staff';
 import reservations from './components/reservations/reservations';
 import ingredients from './components/ingredients/ingredients';
 import menu from './components/menu/menu';
+import reservationsPortal from './components/reservationsPortal/reservationsPortal';
 import authData from './helpers/data/authData';
 
 const navbarClickEvents = () => {
@@ -17,6 +18,7 @@ const navbarClickEvents = () => {
     $('#reservations-button').click(reservations.buildReservationsSection);
     $('#menu-button').click(menu.buildMenuSection);
     $('#ingredients-button').click(ingredients.buildIngredientsSection);
+    $('#reservations-portal-button').click(reservationsPortal.buildReservationsPortalSection);
   });
 };
 
