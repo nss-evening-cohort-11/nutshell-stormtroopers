@@ -9,14 +9,15 @@ import menuData from './menuData';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getTablesWithReservations = () => new Promise((resolve, reject) => {
+const getTablesWithReservations = (selectedDate) => new Promise((resolve, reject) => {
   tableData.getTables().then((tables) => {
     timeSlotData.getTimeSlots().then((timeSlots) => {
       const finalTables = [];
       reservationData.getReservations().then((reservationsResponse) => {
+        const todaysReservations = reservationsResponse.filter((x) => x.date === selectedDate.toString());
         tables.forEach((table) => {
           const newTable = { ...table };
-          const tableReservations = reservationsResponse.filter((x) => x.tableId === table.id);
+          const tableReservations = todaysReservations.filter((x) => x.tableId === table.id);
           newTable.timeSlots = timeSlots;
           const newTimeSlot = [];
           timeSlots.forEach((oneTimeSlot) => {

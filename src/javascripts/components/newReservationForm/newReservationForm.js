@@ -17,4 +17,6 @@ const makeNewReservationForm = (selectedTable, timeSlotId) => {
   return domString;
 };
 
-export default { makeNewReservationForm };
+export default {
+  makeNewReservationForm,
+};
