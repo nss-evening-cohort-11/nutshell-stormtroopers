@@ -75,7 +75,21 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
     Promise.all(ingredients)
       .then((results) => {
         resolve(results);
+      })
+      .catch((err) => reject(err));
+  });
+});
+
+const getReservationTimeslotsByDate = (selectedDate) => new Promise((resolve, reject) => {
+  reservationData.getReservations().then((reservationsResponse) => {
+    const todaysReservations = reservationsResponse.filter((x) => x.date === selectedDate.toString());
+    timeSlotData.getTimeSlots().then((timeSlots) => {
+      todaysReservations.forEach((res) => {
+        const reservationTimes = timeSlots.find((x) => x.id === res.timeSlotId);
+        res.timeslot = reservationTimes.time;
       });
+      resolve(todaysReservations);
+    });
   })
     .catch((err) => reject(err));
 });
@@ -94,4 +108,8 @@ const getIngredientsForDateRange = (start, end) => new Promise((resolve, reject)
     }).catch((err) => reject(err));
 });
 
-export default { getTablesWithReservations, getIngredientsByReservationDate, getIngredientsForDateRange };
+export default {
+  getIngredientsForDateRange,
+  getReservationTimeslotsByDate,
+  getTablesWithReservations,
+};

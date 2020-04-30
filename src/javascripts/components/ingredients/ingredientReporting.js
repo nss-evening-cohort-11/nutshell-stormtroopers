@@ -14,7 +14,9 @@ const getIngredientsReport = () => new Promise((resolve, reject) => {
       console.error(result, 'result');
       const singleArray = result.flat();
       console.error(singleArray);
-      singleArray.forEach
+      singleArray.forEach((obj) => {
+        console.error(obj);
+      });
     });
     // utils.printToDom('ingredient-reporting-section', domString);
   }).catch((err) => reject(err));
