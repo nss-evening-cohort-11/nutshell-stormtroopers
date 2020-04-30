@@ -2,7 +2,7 @@ import utils from '../../helpers/utils';
 
 const showSingleReservation = (reservationId) => {
   let domString = '';
-  domString += `<div class="card col-8 offset-2 my-4 single-reservations-table" id="${reservationId}-details">`;
+  domString += `<div class="card col-8 offset-2 my-4 single-reservation-table" data-reservation-id="${reservationId}">`;
   domString += '<div class="card-header text-center">';
   domString += '<h2><strong>Reservation Details</strong></h2>';
   domString += '</div>';

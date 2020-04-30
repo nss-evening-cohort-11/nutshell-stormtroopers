@@ -1,6 +1,7 @@
 import utils from '../../helpers/utils';
 import smashData from '../../helpers/data/smashData';
 import singleReservation from '../singleReservation/singleReservation';
+import reservationData from '../../helpers/data/reservationData';
 import './reservationsPortal.scss';
 import 'moment';
 
@@ -27,18 +28,29 @@ const showSingleReservationEvent = (e) => {
   singleReservation.showSingleReservation(reservationId);
 };
 
+// click event that deletes the selected reservation
+const rejectSingleReservationEvent = (e) => {
+  const singleResCard = e.target.closest('.card');
+  const reservationId = $(singleResCard).data('reservationId');
+  reservationData.deleteReservation(reservationId)
+    .then(() => showFilteredReservations())
+    .catch((err) => console.error('could not delete reservation', err));
+};
+
 
 // Events loaded with Auth
 const removeReservationPortalEvents = () => {
   $('body').off('click', '#filter-date-btn', showFilteredReservations);
-  $('body').off('click', '.exit-single-res-btn', showFilteredReservations);
   $('body').off('click', '.single-reservation-btn', showSingleReservationEvent);
+  $('body').off('click', '.exit-single-res-btn', showFilteredReservations);
+  $('body').off('click', '.reject-res-btn', rejectSingleReservationEvent);
 };
 
 const reservationPortalEvents = () => {
   $('body').on('click', '#filter-date-btn', showFilteredReservations);
-  $('body').on('click', '.exit-single-res-btn', showFilteredReservations);
   $('body').on('click', '.single-reservation-btn', showSingleReservationEvent);
+  $('body').on('click', '.exit-single-res-btn', showFilteredReservations);
+  $('body').on('click', '.reject-res-btn', rejectSingleReservationEvent);
 };
 
 // Table builder function
