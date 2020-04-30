@@ -3,6 +3,7 @@ import 'firebase/auth';
 import ingredients from '../../components/ingredients/ingredients';
 import staff from '../../components/staff/staff';
 import reservations from '../../components/reservations/reservations';
+import reservationsPortal from '../../components/reservationsPortal/reservationsPortal';
 import reportingRevenue from '../../components/reportingRevenue/reportingRevenue';
 
 const loginButton = $('#login-button');
@@ -20,6 +21,7 @@ const checkLoginStatus = () => {
       staff.staffSectionEvents();
       reportingRevenue.revenueEvents();
       reservations.reservationSectionEvents();
+      reservationsPortal.reservationPortalEvents();
       reportingRevenue.showReportingTab();
     } else {
       // person not logged in
@@ -28,6 +30,7 @@ const checkLoginStatus = () => {
       ingredients.loggedOutIngredients();
       staff.removeStaffSectionEvents();
       reservations.removeReservationSectionEvents();
+      reservationsPortal.removeReservationPortalEvents();
       reportingRevenue.removeReportingTab();
     }
   });

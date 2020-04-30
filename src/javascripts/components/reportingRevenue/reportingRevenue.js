@@ -54,6 +54,7 @@ const buildReportingPage = () => {
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
     $('#reporting-section').removeClass('hide');
+    $('#reservations-portal-section').addClass('hide');
   });
 };
 
