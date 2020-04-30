@@ -1,5 +1,5 @@
 import axios from 'axios';
-import moment from 'moment';
+import dateArray from '../dateArray';
 import tableData from './tableData';
 import timeSlotData from './timeSlotData';
 import reservationData from './reservationData';
@@ -80,26 +80,8 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
     .catch((err) => reject(err));
 });
 
-const getDateArray = (start, end) => {
-  const dateArray = [];
-  const date = new Date(start);
-  while (date <= end) {
-    dateArray.push(moment(date).format('YYYY-MM-DD'));
-    date.setDate(date.getDate() + 1);
-  }
-  dateArray.forEach((x) => moment(x).format('YYYY-MM-DD'));
-  return dateArray;
-};
-
-const getDatesForAWeek = (startDate, endDate) => {
-  const start = new Date(startDate);
-  const end = new Date(endDate);
-
-  return getDateArray(start, end);
-};
-
 const getIngredientsForDateRange = (start, end) => new Promise((resolve, reject) => {
-  const dates = getDatesForAWeek(start, end);
+  const dates = dateArray.getDatesForAWeek(start, end);
   const rezRange = [];
   dates.forEach((date) => {
     const rezzie = getIngredientsByReservationDate(date);
@@ -108,11 +90,8 @@ const getIngredientsForDateRange = (start, end) => new Promise((resolve, reject)
   Promise.all(rezRange)
     .then((results) => {
       resolve(results);
-      console.error(results, 'results');
+      return results;
     }).catch((err) => reject(err));
 });
-
-
-getIngredientsForDateRange('2020-04-20', '2020-04-27');
 
 export default { getTablesWithReservations, getIngredientsByReservationDate, getIngredientsForDateRange };
