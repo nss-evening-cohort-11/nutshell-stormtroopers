@@ -10,6 +10,9 @@ const showSingleReservation = (e) => {
   domString += '<h2><strong>Reservation Details</strong></h2>';
   domString += '</div>';
   domString += '<p>Res Details</p>';
+  domString += '<div>';
+  domString += '</div>';
+  domString += '<button></button>';
   domString += '</div>';
   utils.printToDom('single-reservation-container', domString);
 };
