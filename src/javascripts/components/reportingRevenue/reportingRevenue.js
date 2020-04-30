@@ -1,5 +1,7 @@
 import moment from 'moment';
 import utils from '../../helpers/utils';
+import reservationData from '../../helpers/data/reservationData';
+import ordersData from '../../helpers/data/ordersData';
 
 
 const showReportingTab = () => {
@@ -12,14 +14,35 @@ const removeReportingTab = () => {
   const domString = '';
   utils.printToDom('reporting-tab', domString);
 };
-const getDates = () => {
+const getResevationsByDateRange = () => {
+  // Gets the first input put in by the user
   const date1 = $('#date1').val();
+  // Gets the second input put in by the user
   const date2 = $('#date2').val();
+  // Takes those inputs and turns them into the moment format
   const modifiedDate1 = moment(date1, 'YYYY/MM/DD').format('YYYY/MM/DD');
   const modifiedDate2 = moment(date2, 'YYYY/MM/DD').format('YYYY/MM/DD');
-  const date = moment('2019/04/10', 'YYYY/MM/DD');
-
-  console.error(date.isBetween(modifiedDate1, modifiedDate2));
+  reservationData.getReservations()
+    .then((reservations) => {
+      ordersData.getSingleOrders()
+        .then((singleOrders) => {
+          // Loop over the Reservations and grab the reservations with a date inbetween the two dates
+          const reservationByDate = reservations.filter((reservation) => moment(reservation.date, 'YYYY/MM/DD').isBetween(modifiedDate1, modifiedDate2, null, '[]'));
+          const reservationOrdersByDate = [];
+          // Then loop over the new reservations and inside that loop filter the orders and push the orders into an array that have the same id as the new reservations
+          reservationByDate.forEach((reservation) => {
+            const singleOrderByDate = singleOrders.filter((orders) => orders.reservationId === reservation.id);
+            reservationOrdersByDate.push(singleOrderByDate);
+          });
+          let sumSingleOrderTotal = 0;
+          // Loop over the single orders and add up there totals
+          reservationOrdersByDate.flat().forEach((orderTotal) => {
+            sumSingleOrderTotal = orderTotal.singleOrderTotal + sumSingleOrderTotal;
+          });
+          // output the sum of the orders into the div
+          console.error('$', sumSingleOrderTotal);
+        });
+    });
 };
 
 const buildReportingPage = () => {
@@ -58,7 +81,7 @@ const buildReportingPage = () => {
 };
 
 const revenueEvents = () => {
-  $('body').on('click', '#revenue-button', getDates);
+  $('body').on('click', '#revenue-button', getResevationsByDateRange);
 };
 
 
