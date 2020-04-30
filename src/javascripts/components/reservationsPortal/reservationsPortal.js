@@ -1,6 +1,7 @@
 import utils from '../../helpers/utils';
-import './reservationsPortal.scss';
 import smashData from '../../helpers/data/smashData';
+import singleReservation from '../singleReservation/singleReservation';
+import './reservationsPortal.scss';
 import 'moment';
 
 const Moment = require('moment');
@@ -17,10 +18,12 @@ const showFilteredReservations = () => {
 
 const removeReservationPortalEvents = () => {
   $('body').off('click', '#filter-date-btn', showFilteredReservations);
+  $('body').off('click', '.single-reservation-btn', singleReservation.showSingleReservation);
 };
 
 const reservationPortalEvents = () => {
   $('body').on('click', '#filter-date-btn', showFilteredReservations);
+  $('body').on('click', '.single-reservation-btn', singleReservation.showSingleReservation);
 };
 
 // Table builder function
@@ -62,6 +65,7 @@ const showReservationsByDate = () => {
 const buildReservationsPortalSection = () => {
   let domString = '<h1 id="reservations-portal-header" class="reservations-portal-title text-center">Reservations Portal</h1>';
   domString += '<div class="col-12 text-center"><input type="date" id="date-selector" class="mx-1" value="2020-04-21"><button type="submit" id="filter-date-btn" class="btn btn-secondary mx-1">Select Date</button></div>';
+  domString += '<div id="single-reservation-container" class="hide"></div>';
   domString += '<div id="filtered-reservations-container"></div>';
   utils.printToDom('reservations-portal-section', domString);
   showReservationsByDate();
