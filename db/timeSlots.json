@@ -13,5 +13,11 @@
   },
   "timeSlot5": {
     "time": "9:30pm"
+  },
+  "timeSlot6": {
+    "time": "10:30pm"
+  },
+  "timeSlot7": {
+    "time": "11:00pm"
   }
 }

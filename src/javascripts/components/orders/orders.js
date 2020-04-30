@@ -23,7 +23,7 @@ const addToOrder = (e) => {
       ordersData.addOrder(newOrder)
         .then(() => {
           // eslint-disable-next-line no-use-before-define
-          editOrdersPage();
+          editOrdersPage(reservatoinId);
         })
         .catch((err) => console.error('problem with get single menu item in add to order', err));
     })
@@ -32,16 +32,26 @@ const addToOrder = (e) => {
 
 const removeFromOrder = (e) => {
   const removeOrderId = e.target.closest('.card').id;
+  const reservatoinId = e.target.closest('.card-body').id;
+
+  console.log('removeOrderId', removeOrderId);
+
   ordersData.deleteOrder(removeOrderId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      editOrdersPage();
+      editOrdersPage(reservatoinId);
     })
     .catch((err) => console.error('problem with delete order in remove from order', err));
 };
 
-const editOrdersPage = () => {
-  const reservationId = 'reservation5';
+const editOrderPageEvent = (e) => {
+  const reservationId = e.target.closest('.list-group-item').id;
+  // eslint-disable-next-line no-use-before-define
+  editOrdersPage(reservationId);
+  window.scrollTo(0, 0);
+};
+
+const editOrdersPage = (reservationId) => {
   let domString = '';
 
   domString += '<strong><h1 id="orders-page-header" class="text-center display-4">Reservation Order</h1></strong>';
@@ -77,8 +87,10 @@ const editOrdersPage = () => {
               reservationOrders.forEach((order) => {
                 const orderMenuItem = menuItems.find((menuItem) => menuItem.id === order.menuItemId);
                 domString += `<div class="card mr-2 col-3" id="${order.id}">`;
+                domString += '<div class="edit-order-img-holder">';
                 domString += `<img class="card-img-top" src="${orderMenuItem.imageUrl}" alt="Card image cap">`;
-                domString += '<div class="card-body text-center d-flex flex-column">';
+                domString += '</div>';
+                domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${orderMenuItem.name}</h5>`;
                 domString += `<p class="card-text text-left">${orderMenuItem.description}</p>`;
                 domString += '<button class="btn btn-danger mt-auto remove-from-order-button">Remove</button>';
@@ -94,7 +106,9 @@ const editOrdersPage = () => {
 
               menuBeverages.forEach((beverage) => {
                 domString += `<div class="card mr-2 col-3" id="${beverage.id}">`;
+                domString += '<div class="edit-order-img-holder">';
                 domString += `<img class="card-img-top" src="${beverage.imageUrl}" alt="Card image cap">`;
+                domString += '</div>';
                 domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${beverage.name}</h5>`;
                 domString += `<p class="card-text text-left">${beverage.description}</p>`;
@@ -111,7 +125,9 @@ const editOrdersPage = () => {
 
               menuAppetizers.forEach((appetizer) => {
                 domString += `<div class="card mr-2 col-3" id="${appetizer.id}">`;
+                domString += '<div class="edit-order-img-holder">';
                 domString += `<img class="card-img-top" src="${appetizer.imageUrl}" alt="Card image cap">`;
+                domString += '</div>';
                 domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${appetizer.name}</h5>`;
                 domString += `<p class="card-text text-left">${appetizer.description}</p>`;
@@ -128,7 +144,9 @@ const editOrdersPage = () => {
 
               menuSalads.forEach((salad) => {
                 domString += `<div class="card mr-2 col-3" id="${salad.id}">`;
+                domString += '<div class="edit-order-img-holder">';
                 domString += `<img class="card-img-top" src="${salad.imageUrl}" alt="Card image cap">`;
+                domString += '</div>';
                 domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${salad.name}</h5>`;
                 domString += `<p class="card-text text-left">${salad.description}</p>`;
@@ -145,7 +163,9 @@ const editOrdersPage = () => {
 
               menuMainDishes.forEach((mainDish) => {
                 domString += `<div class="card mr-2 col-3" id="${mainDish.id}">`;
+                domString += '<div class="edit-order-img-holder">';
                 domString += `<img class="card-img-top" src="${mainDish.imageUrl}" alt="Card image cap">`;
+                domString += '</div>';
                 domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${mainDish.name}</h5>`;
                 domString += `<p class="card-text text-left">${mainDish.description}</p>`;
@@ -162,7 +182,9 @@ const editOrdersPage = () => {
 
               menuDesserts.forEach((dessert) => {
                 domString += `<div class="card mr-2 col-3" id="${dessert.id}">`;
+                domString += '<div class="edit-order-img-holder">';
                 domString += `<img class="card-img-top" src="${dessert.imageUrl}" alt="Card image cap">`;
+                domString += '</div>';
                 domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
                 domString += `<h5 class="card-title text-left">${dessert.name}</h5>`;
                 domString += `<p class="card-text text-left">${dessert.description}</p>`;
@@ -190,10 +212,13 @@ const editOrdersPage = () => {
   $('#reservations-section').addClass('hide');
   $('#menu-section').addClass('hide');
   $('#ingredients-section').addClass('hide');
+  $('#reservations-portal-section').addClass('hide');
+  $('#reporting-section').addClass('hide');
   $('#orders-section').removeClass('hide');
 };
 
 const ordersSectionEvents = () => {
+  $('body').on('click', '.edit-order-btn', editOrderPageEvent);
   $('body').on('click', '.add-to-order-button', addToOrder);
   $('body').on('click', '.remove-from-order-button', removeFromOrder);
 };
