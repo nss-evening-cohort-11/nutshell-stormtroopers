@@ -1,4 +1,5 @@
 import reservationData from '../../helpers/data/reservationData';
+import ingredientsData from '../../helpers/data/ingredientsData';
 import ordersData from '../../helpers/data/ordersData';
 import menuData from '../../helpers/data/menuData';
 import utils from '../../helpers/utils';
@@ -55,6 +56,9 @@ const editOrdersPage = () => {
         .then((orders) => {
           menuData.getAllMenuItems()
             .then((menuItems) => {
+              ingredientsData.getIngredients()
+                .then()
+                .catch((err) => console.error('problem with get ingredients in edit orders page', err));
               const reservationOrders = orders.filter((order) => order.reservationId === reservationId);
               // MENU ARRAY VARIABLES //
               const menuBeverages = menuItems.filter((menuItem) => menuItem.category === 'beverage');
