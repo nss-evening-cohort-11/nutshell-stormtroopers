@@ -71,6 +71,7 @@ const buildReservationsPortalSection = () => {
     $('#reservations-section').addClass('hide');
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
+    $('#reporting-section').addClass('hide');
     $('#reservations-portal-section').removeClass('hide');
   });
 };

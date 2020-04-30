@@ -1,5 +1,6 @@
 import '../styles/main.scss';
 import 'bootstrap';
+import 'moment';
 import firebase from 'firebase/app';
 import apiKeys from './helpers/apiKeys.json';
 import auth from './components/auth/auth';
@@ -10,6 +11,7 @@ import ingredients from './components/ingredients/ingredients';
 import menu from './components/menu/menu';
 import reservationsPortal from './components/reservationsPortal/reservationsPortal';
 import authData from './helpers/data/authData';
+import reportingRevenue from './components/reportingRevenue/reportingRevenue';
 
 const navbarClickEvents = () => {
   $(document).ready(() => {
@@ -19,6 +21,7 @@ const navbarClickEvents = () => {
     $('#menu-button').click(menu.buildMenuSection);
     $('#ingredients-button').click(ingredients.buildIngredientsSection);
     $('#reservations-portal-button').click(reservationsPortal.buildReservationsPortalSection);
+    $('body').on('click', '#reporting-button', reportingRevenue.buildReportingPage);
   });
 };
 

@@ -6,7 +6,10 @@ const showHomePage = () => {
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
     $('#reservations-portal-section').addClass('hide');
+    $('#reporting-section').addClass('hide');
   });
 };
 
-export default { showHomePage };
+export default {
+  showHomePage,
+};

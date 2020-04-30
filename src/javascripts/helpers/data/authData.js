@@ -4,6 +4,7 @@ import ingredients from '../../components/ingredients/ingredients';
 import staff from '../../components/staff/staff';
 import reservations from '../../components/reservations/reservations';
 import reservationsPortal from '../../components/reservationsPortal/reservationsPortal';
+import reportingRevenue from '../../components/reportingRevenue/reportingRevenue';
 
 const loginButton = $('#login-button');
 const logoutButton = $('#navbar-logout-button');
@@ -18,8 +19,10 @@ const checkLoginStatus = () => {
       ingredients.ingredientEvents();
       ingredients.modalEvents();
       staff.staffSectionEvents();
+      reportingRevenue.revenueEvents();
       reservations.reservationSectionEvents();
       reservationsPortal.reservationPortalEvents();
+      reportingRevenue.showReportingTab();
     } else {
       // person not logged in
       logoutButton.addClass('hide');
@@ -28,6 +31,7 @@ const checkLoginStatus = () => {
       staff.removeStaffSectionEvents();
       reservations.removeReservationSectionEvents();
       reservationsPortal.removeReservationPortalEvents();
+      reportingRevenue.removeReportingTab();
     }
   });
 };
@@ -39,4 +43,7 @@ const logoutEvent = () => {
   });
 };
 
-export default { checkLoginStatus, logoutEvent };
+export default {
+  checkLoginStatus,
+  logoutEvent,
+};
