@@ -6,24 +6,39 @@ import 'moment';
 
 const Moment = require('moment');
 
+// filters the page off the selected date
 const showFilteredReservations = () => {
   const selectedDate = $('#date-selector').val();
   smashData.getReservationTimeslotsByDate(selectedDate)
     .then((reservations) => {
       // eslint-disable-next-line no-use-before-define
       buildReservationsTable(reservations);
+      $('#single-reservation-container').addClass('hide');
+      $('#filtered-reservations-container').removeClass('hide');
     })
     .catch((err) => console.error('could not get reservations by date', err));
 };
 
+// clicking on an individual reservation prints a new div with a single reservation view
+const showSingleReservationEvent = (e) => {
+  const reservationId = e.target.closest('li').id;
+  $('#single-reservation-container').removeClass('hide');
+  $('#filtered-reservations-container').addClass('hide');
+  singleReservation.showSingleReservation(reservationId);
+};
+
+
+// Events loaded with Auth
 const removeReservationPortalEvents = () => {
   $('body').off('click', '#filter-date-btn', showFilteredReservations);
-  $('body').off('click', '.single-reservation-btn', singleReservation.showSingleReservation);
+  $('body').off('click', '.exit-single-res-btn', showFilteredReservations);
+  $('body').off('click', '.single-reservation-btn', showSingleReservationEvent);
 };
 
 const reservationPortalEvents = () => {
   $('body').on('click', '#filter-date-btn', showFilteredReservations);
-  $('body').on('click', '.single-reservation-btn', singleReservation.showSingleReservation);
+  $('body').on('click', '.exit-single-res-btn', showFilteredReservations);
+  $('body').on('click', '.single-reservation-btn', showSingleReservationEvent);
 };
 
 // Table builder function
