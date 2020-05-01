@@ -50,6 +50,10 @@ const buildReportingPage = () => {
 
   let domString = '';
   domString += '<h1 class="text-center my-3">Reporting</h1>';
+  domString += '<div id="date-buttons-div" class="text-center">';
+  domString += '<button id="date-range" class="btn btn-primary mx-2">Single Date</button>';
+  domString += '<button id="date-single" class="btn btn-primary mx-2">Date Range</button>';
+  domString += '</div>';
   domString += '<div id="date-div" class="wrap text-center">';
   domString += '<form class=" col-3">';
   domString += '<div class="form-group">';
@@ -61,6 +65,14 @@ const buildReportingPage = () => {
   domString += '<div class="form-group">';
   domString += '<label for="date2">Date End</label>';
   domString += '<input type="text" class="form-control" id="date2" aria-describedby="seconddate" placeholder="2019-4-28">';
+  domString += '</div>';
+  domString += '</form>';
+  domString += '</div>';
+  domString += '<div id="date-div-single" class="wrap text-center">';
+  domString += '<form class=" col-3">';
+  domString += '<div class="form-group">';
+  domString += '<label for="date3">Enter Date</label>';
+  domString += '<input type="text" class="form-control" id="date3" aria-describedby="seconddate" placeholder="2019-4-28">';
   domString += '</div>';
   domString += '</form>';
   domString += '</div>';
@@ -82,6 +94,8 @@ const buildReportingPage = () => {
 
 const revenueEvents = () => {
   $('body').on('click', '#revenue-button', getResevationsByDateRange);
+  $('body').on('click', '#date-range', getResevationsByDateRange);
+  $('body').on('click', '#date-single', getResevationsByDateRange);
 };
 
 
