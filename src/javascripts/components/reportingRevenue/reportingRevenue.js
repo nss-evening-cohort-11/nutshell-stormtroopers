@@ -62,7 +62,7 @@ const getResevationsByDate = () => {
         ordersData.getSingleOrders()
           .then((singleOrders) => {
             // Loop over the Reservations and grab the all the reservations that are equal to the date
-            const reservationByDate = reservations.filter((reservation) => reservation.date === modifiedDate3);
+            const reservationByDate = reservations.filter((reservation) => moment(reservation.date).format('YYYY/MM/DD') === modifiedDate3);
             console.error(reservationByDate);
             const reservationOrdersByDate = [];
             // Then loop over the new reservations and inside that loop filter the orders and push the orders into an array that have the same id as the new reservations
