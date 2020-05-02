@@ -25,9 +25,9 @@ const serversDropdown = () => {
     .then((servers) => {
       let domString = '';
       domString += '<select class="custom-select" id="serversDropdown">';
-      domString += '<option selected>Assign New Server</option>';
+      domString += '<option value="default-server-dropdown">Assign New Server</option>';
       servers.forEach((server) => {
-        domString += `<option class="dropdown-item" value="${server.name}">${server.name}</option>`;
+        domString += `<option class="dropdown-item server-item" value="${server.name}">${server.name}</option>`;
       });
       domString += '</select>';
       utils.printToDom('server-assignment-container', domString);
@@ -41,7 +41,7 @@ const serverAssistantsDropdown = () => {
     .then((servers) => {
       let domString = '';
       domString += '<select class="custom-select" id="serversAssistantsDropdown">';
-      domString += '<option selected>Assign New Server Assistant</option>';
+      domString += '<option value="default-assistant-dropdown">Assign New Server Assistant</option>';
       servers.forEach((server) => {
         domString += `<option class="dropdown-item" value="${server.name}">${server.name}</option>`;
       });
@@ -58,10 +58,10 @@ const tablesDropdown = (res) => {
       const currentTableNum = currentTableId.tableNumber;
       let domString = '';
       domString += '<select class="custom-select" id="tablesDropdown">';
-      domString += `<option selected>Current Table: ${currentTableNum}</option>`;
+      domString += `<option value="default-table-dropdown" data-table-id="${currentTableId}">Current Table: ${currentTableNum}</option>`;
       const filteredTables = tables.filter((x) => x.numOfSeats >= res.numOfGuests);
       filteredTables.forEach((table) => {
-        domString += `<option class="dropdown-item" value="${table.tableNumber}">${table.tableNumber}</option>`;
+        domString += `<option class="dropdown-item" value="${table.id}">${table.tableNumber}</option>`;
       });
       domString += '</select>';
       if (currentTableId.numOfSeats < res.numOfGuests) {

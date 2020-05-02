@@ -37,6 +37,42 @@ const rejectSingleReservationEvent = (e) => {
     .catch((err) => console.error('could not delete reservation', err));
 };
 
+// click event that updates selected reservation
+const updateSingleReservationEvent = (e) => {
+  e.preventDefault();
+  const singleResCard = e.target.closest('.card');
+  const reservationId = $(singleResCard).data('reservationId');
+  reservationData.getSingleReservation(reservationId)
+    .then((resp) => {
+      const res = resp.data;
+      const server = $('#serversDropdown :selected').val();
+      const serverAsst = $('#serversAssistantsDropdown :selected').val();
+      const selectedTableId = $('#tablesDropdown :selected').val();
+      const modifiedResObject = {
+        billTotal: '',
+        date: res.date,
+        fullyStaffed: res.fullyStaffed,
+        hasServer: res.hasServer,
+        hasServerAssistant: res.hasServerAssistant,
+        numOfGuests: res.numOfGuests,
+        partyName: res.partyName,
+        tableId: selectedTableId,
+        timeSlotId: res.timeSlotId,
+      };
+      if (server !== 'default-server-dropdown') {
+        modifiedResObject.hasServer = true;
+      }
+      if (serverAsst !== 'default-assistant-dropdown') {
+        modifiedResObject.hasServerAssistant = true;
+      }
+      if (modifiedResObject.hasServer && modifiedResObject.hasServerAssistant) {
+        modifiedResObject.fullyStaffed = true;
+      }
+      reservationData.editEntireReservation(reservationId, modifiedResObject)
+        .then(() => showFilteredReservations());
+    })
+    .catch((err) => console.error('could not get reservation', err));
+};
 
 // Events loaded with Auth
 const removeReservationPortalEvents = () => {
@@ -44,6 +80,7 @@ const removeReservationPortalEvents = () => {
   $('body').off('click', '.single-reservation-btn', showSingleReservationEvent);
   $('body').off('click', '.exit-single-res-btn', showFilteredReservations);
   $('body').off('click', '.reject-res-btn', rejectSingleReservationEvent);
+  $('body').off('click', '.update-res-btn', updateSingleReservationEvent);
 };
 
 const reservationPortalEvents = () => {
@@ -51,6 +88,7 @@ const reservationPortalEvents = () => {
   $('body').on('click', '.single-reservation-btn', showSingleReservationEvent);
   $('body').on('click', '.exit-single-res-btn', showFilteredReservations);
   $('body').on('click', '.reject-res-btn', rejectSingleReservationEvent);
+  $('body').on('click', '.update-res-btn', updateSingleReservationEvent);
 };
 
 // Table builder function
