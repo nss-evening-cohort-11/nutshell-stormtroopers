@@ -19,7 +19,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-22"
   },
   "reservation3": {
     "timeSlotId": "timeSlot3",
@@ -41,7 +41,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-29"
   },
   "reservation5": {
     "timeSlotId": "timeSlot5",
@@ -140,7 +140,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-13"
   },
   "reservation14": {
     "timeSlotId": "timeSlot4",
@@ -151,7 +151,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-14"
   },
   "reservation15": {
     "timeSlotId": "timeSlot5",
@@ -162,7 +162,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-15"
   },
   "reservation16": {
     "timeSlotId": "timeSlot1",
@@ -173,7 +173,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-19"
   },
   "reservation17": {
     "timeSlotId": "timeSlot2",
@@ -184,7 +184,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-25"
   },
   "reservation18": {
     "timeSlotId": "timeSlot3",
@@ -195,6 +195,6 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-26"
   }
 }
