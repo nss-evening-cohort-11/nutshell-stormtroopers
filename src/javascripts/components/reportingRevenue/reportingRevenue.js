@@ -98,8 +98,6 @@ const showDateSingleForm = () => {
 };
 
 const buildReportingPage = () => {
-  console.error('hi');
-
   let domString = '';
   domString += '<h1 class="text-center my-4">Reporting</h1>';
   domString += '<div id="date-buttons-div" class="text-center mb-2">';

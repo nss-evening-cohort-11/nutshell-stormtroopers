@@ -73,7 +73,30 @@ const editOrdersPage = (reservationId) => {
                 .then((allIgredients) => {
                   recipeData.getRecipes()
                     .then((allRecipes) => {
+                      // CHECK IF INVENTORY IS SET AT ZERO //
+                      const selectedRecipes = [];
+                      const selectedMenuItems = [];
+                      allIgredients.forEach((ingredient) => {
+                        if (ingredient.quantity === 0) {
+                          allRecipes.forEach((recipe) => {
+                            if (recipe.ingredientId === ingredient.id) {
+                              selectedRecipes.push(recipe);
+                            }
+                          });
+                        }
+                      });
+
+                      selectedRecipes.forEach((recipe) => {
+                        selectedMenuItems.push(allMenuItems.find((menuItem) => menuItem.id === recipe.menuItemId));
+                        selectedMenuItems.forEach((menuItem) => {
+                          console.log('menuItem', menuItem);
+                          menuData.setIsAvailableToFalse(menuItem.id);
+                        });
+                      });
+
+                      // ORDERS BY RESERVATION //
                       const reservationOrders = allOrders.filter((order) => order.reservationId === reservationId);
+
                       // MENU ARRAY VARIABLES //
                       const menuBeverages = allMenuItems.filter((menuItem) => menuItem.category === 'beverage');
                       const menuAppetizers = allMenuItems.filter((menuItem) => menuItem.category === 'appetizer');
@@ -84,7 +107,7 @@ const editOrdersPage = (reservationId) => {
                       domString += '<div class="d-flex justify-content-center">';
                       domString += '<div id="edit-orders-container" class="col-9">';
 
-                      // RESRVATION ORDERS //
+                      // ORDERS //
                       domString += '<h3 id="reservation-orders-page-header" class="mt-4">Order</h3>';
                       domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
@@ -92,18 +115,29 @@ const editOrdersPage = (reservationId) => {
                         //  ORDER DATA SETUP //
                         const orderMenuItem = allMenuItems.find((menuItem) => menuItem.id === order.menuItemId);
                         const orderMenuItemRecipes = allRecipes.filter((recipe) => recipe.menuItemId === orderMenuItem.id);
-                        const orderMenuItemIngredients = allIgredients.filter((ingredient) => ingredient.id === orderMenuItemRecipes.ingredientId);
+                        const orderMenuItemIngredients = [];
+                        orderMenuItemRecipes.forEach((recipe) => {
+                          orderMenuItemIngredients.push(allIgredients.find((ingredient) => ingredient.id === recipe.ingredientId));
+                        });
 
-                        console.log('orderMenuItemRecipe', orderMenuItemRecipes);
-                        console.log('orderMenuItemIngredients', orderMenuItemIngredients);
                         // ORDER PRINT STATEMENTS //
                         domString += `<div class="card mr-2 col-3" id="${order.id}">`;
                         domString += '<div class="edit-order-img-holder">';
                         domString += `<img class="card-img-top" src="${orderMenuItem.imageUrl}" alt="Card image cap">`;
                         domString += '</div>';
                         domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
-                        domString += `<h5 class="card-title text-left">${orderMenuItem.name}</h5>`;
-                        domString += `<p class="card-text text-left">${orderMenuItem.description}</p>`;
+                        domString += `<h5 class="card-title menu-item-name text-left">${orderMenuItem.name}</h5>`;
+                        domString += '<h6 class="card-title text-left mt-auto">Inventory:</h6>';
+                        domString += '<div class="menu-item-inventory-list overflow-auto mb-3">';
+                        orderMenuItemIngredients.forEach((ingredient) => {
+                          if (ingredient === undefined) {
+                            console.error('an ingredient from this menu item is missing from data', orderMenuItem);
+                          } else {
+                            domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
+                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                          }
+                        });
+                        domString += '</div>';
                         domString += '<button class="btn btn-danger mt-auto remove-from-order-button">Remove</button>';
                         domString += '</div>';
                         domString += '</div>';
@@ -116,13 +150,31 @@ const editOrdersPage = (reservationId) => {
                       domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
                       menuBeverages.forEach((beverage) => {
+                        //  BEVERAGES DATA SETUP //
+                        const beverageMenuItemRecipes = allRecipes.filter((recipe) => recipe.menuItemId === beverage.id);
+                        const beverageMenuItemIngredients = [];
+                        beverageMenuItemRecipes.forEach((recipe) => {
+                          beverageMenuItemIngredients.push(allIgredients.find((ingredient) => ingredient.id === recipe.ingredientId));
+                        });
+
+                        // BEVERAGES PRINT STATEMENTS //
                         domString += `<div class="card mr-2 col-3" id="${beverage.id}">`;
                         domString += '<div class="edit-order-img-holder">';
                         domString += `<img class="card-img-top" src="${beverage.imageUrl}" alt="Card image cap">`;
                         domString += '</div>';
                         domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
-                        domString += `<h5 class="card-title text-left">${beverage.name}</h5>`;
-                        domString += `<p class="card-text text-left">${beverage.description}</p>`;
+                        domString += `<h5 class="card-title menu-item-name text-left">${beverage.name}</h5>`;
+                        domString += '<h6 class="card-title text-left">Inventory:</h6>';
+                        domString += '<div class="menu-item-inventory-list overflow-auto mb-3">';
+                        beverageMenuItemIngredients.forEach((ingredient) => {
+                          if (ingredient === undefined) {
+                            console.error('an ingredient from this menu item is missing from data', beverage);
+                          } else {
+                            domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
+                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                          }
+                        });
+                        domString += '</div>';
                         domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                         domString += '</div>';
                         domString += '</div>';
@@ -135,13 +187,31 @@ const editOrdersPage = (reservationId) => {
                       domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
                       menuAppetizers.forEach((appetizer) => {
+                        //  APPETIZERS DATA SETUP //
+                        const appetizerMenuItemRecipes = allRecipes.filter((recipe) => recipe.menuItemId === appetizer.id);
+                        const appetizerMenuItemIngredients = [];
+                        appetizerMenuItemRecipes.forEach((recipe) => {
+                          appetizerMenuItemIngredients.push(allIgredients.find((ingredient) => ingredient.id === recipe.ingredientId));
+                        });
+
+                        // APPETIZERS PRINT STATEMENTS //
                         domString += `<div class="card mr-2 col-3" id="${appetizer.id}">`;
                         domString += '<div class="edit-order-img-holder">';
                         domString += `<img class="card-img-top" src="${appetizer.imageUrl}" alt="Card image cap">`;
                         domString += '</div>';
                         domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
-                        domString += `<h5 class="card-title text-left">${appetizer.name}</h5>`;
-                        domString += `<p class="card-text text-left">${appetizer.description}</p>`;
+                        domString += `<h5 class="card-title menu-item-name text-left">${appetizer.name}</h5>`;
+                        domString += '<h6 class="card-title text-left">Inventory:</h6>';
+                        domString += '<div class="menu-item-inventory-list overflow-auto mb-3">';
+                        appetizerMenuItemIngredients.forEach((ingredient) => {
+                          if (ingredient === undefined) {
+                            console.error('an ingredient from this menu item is missing from data', appetizer);
+                          } else {
+                            domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
+                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                          }
+                        });
+                        domString += '</div>';
                         domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                         domString += '</div>';
                         domString += '</div>';
@@ -154,13 +224,31 @@ const editOrdersPage = (reservationId) => {
                       domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
                       menuSalads.forEach((salad) => {
+                        //  SALADS DATA SETUP //
+                        const saladMenuItemRecipes = allRecipes.filter((recipe) => recipe.menuItemId === salad.id);
+                        const saladMenuItemIngredients = [];
+                        saladMenuItemRecipes.forEach((recipe) => {
+                          saladMenuItemIngredients.push(allIgredients.find((ingredient) => ingredient.id === recipe.ingredientId));
+                        });
+
+                        // SALADS PRINT STATEMENTS //
                         domString += `<div class="card mr-2 col-3" id="${salad.id}">`;
                         domString += '<div class="edit-order-img-holder">';
                         domString += `<img class="card-img-top" src="${salad.imageUrl}" alt="Card image cap">`;
                         domString += '</div>';
                         domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
-                        domString += `<h5 class="card-title text-left">${salad.name}</h5>`;
-                        domString += `<p class="card-text text-left">${salad.description}</p>`;
+                        domString += `<h5 class="card-title menu-item-name text-left">${salad.name}</h5>`;
+                        domString += '<h6 class="card-title text-left">Inventory:</h6>';
+                        domString += '<div class="menu-item-inventory-list overflow-auto mb-3">';
+                        saladMenuItemIngredients.forEach((ingredient) => {
+                          if (ingredient === undefined) {
+                            console.error('an ingredient from this menu item is missing from data', salad);
+                          } else {
+                            domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
+                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                          }
+                        });
+                        domString += '</div>';
                         domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                         domString += '</div>';
                         domString += '</div>';
@@ -168,18 +256,36 @@ const editOrdersPage = (reservationId) => {
 
                       domString += '</div>';
 
-                      // Main Dishes //
+                      // MAIN DISHES //
                       domString += '<h3 id="reservation-orders-page-header" class="mt-4">Main Dishes</h3>';
                       domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
                       menuMainDishes.forEach((mainDish) => {
+                        //  MAIN DISHES DATA SETUP //
+                        const mainDishMenuItemRecipes = allRecipes.filter((recipe) => recipe.menuItemId === mainDish.id);
+                        const mainDishMenuItemIngredients = [];
+                        mainDishMenuItemRecipes.forEach((recipe) => {
+                          mainDishMenuItemIngredients.push(allIgredients.find((ingredient) => ingredient.id === recipe.ingredientId));
+                        });
+
+                        // MAIN DISHES PRINT STATEMENTS //
                         domString += `<div class="card mr-2 col-3" id="${mainDish.id}">`;
                         domString += '<div class="edit-order-img-holder">';
                         domString += `<img class="card-img-top" src="${mainDish.imageUrl}" alt="Card image cap">`;
                         domString += '</div>';
                         domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
-                        domString += `<h5 class="card-title text-left">${mainDish.name}</h5>`;
-                        domString += `<p class="card-text text-left">${mainDish.description}</p>`;
+                        domString += `<h5 class="card-title menu-item-name text-left">${mainDish.name}</h5>`;
+                        domString += '<h6 class="card-title text-left">Inventory:</h6>';
+                        domString += '<div class="menu-item-inventory-list overflow-auto mb-3">';
+                        mainDishMenuItemIngredients.forEach((ingredient) => {
+                          if (ingredient === undefined) {
+                            console.error('an ingredient from this menu item is missing from data', mainDish);
+                          } else {
+                            domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
+                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                          }
+                        });
+                        domString += '</div>';
                         domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                         domString += '</div>';
                         domString += '</div>';
@@ -187,18 +293,36 @@ const editOrdersPage = (reservationId) => {
 
                       domString += '</div>';
 
-                      // Desserts //
+                      // DESSERTS //
                       domString += '<h3 id="reservation-orders-page-header" class="mt-4">Desserts</h3>';
                       domString += '<div id="reservation-orders-container" class="row flex-row flex-nowrap m-0 pt-3 pb-3 pl-2 border overflow-auto">';
 
                       menuDesserts.forEach((dessert) => {
+                        //  DESSERTS DATA SETUP //
+                        const dessertMenuItemRecipes = allRecipes.filter((recipe) => recipe.menuItemId === dessert.id);
+                        const dessertMenuItemIngredients = [];
+                        dessertMenuItemRecipes.forEach((recipe) => {
+                          dessertMenuItemIngredients.push(allIgredients.find((ingredient) => ingredient.id === recipe.ingredientId));
+                        });
+
+                        // DESSERTS PRINT STATEMENTS //
                         domString += `<div class="card mr-2 col-3" id="${dessert.id}">`;
                         domString += '<div class="edit-order-img-holder">';
                         domString += `<img class="card-img-top" src="${dessert.imageUrl}" alt="Card image cap">`;
                         domString += '</div>';
                         domString += `<div class="card-body text-center d-flex flex-column" id="${reservationId}">`;
-                        domString += `<h5 class="card-title text-left">${dessert.name}</h5>`;
-                        domString += `<p class="card-text text-left">${dessert.description}</p>`;
+                        domString += `<h5 class="card-title menu-item-name text-left">${dessert.name}</h5>`;
+                        domString += '<h6 class="card-title text-left">Inventory:</h6>';
+                        domString += '<div class="menu-item-inventory-list overflow-auto mb-3">';
+                        dessertMenuItemIngredients.forEach((ingredient) => {
+                          if (ingredient === undefined) {
+                            console.error('an ingredient from this menu item is missing from data', dessert);
+                          } else {
+                            domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
+                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                          }
+                        });
+                        domString += '</div>';
                         domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
                         domString += '</div>';
                         domString += '</div>';
