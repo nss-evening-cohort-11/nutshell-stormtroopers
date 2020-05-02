@@ -56,7 +56,7 @@ const updateSingleReservationEvent = (e) => {
         hasServerAssistant: res.hasServerAssistant,
         numOfGuests: res.numOfGuests,
         partyName: res.partyName,
-        tableId: selectedTableId,
+        tableId: res.tableId,
         timeSlotId: res.timeSlotId,
       };
       if (server !== 'default-server-dropdown') {
@@ -67,6 +67,9 @@ const updateSingleReservationEvent = (e) => {
       }
       if (modifiedResObject.hasServer && modifiedResObject.hasServerAssistant) {
         modifiedResObject.fullyStaffed = true;
+      }
+      if (selectedTableId !== 'default-table-dropdown') {
+        modifiedResObject.tableId = selectedTableId;
       }
       reservationData.editEntireReservation(reservationId, modifiedResObject)
         .then(() => showFilteredReservations());
