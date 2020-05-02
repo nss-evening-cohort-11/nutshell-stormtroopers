@@ -45,14 +45,14 @@ const ingredientChart = () => new Promise((resolve, reject) => {
   const chartData = [];
   const chartLabels = [];
   const chart = 'ingredient-chart';
-  getProperArray(dates[0], dates[1]).then((results) => {
+  getProperArray(dates[0], dates[1]).then((results) => { // dateCheck returns an array! Hence the index #'s
     Object.entries(results).forEach((result) => {
       const key = result[0];
       const value = result[1];
       chartData.push(value);
       chartLabels.push(key);
     });
-    Plotly.newPlot(chart, [{
+    Plotly.newPlot(chart, [{ // Builds basic graph plot for data
       x: chartLabels,
       y: chartData,
       type: 'bar',
