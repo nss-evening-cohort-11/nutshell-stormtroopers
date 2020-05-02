@@ -44,7 +44,7 @@ const ingredientChart = () => new Promise((resolve, reject) => {
   const dates = dateCheck();
   const chartData = [];
   const chartLabels = [];
-  const chart = 'myChart';
+  const chart = 'ingredient-chart';
   getProperArray(dates[0], dates[1]).then((results) => {
     Object.entries(results).forEach((result) => {
       const key = result[0];
@@ -52,10 +52,6 @@ const ingredientChart = () => new Promise((resolve, reject) => {
       chartData.push(value);
       chartLabels.push(key);
     });
-    console.error(Array.isArray(chartData), 'data is array?');
-    console.error(chartData, 'data');
-    console.error(typeof chartLabels, 'labels');
-    console.error(chartLabels, 'labels');
     Plotly.newPlot(chart, [{
       x: chartLabels,
       y: chartData,
@@ -82,7 +78,7 @@ const getIngredientsReport = () => new Promise((resolve, reject) => {
       domString += '</div>';
     });
     domString += '</div>';
-    domString += '<div id="myChart"></div>';
+    domString += '<div id="ingredient-chart"></div>';
     utils.printToDom('ingredient-reporting-section', domString);
     resolve(results);
     $(document).ready(ingredientChart());
