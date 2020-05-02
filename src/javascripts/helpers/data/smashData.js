@@ -75,10 +75,12 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
     Promise.all(ingredients)
       .then((results) => {
         resolve(results);
-      })
-      .catch((err) => reject(err));
-  });
+        return results;
+      });
+  })
+    .catch((err) => reject(err));
 });
+
 
 const getReservationTimeslotsByDate = (selectedDate) => new Promise((resolve, reject) => {
   reservationData.getReservations().then((reservationsResponse) => {
