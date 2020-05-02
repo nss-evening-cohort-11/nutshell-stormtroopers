@@ -41,7 +41,7 @@ const buildReportingPage = () => {
   domString += '</div>';
   domString += '</form>';
   domString += '</div>';
-  domString += '<div id="statistic-buttons-div" class = "text-center my-3">';
+  domString += '<div id="statistic-buttons-div" class ="text-center my-3">';
   domString += '<button id="revenue-button" class="btn btn-success">Revenue</button>';
   domString += '<button id="ingredient-reporting-button" class="btn btn-primary">Ingredients</button>';
   domString += '</div>';

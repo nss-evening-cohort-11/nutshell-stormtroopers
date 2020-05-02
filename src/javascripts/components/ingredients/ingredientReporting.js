@@ -23,7 +23,8 @@ const getIngredientsReport = () => new Promise((resolve, reject) => {
   const modifiedDate2 = moment(date2).format('YYYY/MM/DD');
   let domString = '';
   getProperArray(modifiedDate1, modifiedDate2).then((results) => {
-    domString += `<h4 class="col-12" style="text-align: center;">Inventory Used from ${modifiedDate1} and ${modifiedDate2}</h4>`;
+    domString += `<h4 class="col-12" style="text-align: center;">Inventory Used from 
+    ${moment(modifiedDate1).format('MMM Do YYYY')} and ${moment(modifiedDate2).format('MMM Do YYYY')}</h4>`;
     Object.entries(results).forEach((result) => {
       const key = result[0];
       const value = result[1];
