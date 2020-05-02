@@ -56,7 +56,7 @@ const reservationPortalEvents = () => {
 // Table builder function
 const buildReservationsTable = (reservations) => {
   let domString = '';
-  domString += '<div class="card col-8 offset-2 my-4 filtered-reservations-table">';
+  domString += '<div class="card col-10 offset-1 my-4 filtered-reservations-table">';
   domString += '<div class="card-header text-center">';
   domString += '<h2><strong>Reservations</strong></h2>';
   domString += `<h4>Total Reservations: ${reservations.length}</h4>`;
@@ -64,10 +64,11 @@ const buildReservationsTable = (reservations) => {
   reservations.forEach((res) => {
     domString += '<ul class="list-group list-group-flush">';
     domString += `<li class="list-group-item" id="${res.id}">`;
-    domString += '<div class="row align-items-center">';
-    domString += `<div class="col-md-3">${res.partyName}</div>`;
-    domString += `<div class="col-md-2">${res.timeslot}</div>`;
-    domString += `<div class="col-md-2">${new Moment(res.date).format('MMMM Do YYYY')}</div>`;
+    domString += '<div class="row text-center align-items-center">';
+    domString += `<div class="col-md-2">${res.partyName}</div>`;
+    domString += `<div class="col-md-1">${res.timeslot}</div>`;
+    domString += `<div class="col-md-2">${new Moment(res.date).format('MMMM Do')}</div>`;
+    domString += `${res.fullyStaffed ? '<div class="col-md-2 text-success">Staff Assigned</div>' : '<div class="col-md-2 text-danger">Needs Staff Assigned</div>'}`;
     domString += '<button class="btn btn-outline-dark col-md-2 mx-auto single-reservation-btn">View Reservation</button>';
     domString += '<button class="btn btn-outline-dark col-md-2 mx-auto edit-order-btn">Edit Order</button>';
     domString += '</div>';
