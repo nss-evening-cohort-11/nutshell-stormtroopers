@@ -94,6 +94,19 @@ const getReservationTimeslotsByDate = (selectedDate) => new Promise((resolve, re
     .catch((err) => reject(err));
 });
 
+const getSingleReservationWithTimeslot = (reservationId) => new Promise((resolve, reject) => {
+  reservationData.getSingleReservation(reservationId).then((reservationResp) => {
+    const singleRes = reservationResp.data;
+    const reservationTimeslotId = reservationResp.data.timeSlotId;
+    timeSlotData.getSingleTimeslot(reservationTimeslotId).then((timeslotResp) => {
+      const singleTimeslot = timeslotResp.data;
+      singleRes.timeslot = singleTimeslot.time;
+      resolve(singleRes);
+    });
+  })
+    .catch((err) => reject(err));
+});
+
 const getIngredientsForDateRange = (start, end) => new Promise((resolve, reject) => {
   const dates = dateArray.getDatesForAWeek(start, end);
   const rezRange = [];
@@ -112,4 +125,5 @@ export default {
   getIngredientsForDateRange,
   getReservationTimeslotsByDate,
   getTablesWithReservations,
+  getSingleReservationWithTimeslot,
 };
