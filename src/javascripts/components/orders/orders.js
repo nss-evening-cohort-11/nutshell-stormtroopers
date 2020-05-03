@@ -89,7 +89,6 @@ const editOrdersPage = (reservationId) => {
                       selectedRecipes.forEach((recipe) => {
                         selectedMenuItems.push(allMenuItems.find((menuItem) => menuItem.id === recipe.menuItemId));
                         selectedMenuItems.forEach((menuItem) => {
-                          console.log('menuItem', menuItem);
                           menuData.setIsAvailableToFalse(menuItem.id);
                         });
                       });
@@ -171,11 +170,15 @@ const editOrdersPage = (reservationId) => {
                             console.error('an ingredient from this menu item is missing from data', beverage);
                           } else {
                             domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
-                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                            domString += `<p class="card-text text-center ${ingredient.quantity === 0 ? 'text-danger' : ''}">${ingredient.quantity}</p>`;
                           }
                         });
                         domString += '</div>';
-                        domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        if (beverage.setIsAvailable === false) {
+                          domString += '<button class="btn btn-primary mt-auto add-to-order-button" disabled>SOLD OUT</button>';
+                        } else {
+                          domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        }
                         domString += '</div>';
                         domString += '</div>';
                       });
@@ -208,11 +211,15 @@ const editOrdersPage = (reservationId) => {
                             console.error('an ingredient from this menu item is missing from data', appetizer);
                           } else {
                             domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
-                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                            domString += `<p class="card-text text-center ${ingredient.quantity === 0 ? 'text-danger' : ''}">${ingredient.quantity}</p>`;
                           }
                         });
                         domString += '</div>';
-                        domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        if (appetizer.isAvailable === false) {
+                          domString += '<button class="btn btn-danger mt-auto add-to-order-button" disabled>SOLD OUT</button>';
+                        } else {
+                          domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        }
                         domString += '</div>';
                         domString += '</div>';
                       });
@@ -245,11 +252,15 @@ const editOrdersPage = (reservationId) => {
                             console.error('an ingredient from this menu item is missing from data', salad);
                           } else {
                             domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
-                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                            domString += `<p class="card-text text-center ${ingredient.quantity === 0 ? 'text-danger' : ''}">${ingredient.quantity}</p>`;
                           }
                         });
                         domString += '</div>';
-                        domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        if (salad.isAvailable === false) {
+                          domString += '<button class="btn btn-danger mt-auto add-to-order-button" disabled>SOLD OUT</button>';
+                        } else {
+                          domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        }
                         domString += '</div>';
                         domString += '</div>';
                       });
@@ -282,11 +293,15 @@ const editOrdersPage = (reservationId) => {
                             console.error('an ingredient from this menu item is missing from data', mainDish);
                           } else {
                             domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
-                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                            domString += `<p class="card-text text-center ${ingredient.quantity === 0 ? 'text-danger' : ''}">${ingredient.quantity}</p>`;
                           }
                         });
                         domString += '</div>';
-                        domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        if (mainDish.isAvailable === false) {
+                          domString += '<button class="btn btn-danger mt-auto add-to-order-button" disabled>SOLD OUT</button>';
+                        } else {
+                          domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        }
                         domString += '</div>';
                         domString += '</div>';
                       });
@@ -319,11 +334,15 @@ const editOrdersPage = (reservationId) => {
                             console.error('an ingredient from this menu item is missing from data', dessert);
                           } else {
                             domString += `<p class="card-text text-center m-0">${ingredient.name}</p>`;
-                            domString += `<p class="card-text text-center">${ingredient.quantity}</p>`;
+                            domString += `<p class="card-text text-center ${ingredient.quantity === 0 ? 'text-danger' : ''}">${ingredient.quantity}</p>`;
                           }
                         });
                         domString += '</div>';
-                        domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        if (dessert.isAvailable === false) {
+                          domString += '<button class="btn btn-danger mt-auto add-to-order-button" disabled>SOLD OUT</button>';
+                        } else {
+                          domString += '<button class="btn btn-primary mt-auto add-to-order-button">Add To Order</button>';
+                        }
                         domString += '</div>';
                         domString += '</div>';
                       });
