@@ -29,7 +29,6 @@ const getMenuTopTen = () => {
           });
           const menuItemsToArray = Object.entries(count);
           const sortedArray = menuItemsToArray.sort((a, b) => b[1] - a[1]);
-          console.error(sortedArray);
           if (sortedArray.length > 10) {
             sortedArray.length = 10;
           }
@@ -70,7 +69,6 @@ const getMenuBottomTen = () => {
           });
           const menuItemsToArray = Object.entries(count);
           const sortedArray = menuItemsToArray.sort((a, b) => a[1] - b[1]);
-          console.error(sortedArray);
           if (sortedArray.length > 10) {
             sortedArray.length = 10;
           }
