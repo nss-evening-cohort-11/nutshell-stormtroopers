@@ -18,14 +18,15 @@ const getAllStaffMembers = () => new Promise((resolve, reject) => {
 });
 
 const getStaffByJobId = (jobId) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/staff.json?orderBy="jobId"&equalTo="${jobId}"`)
+  axios.get(`${baseUrl}/staff.json`)
     .then((response) => {
       const theseStaffMembers = response.data;
-      const selectedStaff = [];
+      const staffArr = [];
       Object.keys(theseStaffMembers).forEach((staffId) => {
         theseStaffMembers[staffId].id = staffId;
-        selectedStaff.push(theseStaffMembers[staffId]);
+        staffArr.push(theseStaffMembers[staffId]);
       });
+      const selectedStaff = staffArr.filter((x) => x.jobId === jobId);
       resolve(selectedStaff);
     })
     .catch((err) => reject(err));
