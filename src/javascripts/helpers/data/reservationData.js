@@ -17,7 +17,11 @@ const getReservations = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getSingleReservation = (reservationId) => axios.get(`${baseUrl}/reservations/${reservationId}.json`);
+
 const editReservation = (editedReservationId, newNumOfGuests, newPartyName) => axios.patch(`${baseUrl}/reservations/${editedReservationId}.json`, { numOfGuests: newNumOfGuests, partyName: newPartyName });
+
+const editEntireReservation = (reservationId, modifiedResObject) => axios.put(`${baseUrl}/reservations/${reservationId}.json`, modifiedResObject);
 
 const deleteReservation = (axedReservationId) => axios.delete(`${baseUrl}/reservations/${axedReservationId}.json`);
 
@@ -25,7 +29,9 @@ const addReservation = (newReservation) => axios.post(`${baseUrl}/reservations.j
 
 export default {
   getReservations,
+  getSingleReservation,
   addReservation,
   deleteReservation,
   editReservation,
+  editEntireReservation,
 };
