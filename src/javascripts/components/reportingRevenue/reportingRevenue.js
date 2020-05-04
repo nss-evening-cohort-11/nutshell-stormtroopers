@@ -15,6 +15,10 @@ const removeReportingTab = () => {
   utils.printToDom('reporting-tab', domString);
 };
 const getResevationsByDate = () => {
+  $('#most-ordered-section').addClass('hide');
+  $('#least-ordered-section').addClass('hide');
+  $('#revenue-reporting-section').removeClass('hide');
+  $('#ingredient-reporting-section').addClass('hide');
   if ($('#date-div-range').is(':visible') === true) {
     // Gets the first input put in by the user
     const date1 = $('#date1').val();
@@ -98,8 +102,6 @@ const showDateSingleForm = () => {
 };
 
 const buildReportingPage = () => {
-  console.error('hi');
-
   let domString = '';
   domString += '<h1 class="text-center my-4">Reporting</h1>';
   domString += '<div id="date-buttons-div" class="text-center mb-2">';
@@ -133,10 +135,14 @@ const buildReportingPage = () => {
   domString += '<div id="statistic-buttons-div" class = "text-center my-3 mb-4 ">';
   domString += '<button id="revenue-button" class="btn btn-success mx-2">Revenue</button>';
   domString += '<button id="ingredient-reporting-button" class="btn btn-primary mx-2">Ingredients</button>';
+  domString += '<button id="most-ordered-button" class="btn btn-success mx-2">Most Ordered Menu Items</button>';
+  domString += '<button id="least-ordered-button" class="btn btn-primary mx-2">Least Ordered Menu Items</button>';
   domString += '</div>';
   domString += '<div id="ingredient-reporting-section"></div>';
-  domString += '<div id="revenue-reporting-section" class=" text-center border border-success">';
-  domString += '</div>';
+  domString += '<div id="revenue-reporting-section" class=" text-center border border-success"></div>';
+  domString += '<div id="most-ordered-section" class="text-center border border-success"></div>';
+  domString += '<div id="least-ordered-section" class=" text-center border border-success"></div>';
+
   utils.printToDom('reporting-section', domString);
   $(document).ready(() => {
     $('#home-page').addClass('hide');
