@@ -35,8 +35,6 @@ const removeFromOrder = (e) => {
   const removeOrderId = e.target.closest('.card').id;
   const reservatoinId = e.target.closest('.card-body').id;
 
-  console.log('removeOrderId', removeOrderId);
-
   ordersData.deleteOrder(removeOrderId)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
