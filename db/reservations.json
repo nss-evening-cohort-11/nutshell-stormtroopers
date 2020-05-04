@@ -74,7 +74,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-23"
   },
   "reservation8": {
     "timeSlotId": "timeSlot3",
@@ -85,7 +85,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-24"
   },
   "reservation9": {
     "timeSlotId": "timeSlot4",
@@ -96,7 +96,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-25"
   },
   "reservation10": {
     "timeSlotId": "timeSlot5",
@@ -107,7 +107,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-26"
   },
   "reservation11": {
     "timeSlotId": "timeSlot1",
@@ -118,7 +118,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-27"
   },
   "reservation12": {
     "timeSlotId": "timeSlot2",
@@ -129,7 +129,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-21"
+    "date": "2020-04-28"
   },
   "reservation13": {
     "timeSlotId": "timeSlot3",
@@ -184,7 +184,7 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-25"
+    "date": "2020-04-17"
   },
   "reservation18": {
     "timeSlotId": "timeSlot3",
@@ -195,6 +195,204 @@
     "hasServer": false,
     "hasServerAssistant": false,
     "billTotal": "",
-    "date": "2020-04-26"
+    "date": "2020-04-16"
+  },
+  "reservation19": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table11",
+    "numOfGuests": 3,
+    "partyName": "Flenderson",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-22"
+  },
+  "reservation20": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table11",
+    "numOfGuests": 4,
+    "partyName": "Contras",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-16"
+  },
+  "reservation21": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table11",
+    "numOfGuests": 4,
+    "partyName": "Humbuckers",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-27"
+  },
+  "reservation22": {
+    "timeSlotId": "timeSlot4",
+    "tableId": "table11",
+    "numOfGuests": 1,
+    "partyName": "Hofstra",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-30"
+  },
+  "reservation23": {
+    "timeSlotId": "timeSlot5",
+    "tableId": "table11",
+    "numOfGuests": 3,
+    "partyName": "Cornell",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-12"
+  },
+  "reservation24": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table22",
+    "numOfGuests": 6,
+    "partyName": "Darthmouth",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-11"
+  },
+  "reservation25": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table22",
+    "numOfGuests": 8,
+    "partyName": "Cisquo",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-11"
+  },
+  "reservation26": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table22",
+    "numOfGuests": 6,
+    "partyName": "Smith",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-20"
+  },
+  "reservation27": {
+    "timeSlotId": "timeSlot4",
+    "tableId": "table22",
+    "numOfGuests": 8,
+    "partyName": "Webb",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-24"
+  },
+  "reservation28": {
+    "timeSlotId": "timeSlot5",
+    "tableId": "table22",
+    "numOfGuests": 7,
+    "partyName": "Nevers",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-05"
+  },
+  "reservation29": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table23",
+    "numOfGuests": 2,
+    "partyName": "Truley",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-07"
+  },
+  "reservation30": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table23",
+    "numOfGuests": 2,
+    "partyName": "Ernest",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-09"
+  },
+  "reservation31": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table23",
+    "numOfGuests": 1,
+    "partyName": "Trainer",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-10"
+  },
+  "reservation32": {
+    "timeSlotId": "timeSlot4",
+    "tableId": "table23",
+    "numOfGuests": 2,
+    "partyName": "Bothan",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-14"
+  },
+  "reservation33": {
+    "timeSlotId": "timeSlot5",
+    "tableId": "table23",
+    "numOfGuests": 2,
+    "partyName": "Twi'lek",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-12"
+  },
+  "reservation34": {
+    "timeSlotId": "timeSlot1",
+    "tableId": "table12",
+    "numOfGuests": 10,
+    "partyName": "Gungans",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-13"
+  },
+  "reservation35": {
+    "timeSlotId": "timeSlot2",
+    "tableId": "table12",
+    "numOfGuests": 8,
+    "partyName": "Rodian",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-07"
+  },
+  "reservation36": {
+    "timeSlotId": "timeSlot3",
+    "tableId": "table12",
+    "numOfGuests": 7,
+    "partyName": "Bothan",
+    "fullyStaffed": false,
+    "hasServer": false,
+    "hasServerAssistant": false,
+    "billTotal": "",
+    "date": "2020-04-05"
   }
 }
