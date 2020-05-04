@@ -4,6 +4,12 @@ import Plotly from 'plotly.js-dist';
 import utils from '../../helpers/utils';
 import smash from '../../helpers/data/smashData';
 
+const showIngredients = () => {
+  $('#most-ordered-section').addClass('hide');
+  $('#least-ordered-section').addClass('hide');
+  $('#revenue-reporting-section').addClass('hide');
+  $('#ingredient-reporting-section').removeClass('hide');
+};
 
 const resetFormValues = () => {
   $('#date1').val('');
@@ -77,6 +83,7 @@ const ingredientChart = () => new Promise((resolve, reject) => {
 });
 
 const getIngredientsReport = () => new Promise((resolve, reject) => {
+  showIngredients();
   let domString = '';
   const dates = dateCheck();
   const startDate = dates[0];
