@@ -17,4 +17,6 @@ const getTimeSlots = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getTimeSlots };
+const getSingleTimeslot = (timeSlotId) => axios.get(`${baseUrl}/timeSlots/${timeSlotId}.json`);
+
+export default { getTimeSlots, getSingleTimeslot };

@@ -1,4 +1,5 @@
 import reservationData from '../../helpers/data/reservationData';
+import reservationsPortal from '../reservationsPortal/reservationsPortal';
 import ingredientsData from '../../helpers/data/ingredientsData';
 import ordersData from '../../helpers/data/ordersData';
 import menuData from '../../helpers/data/menuData';
@@ -59,6 +60,7 @@ const editOrdersPage = (reservationId) => {
   reservationData.getReservationById(reservationId)
     .then((reservation) => {
       domString += `<h2 id="reservation-orders-page-header" class="text-center mt-4">${reservation.partyName}</h2>`;
+      domString += '<button id="edit-order-back-btn" class="btn btn-dark"><i class="fas fa-arrow-left"></i></button>';
 
       // ALL ORDERS //
       ordersData.getAllOrders()
@@ -374,6 +376,7 @@ const editOrdersPage = (reservationId) => {
 };
 
 const ordersSectionEvents = () => {
+  $('body').on('click', '#edit-order-back-btn', reservationsPortal.buildReservationsPortalSection);
   $('body').on('click', '.edit-order-btn', editOrderPageEvent);
   $('body').on('click', '.add-to-order-button', addToOrder);
   $('body').on('click', '.remove-from-order-button', removeFromOrder);

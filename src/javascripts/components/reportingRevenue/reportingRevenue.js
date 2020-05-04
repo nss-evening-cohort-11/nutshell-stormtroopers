@@ -132,7 +132,7 @@ const buildReportingPage = () => {
   domString += '<button id="revenue-button" class="btn btn-success mx-2">Revenue</button>';
   domString += '<button id="ingredient-reporting-button" class="btn btn-primary mx-2">Ingredients</button>';
   domString += '</div>';
-  domString += '<div id="ingredient-reporting-section" class="col-12 flex row"></div>';
+  domString += '<div id="ingredient-reporting-section"></div>';
   domString += '<div id="revenue-reporting-section" class=" text-center border border-success">';
   domString += '</div>';
   utils.printToDom('reporting-section', domString);

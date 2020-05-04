@@ -14,7 +14,7 @@ const getTablesWithReservations = (selectedDate) => new Promise((resolve, reject
     timeSlotData.getTimeSlots().then((timeSlots) => {
       const finalTables = [];
       reservationData.getReservations().then((reservationsResponse) => {
-        const todaysReservations = reservationsResponse.filter((x) => x.date === selectedDate.toString());
+        const todaysReservations = reservationsResponse.filter((x) => x.date === selectedDate);
         tables.forEach((table) => {
           const newTable = { ...table };
           const tableReservations = todaysReservations.filter((x) => x.tableId === table.id);
@@ -84,13 +84,26 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
 
 const getReservationTimeslotsByDate = (selectedDate) => new Promise((resolve, reject) => {
   reservationData.getReservations().then((reservationsResponse) => {
-    const todaysReservations = reservationsResponse.filter((x) => x.date === selectedDate.toString());
+    const todaysReservations = reservationsResponse.filter((x) => x.date === selectedDate);
     timeSlotData.getTimeSlots().then((timeSlots) => {
       todaysReservations.forEach((res) => {
         const reservationTimes = timeSlots.find((x) => x.id === res.timeSlotId);
         res.timeslot = reservationTimes.time;
       });
       resolve(todaysReservations);
+    });
+  })
+    .catch((err) => reject(err));
+});
+
+const getSingleReservationWithTimeslot = (reservationId) => new Promise((resolve, reject) => {
+  reservationData.getSingleReservation(reservationId).then((reservationResp) => {
+    const singleRes = reservationResp.data;
+    const reservationTimeslotId = reservationResp.data.timeSlotId;
+    timeSlotData.getSingleTimeslot(reservationTimeslotId).then((timeslotResp) => {
+      const singleTimeslot = timeslotResp.data;
+      singleRes.timeslot = singleTimeslot.time;
+      resolve(singleRes);
     });
   })
     .catch((err) => reject(err));
@@ -114,4 +127,5 @@ export default {
   getIngredientsForDateRange,
   getReservationTimeslotsByDate,
   getTablesWithReservations,
+  getSingleReservationWithTimeslot,
 };
