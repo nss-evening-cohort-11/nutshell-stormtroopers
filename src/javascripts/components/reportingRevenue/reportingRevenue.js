@@ -138,10 +138,11 @@ const buildReportingPage = () => {
   domString += '<button id="most-ordered-button" class="btn btn-success mx-2">Most Ordered Menu Items</button>';
   domString += '<button id="least-ordered-button" class="btn btn-primary mx-2">Least Ordered Menu Items</button>';
   domString += '</div>';
-  domString += '<div id="ingredient-reporting-section" class="col-12 flex row-wrap"></div>';
+  domString += '<div id="ingredient-reporting-section"></div>';
   domString += '<div id="revenue-reporting-section" class=" text-center border border-success"></div>';
   domString += '<div id="most-ordered-section" class="text-center border border-success"></div>';
   domString += '<div id="least-ordered-section" class=" text-center border border-success"></div>';
+
   utils.printToDom('reporting-section', domString);
   $(document).ready(() => {
     $('#home-page').addClass('hide');
