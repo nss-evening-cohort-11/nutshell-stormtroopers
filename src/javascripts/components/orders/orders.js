@@ -74,21 +74,21 @@ const editOrdersPage = (reservationId) => {
                   recipeData.getRecipes()
                     .then((allRecipes) => {
                       // CHECK IF INVENTORY IS SET AT ZERO //
-                      const selectedRecipes = [];
-                      const selectedMenuItems = [];
+                      const soldOutRecipes = [];
+                      const soldOutMenuItems = [];
                       allIgredients.forEach((ingredient) => {
                         if (ingredient.quantity === 0) {
                           allRecipes.forEach((recipe) => {
                             if (recipe.ingredientId === ingredient.id) {
-                              selectedRecipes.push(recipe);
+                              soldOutRecipes.push(recipe);
                             }
                           });
                         }
                       });
 
-                      selectedRecipes.forEach((recipe) => {
-                        selectedMenuItems.push(allMenuItems.find((menuItem) => menuItem.id === recipe.menuItemId));
-                        selectedMenuItems.forEach((menuItem) => {
+                      soldOutRecipes.forEach((recipe) => {
+                        soldOutMenuItems.push(allMenuItems.find((menuItem) => menuItem.id === recipe.menuItemId));
+                        soldOutMenuItems.forEach((menuItem) => {
                           menuData.setIsAvailableToFalse(menuItem.id);
                         });
                       });
