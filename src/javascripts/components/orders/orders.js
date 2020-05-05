@@ -368,6 +368,7 @@ const editOrdersPage = (reservationId) => {
   $('#reservations-section').addClass('hide');
   $('#menu-section').addClass('hide');
   $('#ingredients-section').addClass('hide');
+  $('#filtered-reservations-container').addClass('hide');
   $('#reporting-section').addClass('hide');
   $('#orders-section').removeClass('hide');
 };
