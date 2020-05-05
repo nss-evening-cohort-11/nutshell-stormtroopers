@@ -21,14 +21,14 @@ const ingredientChart = (startDate, endDate) => new Promise((resolve, reject) =>
   const chartData = [];
   const chartLabels = [];
   const chartDiv = 'ingredient-chart';
-  getProperArray(startDate, endDate).then((results) => { // dateCheck returns an array! Hence the index #'s
+  getProperArray(startDate, endDate).then((results) => {
     Object.entries(results).forEach((result) => {
       const ingredient = result[0];
       const ingredientCount = result[1];
       chartData.push(ingredientCount);
       chartLabels.push(ingredient);
     });
-    chart.chartBuilder(chartDiv, chartLabels, chartData);
+    $(document).ready(chart.chartBuilder(chartDiv, chartLabels, chartData));
     helper.resetFormValues();
     resolve(results);
   }).catch((err) => reject(err));
@@ -41,7 +41,7 @@ const getIngredientsReport = () => {
   helper.showIngredientsTab();
   helper.clearIngredientChart();
   helper.ingredientDivBuilder(startDate, endDate);
-  $(document).ready(ingredientChart(startDate, endDate));
+  ingredientChart(startDate, endDate);
   helper.resetFormValues();
 };
 

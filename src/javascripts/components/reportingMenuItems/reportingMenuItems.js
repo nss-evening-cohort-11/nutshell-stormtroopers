@@ -1,4 +1,4 @@
-// import utils from '../../helpers/utils';
+import chart from '../../helpers/chart';
 import ordersData from '../../helpers/data/ordersData';
 import menuData from '../../helpers/data/menuData';
 import utils from '../../helpers/utils';
@@ -32,14 +32,7 @@ const getMenuTopTen = () => {
           if (sortedArray.length > 10) {
             sortedArray.length = 10;
           }
-          let domString = '';
-          domString += 'The top 10 most selling menu items: ';
-          domString += '<ul>';
-          sortedArray.forEach((value) => {
-            domString += `<li>${value[0]}</li>`;
-          });
-          domString += '</ul>';
-          utils.printToDom('most-ordered-section', domString);
+          chart.chartMakerMenuItems('most-ordered-section', sortedArray);
         });
     });
 };
@@ -73,12 +66,7 @@ const getMenuBottomTen = () => {
             sortedArray.length = 10;
           }
           let domString = '';
-          domString += 'The top 10 least selling menu items: ';
-          domString += '<ul>';
-          sortedArray.forEach((value) => {
-            domString += `<li>${value[0]}</li>`;
-          });
-          domString += '</ul>';
+          domString += '<div id="least-ordered-section"></div>';
           utils.printToDom('least-ordered-section', domString);
         });
     });
