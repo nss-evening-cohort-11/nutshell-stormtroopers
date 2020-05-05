@@ -2,13 +2,15 @@
 import ordersData from '../../helpers/data/ordersData';
 import menuData from '../../helpers/data/menuData';
 import utils from '../../helpers/utils';
-
+import chart from '../../helpers/chart';
 
 const getMenuTopTen = () => {
   $('#most-ordered-section').removeClass('hide');
   $('#least-ordered-section').addClass('hide');
   $('#revenue-reporting-section').addClass('hide');
   $('#ingredient-reporting-section').addClass('hide');
+  let domString = '';
+  let sortedArray = [];
   ordersData.getSingleOrders()
     .then((singleOrders) => {
       menuData.getAllMenuItems()
@@ -28,18 +30,14 @@ const getMenuTopTen = () => {
             count[i] = (count[i] || 0) + 1;
           });
           const menuItemsToArray = Object.entries(count);
-          const sortedArray = menuItemsToArray.sort((a, b) => b[1] - a[1]);
+          sortedArray = menuItemsToArray.sort((a, b) => b[1] - a[1]);
           if (sortedArray.length > 10) {
             sortedArray.length = 10;
           }
-          let domString = '';
-          domString += 'The top 10 most selling menu items: ';
-          domString += '<ul>';
-          sortedArray.forEach((value) => {
-            domString += `<li>${value[0]}</li>`;
-          });
-          domString += '</ul>';
+          domString += '<h4>The top 10 most selling menu items:</h4>';
+          domString += '<div id="menu-items-chart"></div>';
           utils.printToDom('most-ordered-section', domString);
+          $(document).ready(() => chart.chartMakerMenuItems('menu-items-chart', sortedArray));
         });
     });
 };
@@ -73,13 +71,10 @@ const getMenuBottomTen = () => {
             sortedArray.length = 10;
           }
           let domString = '';
-          domString += 'The top 10 least selling menu items: ';
-          domString += '<ul>';
-          sortedArray.forEach((value) => {
-            domString += `<li>${value[0]}</li>`;
-          });
-          domString += '</ul>';
+          domString += '<h4>The 10 least selling menu items:</h4>';
+          domString += '<div id="menu-items-chart-least"></div>';
           utils.printToDom('least-ordered-section', domString);
+          $(document).ready(() => chart.chartMakerMenuItems('menu-items-chart-least', sortedArray));
         });
     });
 };
