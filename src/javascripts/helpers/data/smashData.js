@@ -47,8 +47,7 @@ const getReservationByDate = (date) => new Promise((resolve, reject) => {
         rezziesArray.push(rezzies[rezzieDate]);
       });
       resolve(rezziesArray);
-    })
-    .catch((err) => reject(err));
+    }).catch((err) => reject(err));
 });
 
 const getOrdersByReservation = (date) => new Promise((resolve, reject) => {
@@ -61,8 +60,7 @@ const getOrdersByReservation = (date) => new Promise((resolve, reject) => {
       });
       resolve(ordersArray);
     });
-  })
-    .catch((err) => reject(err));
+  }).catch((err) => reject(err));
 });
 
 const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) => {
@@ -77,8 +75,7 @@ const getIngredientsByReservationDate = (date) => new Promise((resolve, reject) 
         resolve(results);
         return results;
       });
-  })
-    .catch((err) => reject(err));
+  }).catch((err) => reject(err));
 });
 
 
