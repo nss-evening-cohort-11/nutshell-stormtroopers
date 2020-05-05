@@ -21,7 +21,7 @@ const navbarClickEvents = () => {
     $('#reservations-button').click(reservations.buildReservationsSection);
     $('#menu-button').click(menu.buildMenuSection);
     $('#ingredients-button').click(ingredients.buildIngredientsSection);
-    $('#orders-button').click(orders.editOrdersPage);
+    $('#orders-button').click(orders.editOrderPageEvent);
     $('#reservations-portal-button').click(reservationsPortal.buildReservationsPortalSection);
     $('body').on('click', '#reporting-button', reportingRevenue.buildReportingPage);
   });

@@ -1,5 +1,4 @@
 import reservationData from '../../helpers/data/reservationData';
-import reservationsPortal from '../reservationsPortal/reservationsPortal';
 import ingredientsData from '../../helpers/data/ingredientsData';
 import ordersData from '../../helpers/data/ordersData';
 import menuData from '../../helpers/data/menuData';
@@ -46,6 +45,7 @@ const removeFromOrder = (e) => {
 
 const editOrderPageEvent = (e) => {
   const reservationId = e.target.closest('.list-group-item').id;
+
   // eslint-disable-next-line no-use-before-define
   editOrdersPage(reservationId);
   window.scrollTo(0, 0);
@@ -54,13 +54,11 @@ const editOrderPageEvent = (e) => {
 const editOrdersPage = (reservationId) => {
   let domString = '';
 
-  domString += '<strong><h1 id="orders-page-header" class="text-center display-4">Reservation Order</h1></strong>';
-
   // RESRVATION //
   reservationData.getReservationById(reservationId)
     .then((reservation) => {
-      domString += `<h2 id="reservation-orders-page-header" class="text-center mt-4">${reservation.partyName}</h2>`;
-      domString += '<button id="edit-order-back-btn" class="btn btn-dark"><i class="fas fa-arrow-left"></i></button>';
+      domString += `<h2 id="reservation-orders-page-header" class="text-center mt-4">Reservation Order: ${reservation.partyName}</h2>`;
+      domString += '<button class="btn btn-dark edit-order-back-btn"><i class="fas fa-arrow-left"></i></button>';
 
       // ALL ORDERS //
       ordersData.getAllOrders()
@@ -370,16 +368,14 @@ const editOrdersPage = (reservationId) => {
   $('#reservations-section').addClass('hide');
   $('#menu-section').addClass('hide');
   $('#ingredients-section').addClass('hide');
-  $('#reservations-portal-section').addClass('hide');
   $('#reporting-section').addClass('hide');
   $('#orders-section').removeClass('hide');
 };
 
 const ordersSectionEvents = () => {
-  $('body').on('click', '#edit-order-back-btn', reservationsPortal.buildReservationsPortalSection);
   $('body').on('click', '.edit-order-btn', editOrderPageEvent);
   $('body').on('click', '.add-to-order-button', addToOrder);
   $('body').on('click', '.remove-from-order-button', removeFromOrder);
 };
 
-export default { editOrdersPage, ordersSectionEvents };
+export default { editOrdersPage, ordersSectionEvents, editOrderPageEvent };
