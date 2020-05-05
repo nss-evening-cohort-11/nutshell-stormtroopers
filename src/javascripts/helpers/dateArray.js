@@ -7,7 +7,6 @@ const getDateArray = (start, end) => {
     dateArray.push(moment(date).format('YYYY-MM-DD'));
     date.setDate(date.getDate() + 1);
   }
-  dateArray.forEach((x) => moment(x).format('YYYY-MM-DD'));
   return dateArray;
 };
 

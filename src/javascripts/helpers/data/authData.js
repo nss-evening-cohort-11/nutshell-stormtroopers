@@ -3,6 +3,7 @@ import 'firebase/auth';
 import ingredients from '../../components/ingredients/ingredients';
 import staff from '../../components/staff/staff';
 import reservations from '../../components/reservations/reservations';
+import orders from '../../components/orders/orders';
 import reservationsPortal from '../../components/reservationsPortal/reservationsPortal';
 import reportingRevenue from '../../components/reportingRevenue/reportingRevenue';
 import reportingIngredient from '../../components/ingredients/ingredientReporting';
@@ -25,6 +26,7 @@ const checkLoginStatus = () => {
       reportingRevenue.revenueEvents();
       reportingMenuItems.reportingMenuItemsEvents();
       reservations.reservationSectionEvents();
+      orders.ordersSectionEvents();
       reservationsPortal.reservationPortalEvents();
       reportingRevenue.showReportingTab();
     } else {

@@ -11,6 +11,7 @@ import ingredients from './components/ingredients/ingredients';
 import menu from './components/menu/menu';
 import reservationsPortal from './components/reservationsPortal/reservationsPortal';
 import authData from './helpers/data/authData';
+import orders from './components/orders/orders';
 import reportingRevenue from './components/reportingRevenue/reportingRevenue';
 
 const navbarClickEvents = () => {
@@ -20,6 +21,7 @@ const navbarClickEvents = () => {
     $('#reservations-button').click(reservations.buildReservationsSection);
     $('#menu-button').click(menu.buildMenuSection);
     $('#ingredients-button').click(ingredients.buildIngredientsSection);
+    $('#orders-button').click(orders.editOrderPageEvent);
     $('#reservations-portal-button').click(reservationsPortal.buildReservationsPortalSection);
     $('body').on('click', '#reporting-button', reportingRevenue.buildReportingPage);
   });
