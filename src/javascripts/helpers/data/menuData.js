@@ -324,6 +324,8 @@ const addNewItem = (e) => {
     });
 };
 
+const setIsAvailableToFalse = (menuItemId) => axios.patch(`${baseUrl}/menuItems/${menuItemId}.json`, { isAvailable: false });
+
 export default {
   getAllMenuItems,
   buildMenuCards,
@@ -338,4 +340,5 @@ export default {
   addSelectedIngreds,
   showItemEditor,
   addNewItem,
+  setIsAvailableToFalse,
 };

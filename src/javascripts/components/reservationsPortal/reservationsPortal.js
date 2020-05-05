@@ -15,6 +15,7 @@ const showFilteredReservations = () => {
       // eslint-disable-next-line no-use-before-define
       buildReservationsTable(reservations);
       $('#single-reservation-container').addClass('hide');
+      $('#orders-section').addClass('hide');
       $('#filtered-reservations-container').removeClass('hide');
     })
     .catch((err) => console.error('could not get reservations by date', err));
@@ -87,6 +88,7 @@ const removeReservationPortalEvents = () => {
 };
 
 const reservationPortalEvents = () => {
+  $('body').on('click', '.edit-order-back-btn', showFilteredReservations);
   $('body').on('click', '#filter-date-btn', showFilteredReservations);
   $('body').on('click', '.single-reservation-btn', showSingleReservationEvent);
   $('body').on('click', '.exit-single-res-btn', showFilteredReservations);
@@ -135,6 +137,7 @@ const buildReservationsPortalSection = () => {
   let domString = '<h1 id="reservations-portal-header" class="reservations-portal-title text-center">Reservations Portal</h1>';
   domString += '<div class="col-12 text-center"><input type="date" id="date-selector" class="mx-1" value="2020-04-21"><button type="submit" id="filter-date-btn" class="btn btn-secondary mx-1">Select Date</button></div>';
   domString += '<div id="single-reservation-container" class="hide"></div>';
+  domString += '<div id="orders-section" class="hide"></div>';
   domString += '<div id="filtered-reservations-container"></div>';
   utils.printToDom('reservations-portal-section', domString);
   showReservationsByDate();
@@ -145,8 +148,14 @@ const buildReservationsPortalSection = () => {
     $('#menu-section').addClass('hide');
     $('#ingredients-section').addClass('hide');
     $('#reporting-section').addClass('hide');
+    $('#orders-section').addClass('hide');
     $('#reservations-portal-section').removeClass('hide');
   });
 };
 
-export default { buildReservationsPortalSection, reservationPortalEvents, removeReservationPortalEvents };
+export default {
+  buildReservationsPortalSection,
+  reservationPortalEvents,
+  removeReservationPortalEvents,
+  showFilteredReservations,
+};
