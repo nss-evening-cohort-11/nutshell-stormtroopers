@@ -1,7 +1,6 @@
 import chart from '../../helpers/chart';
 import ordersData from '../../helpers/data/ordersData';
 import menuData from '../../helpers/data/menuData';
-import utils from '../../helpers/utils';
 
 
 const getMenuTopTen = () => {

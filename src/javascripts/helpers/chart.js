@@ -1,7 +1,7 @@
 import Plotly from 'plotly.js-dist';
 
 const chartBuilder = (divId, labels, data) => {
-  Plotly.newPlot(divId, [{
+  const config = [{
     x: labels,
     y: data,
     type: 'bar',
@@ -13,12 +13,9 @@ const chartBuilder = (divId, labels, data) => {
         width: 1.5,
       },
     },
-  }],
-  {
-    yaxis: {
-      title: 'Quantity Used',
-    },
-  });
+  }];
+  const title = { yaxis: { title: 'Quantity Used' } };
+  Plotly.newPlot(divId, config, title);
 };
 
 const chartMakerMenuItems = (divId, inputArray) => {
