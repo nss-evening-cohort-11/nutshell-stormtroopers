@@ -32,7 +32,7 @@ const getMenuTopTen = () => {
           if (sortedArray.length > 10) {
             sortedArray.length = 10;
           }
-          chart.chartMakerMenuItems('most-ordered-section', sortedArray);
+          $(document).ready(chart.chartMakerMenuItems('most-ordered-section', sortedArray));
         });
     });
 };
@@ -65,9 +65,7 @@ const getMenuBottomTen = () => {
           if (sortedArray.length > 10) {
             sortedArray.length = 10;
           }
-          let domString = '';
-          domString += '<div id="least-ordered-section"></div>';
-          utils.printToDom('least-ordered-section', domString);
+          $(document).ready(chart.chartMakerMenuItems('least-ordered-section', sortedArray));
         });
     });
 };

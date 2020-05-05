@@ -140,8 +140,8 @@ const buildReportingPage = () => {
   domString += '</div>';
   domString += '<div id="ingredient-reporting-section"></div>';
   domString += '<div id="revenue-reporting-section" class=" text-center border border-success"></div>';
-  domString += '<div id="most-ordered-section" class="text-center border border-success"></div>';
-  domString += '<div id="least-ordered-section" class=" text-center border border-success"></div>';
+  domString += '<div id="most-ordered-section" class="text-center"></div>';
+  domString += '<div id="least-ordered-section" class="text-center"></div>';
 
   utils.printToDom('reporting-section', domString);
   $(document).ready(() => {

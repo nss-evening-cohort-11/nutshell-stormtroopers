@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import chart from '../../helpers/chart';
 import helper from '../../helpers/ingredientReportHelpers';
 import smash from '../../helpers/data/smashData';
@@ -22,12 +23,13 @@ const ingredientChart = (startDate, endDate) => new Promise((resolve, reject) =>
   const chartLabels = [];
   const chartDiv = 'ingredient-chart';
   getProperArray(startDate, endDate).then((results) => {
-    Object.entries(results).forEach((result) => {
-      const ingredient = result[0];
-      const ingredientCount = result[1];
+    const respArray = Object.entries(results);
+    for (let i = 0, n = respArray.length; i < n; ++i) {
+      const ingredient = respArray[i][0];
+      const ingredientCount = respArray[i][1];
       chartData.push(ingredientCount);
       chartLabels.push(ingredient);
-    });
+    }
     $(document).ready(chart.chartBuilder(chartDiv, chartLabels, chartData));
     helper.resetFormValues();
     resolve(results);
