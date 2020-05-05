@@ -1,6 +1,6 @@
 import Plotly from 'plotly.js-dist';
 
-const chart = (divId, labels, data) => {
+const chartBuilder = (divId, labels, data) => {
   Plotly.newPlot(divId, [{
     x: labels,
     y: data,
@@ -28,7 +28,7 @@ const chartMakerMenuItems = (divId, inputArray) => {
     data.push(obj[1]);
     labels.push(obj[0]);
   });
-  chart(divId, labels, data);
+  chartBuilder(divId, labels, data);
 };
 
-export default { chartMakerMenuItems, chart };
+export default { chartMakerMenuItems, chartBuilder };
