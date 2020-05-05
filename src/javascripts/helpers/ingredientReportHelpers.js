@@ -14,6 +14,10 @@ const showIngredientsTab = () => {
   $('#ingredient-reporting-section').removeClass('hide');
 };
 
+const clearIngredientChart = () => {
+  $('ingredient-chart').empty();
+};
+
 const ingredientDivBuilder = (startDate, endDate) => {
   let domString = '';
   domString += '<h4 class="col-12" style="text-align: center;">Inventory Used ';
@@ -43,4 +47,5 @@ export default {
   showIngredientsTab,
   ingredientDivBuilder,
   dateCheck,
+  clearIngredientChart,
 };

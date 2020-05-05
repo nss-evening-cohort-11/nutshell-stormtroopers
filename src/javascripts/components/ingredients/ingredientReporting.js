@@ -39,6 +39,7 @@ const getIngredientsReport = () => {
   const startDate = dates[0];
   const endDate = dates[1];
   helper.showIngredientsTab();
+  helper.clearIngredientChart();
   helper.ingredientDivBuilder(startDate, endDate);
   $(document).ready(ingredientChart(startDate, endDate));
   helper.resetFormValues();
