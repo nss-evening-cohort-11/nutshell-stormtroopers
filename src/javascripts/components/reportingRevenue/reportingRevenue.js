@@ -14,7 +14,6 @@ const removeReportingTab = () => {
   const domString = '';
   utils.printToDom('reporting-tab', domString);
 };
-
 const getResevationsByDate = () => {
   $('#most-ordered-section').addClass('hide');
   $('#least-ordered-section').addClass('hide');
