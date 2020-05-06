@@ -3,6 +3,7 @@ import smashData from '../../helpers/data/smashData';
 import staffData from '../../helpers/data/staffData';
 import tableData from '../../helpers/data/tableData';
 import 'moment';
+import reservationReceipt from '../reservationReceipt/reservationReceipt';
 
 const Moment = require('moment');
 
@@ -101,7 +102,8 @@ const showSingleReservation = (reservationId) => {
       domString += '</div>';
       domString += '</div>';
       domString += '<div id="table-reassignment-alert"></div>';
-      domString += '<div id="reservation-receipt">HELLO!</div>';
+      domString += '<div id="reservation-receipt"></div>';
+      reservationReceipt.buildReservationReciept(reservationId);
       domString += '<div class="text-center py-2">';
       domString += '<button class="btn btn-success mx-1 exit-single-res-btn">View All Reservations</button>';
       domString += '<button class="btn btn-danger mx-1 reject-res-btn">Reject Reservation</button>';

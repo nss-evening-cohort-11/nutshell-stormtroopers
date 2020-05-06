@@ -32,6 +32,16 @@ const getSingleOrders = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getOrdersByReservationId = (reservationId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/orders.json?orderBy="reservationId"&equalTo="${reservationId}"`)
+    .then((response) => {
+      const orders = response.data;
+
+      resolve(orders);
+    })
+    .catch((err) => reject(err));
+});
+
 const deleteOrder = (orderId) => axios.delete(`${baseUrl}/orders/${orderId}.json`);
 
 const addOrder = (newOrder) => axios.post(`${baseUrl}/orders.json`, newOrder);
@@ -41,4 +51,5 @@ export default {
   deleteOrder,
   addOrder,
   getSingleOrders,
+  getOrdersByReservationId,
 };
