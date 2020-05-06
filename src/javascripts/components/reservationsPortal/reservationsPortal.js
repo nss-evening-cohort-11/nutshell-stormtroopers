@@ -153,9 +153,22 @@ const buildReservationsPortalSection = () => {
   });
 };
 
+const showReservationsPortalTab = () => {
+  let domString = '';
+  domString += '<button id="reservations-portal-button" class="btn btn-white nav-link">Reservations Portal</button>';
+  utils.printToDom('reservations-portal-tab', domString);
+};
+
+const removeReservationsPortalTab = () => {
+  const domString = '';
+  utils.printToDom('reservations-portal-tab', domString);
+};
+
 export default {
   buildReservationsPortalSection,
   reservationPortalEvents,
   removeReservationPortalEvents,
   showFilteredReservations,
+  showReservationsPortalTab,
+  removeReservationsPortalTab,
 };
