@@ -1,11 +1,11 @@
 import reservationData from '../../helpers/data/reservationData';
 import ingredientsData from '../../helpers/data/ingredientsData';
 import ordersData from '../../helpers/data/ordersData';
+import recipeData from '../../helpers/data/recipeData';
 import menuData from '../../helpers/data/menuData';
 import utils from '../../helpers/utils';
 
 import './orders.scss';
-import recipeData from '../../helpers/data/recipeData';
 
 const addToOrder = (e) => {
   const addMenuItemId = e.target.closest('.card').id;
