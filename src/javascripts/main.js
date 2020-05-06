@@ -22,8 +22,9 @@ const navbarClickEvents = () => {
     $('#menu-button').click(menu.buildMenuSection);
     $('#ingredients-button').click(ingredients.buildIngredientsSection);
     $('#orders-button').click(orders.editOrderPageEvent);
-    $('#reservations-portal-button').click(reservationsPortal.buildReservationsPortalSection);
+    // $('#reservations-portal-button').click(reservationsPortal.buildReservationsPortalSection);
     $('body').on('click', '#reporting-button', reportingRevenue.buildReportingPage);
+    $('body').on('click', '#reservations-portal-button', reservationsPortal.buildReservationsPortalSection);
   });
 };
 

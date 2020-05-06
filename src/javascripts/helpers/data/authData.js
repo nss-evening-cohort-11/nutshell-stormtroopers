@@ -29,6 +29,7 @@ const checkLoginStatus = () => {
       orders.ordersSectionEvents();
       reservationsPortal.reservationPortalEvents();
       reportingRevenue.showReportingTab();
+      reservationsPortal.showReservationsPortalTab();
     } else {
       // person not logged in
       logoutButton.addClass('hide');
@@ -38,6 +39,7 @@ const checkLoginStatus = () => {
       reservations.removeReservationSectionEvents();
       reservationsPortal.removeReservationPortalEvents();
       reportingRevenue.removeReportingTab();
+      reservationsPortal.removeReservationsPortalTab();
     }
   });
 };
