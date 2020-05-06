@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import axios from 'axios';
 import dateArray from '../dateArray';
 import tableData from './tableData';
@@ -109,10 +110,10 @@ const getSingleReservationWithTimeslot = (reservationId) => new Promise((resolve
 const getIngredientsForDateRange = (start, end) => new Promise((resolve, reject) => {
   const dates = dateArray.getDatesForAWeek(start, end);
   const rezRange = [];
-  dates.forEach((date) => {
-    const rezzie = getIngredientsByReservationDate(date);
+  for (let i = 0, n = dates.length; i < n; ++i) {
+    const rezzie = getIngredientsByReservationDate(dates[i]);
     if (rezzie) rezRange.push(rezzie);
-  });
+  }
   Promise.all(rezRange)
     .then((results) => {
       resolve(results);

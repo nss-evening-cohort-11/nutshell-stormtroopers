@@ -18,8 +18,10 @@ const clearIngredientChart = () => {
   $('ingredient-chart').empty();
 };
 
-const ingredientDivBuilder = (startDate, endDate) => {
+const ingredientDivBuilder = (start, end) => {
   let domString = '';
+  const startDate = Moment(start).format('MMM Do YYYY');
+  const endDate = Moment(end).format('MMM Do YYYY');
   domString += '<h4 class="col-12" style="text-align: center;">Inventory Used ';
   domString += `${startDate === endDate ? `on ${startDate}` : `from ${startDate} to ${endDate}`}</h4>`; // title change based on a single date or a range
   domString += '<div id="ingredient-chart"></div>';
